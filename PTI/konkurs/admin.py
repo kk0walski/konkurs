@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from system.models import Author, Competition, Registration
+from konkurs.models import Author, Competition, Registration
 
 class AuthorAdmin(admin.ModelAdmin):
     pass
