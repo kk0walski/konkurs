@@ -13,3 +13,11 @@
     width: 1500px;
     max-width: 100%;
 }
+.color-red {
+    background-color: #cd0000;
+}
+.bottom-menu {
+    color: #fff;
+    text-decoration: none;
+     text-transform:uppercase;
+}
