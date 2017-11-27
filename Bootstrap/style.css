@@ -10,12 +10,13 @@
 }
 
 .container-fluid{
-    width: 1500px;
+    width: 1200px;
     max-width: 100%;
 }
 .color-red {
     background-color: #cd0000;
     padding: 15px;
+    height: 120px;
 }
 .bottom-menu {
     color: #fff;
