@@ -15,9 +15,13 @@
 }
 .color-red {
     background-color: #cd0000;
+    padding: 15px;
 }
 .bottom-menu {
     color: #fff;
     text-decoration: none;
      text-transform:uppercase;
+}
+.col-sm-4{
+    margin-bottom: 15px;
 }
