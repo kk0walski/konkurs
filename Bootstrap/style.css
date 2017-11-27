@@ -1,7 +1,6 @@
  .jumbotron {
     background-image: url("35158_1.jpg");
     background-color: #17234E;
-    margin-bottom: 0;
     min-height: 50%;
     background-repeat: no-repeat;
     background-position: center;
@@ -12,6 +11,7 @@
 .container-fluid{
     width: 1200px;
     max-width: 100%;
+    margin-bottom: 50px;
 }
 .color-red {
     background-color: #cd0000;
