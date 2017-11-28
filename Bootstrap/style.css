@@ -25,3 +25,11 @@
 .col-sm-4{
     margin-bottom: 15px;
 }
+.gkEventsListProgress{
+    background: #e5e5e5;
+    height: 3px;
+    margin-left: 16px;
+    position: relative;
+    top: -2px;
+    width: 50px;
+}
