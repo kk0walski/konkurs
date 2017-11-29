@@ -1,3 +1,4 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
@@ -64,7 +65,7 @@
         <div class="col-sm-3">
           <div class="col-sm-11 color-red">
             <a href="#jury">
-              <img src="img/ico-giuria.png" alt="The Jury Arte Laguna Prize" width="50" height="50">
+              <img src="{% static "img/ico-giuria.png" %}" alt="The Jury Arte Laguna Prize" width="50" height="50">
               <br>
               <strong class="bottom-menu">JURY</strong>
             </a>
@@ -73,7 +74,7 @@
         <div class="col-sm-3">
           <div class="col-sm-11 color-red">
             <a href="#nagrody">
-              <img src="img/ico-premi.png" alt="The Jury Arte Laguna Prize" width="50" height="50">
+              <img src="{% static "img/ico-premi.png" %}" alt="The Jury Arte Laguna Prize" width="50" height="50">
               <br>
               <strong class="bottom-menu">NAGRODY</strong>
             </a>
@@ -82,7 +83,7 @@
         <div class="col-sm-3">
           <div class="col-sm-11 color-red">
             <a href="#regulamin">
-              <img src="img/ico-bando.png" alt="The Jury Arte Laguna Prize" width="50" height="50">
+              <img src="{% static "img/ico-bando.png" %}" alt="The Jury Arte Laguna Prize" width="50" height="50">
               <br>
               <strong class="bottom-menu">REGULAMIN</strong>
             </a>
@@ -91,7 +92,7 @@
         <div class="col-sm-3">
           <div class="col-sm-11 color-red">
             <a href="#zgloszenie">
-              <img src="img/ico-iscrizione.png" alt="The Jury Arte Laguna Prize" width="50" height="50">
+              <img src="{% static "img/ico-iscrizione.png" %}" alt="The Jury Arte Laguna Prize" width="50" height="50">
               <br>
               <strong class="bottom-menu">JAK ZGŁOSIĆ SIĘ DO KONKURSU?</strong>
             </a>
@@ -234,21 +235,21 @@
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/igor_zanti.jpg" alt="Igor Zanti" class="img-responsive" width="100%">
+            <img src="{% static "img/igor_zanti.jpg" %}" alt="Igor Zanti" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Igor Zanti</strong>
             <p>Włochy, Kurator sztuki oraz przewodniczący jury</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/domenico_de_chirico.jpg" alt="Domenico De Chirico" class="img-responsive" width="100%">
+            <img src="{% static "img/domenico_de_chirico.jpg" %}" alt="Domenico De Chirico" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Domenico De Chirico</strong>
             <p>Włochy, niezależny kurator</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/caroline_corbetta.jpg" alt="Caroline Corbetta" class="img-responsive" width="100%">
+            <img src="{% static "img/caroline_corbetta.jpg" %}" alt="Caroline Corbetta" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Caroline Corbetta</strong>
             <p>Włochy, niezależny kurator</p>
           </div>
@@ -257,28 +258,28 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/Denis-Curti.jpg" alt="Denis Curti" class="img-responsive" width="100%">
+            <img src="{% static "img/Denis-Curti.jpg" %}" alt="Denis Curti" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Denis Curti</strong>
             <p>Włochy, dyrektor Artystyczny Casa dei Tre Oci w Wenecji</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/nicolangelo_gelormini.jpg" alt="Nicolangelo Gelormini" class="img-responsive" width="100%">
+            <img src="{% static "img/nicolangelo_gelormini.jpg" %}" alt="Nicolangelo Gelormini" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Nicolangelo Gelormini</strong>
             <p>Włochy, reżyser</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/emanuele_montibeller.jpg" alt="Emanuele Montibeller" class="img-responsive" width="100%">
+            <img src="{% static "img/emanuele_montibeller.jpg" %}" alt="Emanuele Montibeller" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Emanuele Montibeller</strong>
             <p>Włochy, dyrektor artystyczny Arte Sella Trentino</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/simone_pallotta.jpg" alt="Simone Pallotta" class="img-responsive" width="100%">
+            <img src="{% static "img/simone_pallotta.jpg" %}" alt="Simone Pallotta" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Simone Pallotta</strong>
             <p>Włochy, dyrektor artystyczny Arte Sella TrentinoWłochy, kurator sztuki publicznej i miejskiej</p>
           </div>
@@ -287,28 +288,28 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/nadim_samman.jpg" alt="Nadim Samman" class="img-responsive" width="100%">
+            <img src="{% static "img/nadim_samman.jpg" %}" alt="Nadim Samman" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Nadim Samman</strong>
             <p>Wielka Brytania, kurator i historyk sztuki</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/manuel_segade.jpg" alt="Manuel Segade" class="img-responsive" width="100%">
+            <img src="{%static "img/manuel_segade.jpg" %}" alt="Manuel Segade" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Manuel Segade</strong>
             <p>Hiszpania, dyrektor Centro de Arte Dos de Mayo w Madrycie</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/ekaterina_shcherbakova.jpg" alt="Ekaterina Shcherbakova" class="img-responsive" width="100%">
+            <img src="{% static "img/ekaterina_shcherbakova.jpg" %}" alt="Ekaterina Shcherbakova" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Ekaterina Shcherbakova</strong>
             <p>Rosja, niezależny kurator i krytyk sztuki</p>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
-            <img src="img/eva_wittocx.jpg" alt="Eva Wittocx" class="img-responsive" width="100%">
+            <img src="{static "img/eva_wittocx.jpg" %}" alt="Eva Wittocx" class="img-responsive" width="100%">
             <strong style="color: #3f81a1;">Eva Wittocx</strong>
             <p>Belgia, starszy kurator M-Museum w Leuven</p>
           </div>
@@ -372,7 +373,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/galerie_isabel_lesmeister1.jpg" alt="Galerie Isabelle Lesmeister" class="img-responsive" width="100%">
+              <img src="{% static "img/galerie_isabel_lesmeister1.jpg" %}" alt="Galerie Isabelle Lesmeister" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Galerie Isabelle Lesmeister</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Ratyzbona, Niemcy</strong>
@@ -380,7 +381,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/galeria_fernando_santos1.jpg" alt="Galeria Fernando Santos" class="img-responsive" width="100%">
+              <img src="{% static "img/galeria_fernando_santos1.jpg" %}" alt="Galeria Fernando Santos" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Galeria Fernando Santos</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Porto, Portugalia</strong>
@@ -388,7 +389,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/chelouche_gallery1.jpg" alt="Galeria Sztuki Współczesnej Chelouche" class="img-responsive" width="100%">
+              <img src="{% static "img/chelouche_gallery1.jpg" %}" alt="Galeria Sztuki Współczesnej Chelouche" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Galeria Sztuki Współczesnej Chelouche</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Tel Aviv, Izrael</strong>
@@ -401,7 +402,7 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="col-sm-8">
-                <img src="img/ars.jpg" alt="Galeria Sztuki Współczesnej Chelouche" class="img-responsive" width="100%">
+                <img src="{% static "img/ars.jpg" %}" alt="Galeria Sztuki Współczesnej Chelouche" class="img-responsive" width="100%">
                 <strong style="color: #3f81a1; text-transform:uppercase;">
                   ARS(Art Reuse Sustainability): zrównoważony rozwój i ponowne wykorzystanie szkła
                 </strong>
@@ -425,7 +426,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/san-francisco-art-residency.jpg" alt="San Francisco Art Residency" class="img-responsive" width="100%">
+              <img src="{% static "img/san-francisco-art-residency.jpg" %}" alt="San Francisco Art Residency" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">San Francisco Art Residency</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">San Francisco, Stany Zjednoczone</strong>
@@ -433,7 +434,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/the-art-department.jpg" alt="The Art Department" class="img-responsive" width="100%">
+              <img src="{% static "img/the-art-department.jpg" %}" alt="The Art Department" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">The Art Department</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Bodrum, Turcja</strong>
@@ -441,7 +442,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/gloart1.jpg" alt="GLO’ART" class="img-responsive" width="100%">
+              <img src="{% static "img/gloart1.jpg" %}" alt="GLO’ART" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">GLO’ART</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Lanaken, Belgia</strong>
@@ -449,7 +450,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/espronceda1.jpg" alt="Espronceda" class="img-responsive" width="100%">
+              <img src="{% static "img/espronceda1.jpg" %}" alt="Espronceda" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Espronceda</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Barcelona, Hiszpania</strong>
@@ -459,7 +460,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/basu_foundation1.jpg" alt="Basu Foundation for the Arts" class="img-responsive" width="100%">
+              <img src="{% static "img/basu_foundation1.jpg" %}" alt="Basu Foundation for the Arts" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Basu Foundation for the Arts</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Kalkuta, Indie</strong>
@@ -467,7 +468,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/serigrafia_artistica_fallani1.jpg" alt="Sitodruk artystyczny Fallani" class="img-responsive" width="100%">
+              <img src="{% static "img/serigrafia_artistica_fallani1.jpg" %}" alt="Sitodruk artystyczny Fallani" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Sitodruk artystyczny Fallani</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Kalkuta, Indie</strong>
@@ -475,7 +476,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/farm-cultural-park.jpg" alt="Farm Cultural Park" class="img-responsive" width="100%">
+              <img src="{% static "img/farm-cultural-park.jpg" %}" alt="Farm Cultural Park" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Farm Cultural Park</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Favara Włochy</strong>
@@ -483,7 +484,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/arte-sella.jpg" alt="Arte Sella" class="img-responsive" width="100%">
+              <img src="{% static "img/arte-sella.jpg" %}" alt="Arte Sella" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Arte Sella</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Trento Włochy</strong>
@@ -493,7 +494,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/swatchartpeacehotel1.jpg" alt="The Swatch Art Peace Hotel" class="img-responsive" width="100%">
+              <img src="{% static "img/swatchartpeacehotel1.jpg" %}" alt="The Swatch Art Peace Hotel" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">The Swatch Art Peace Hotel</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Szanghaj Chiny</strong>
@@ -501,7 +502,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/maradiva.jpg" alt="Maradiva Cultural Residency" class="img-responsive" width="100%">
+              <img src="{% static "img/maradiva.jpg" %}" alt="Maradiva Cultural Residency" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Maradiva Cultural Residency</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Flic-en-Flac Mauritius</strong>
@@ -509,7 +510,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/muranoglass.jpg" alt="Murano Glass ArtResidency" class="img-responsive" width="100%">
+              <img src="{% static "img/muranoglass.jpg" %}" alt="Murano Glass ArtResidency" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Murano Glass ArtResidency</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Wenecja Włochy</strong>
@@ -522,7 +523,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/zanetto.jpg" alt="Manifattura Zanetto" class="img-responsive" width="100%">
+              <img src="{% static "img/zanetto.jpg" %}" alt="Manifattura Zanetto" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Manifattura Zanetto</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">€ 2.000</strong>
@@ -532,7 +533,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/biafarin.jpg" alt="Biafarin" class="img-responsive" width="100%">
+              <img src="{% static "img/biafarin.jpg" %}" alt="Biafarin" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Biafarin</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">€ 2.000</strong>
@@ -544,7 +545,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/artmajeur.jpg" alt="Artmajeur" class="img-responsive" width="100%">
+              <img src="{% static "img/artmajeur.jpg" %}" alt="Artmajeur" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Artmajeur</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Visibility</strong>
@@ -560,7 +561,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/artnova100_1.jpg" alt="Art Nova 100" class="img-responsive" width="100%">
+              <img src="{% static "img/artnova100_1.jpg" %}" alt="Art Nova 100" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Art Nova 100</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Pekin, Chiny</strong>
@@ -568,7 +569,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/artstays_1.jpg" alt="Art Stays Festival" class="img-responsive" width="100%">
+              <img src="{% static "img/artstays_1.jpg" %}" alt="Art Stays Festival" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Art Stays Festival</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Ptuj, Słowenia</strong>
@@ -576,7 +577,7 @@
           </div>
           <div class="col-sm-3">
             <div class="col-sm-12">
-              <img src="img/open_1.jpg" alt="Open, Międzynarodowa Wystawa Rzeźb i Instalacji" class="img-responsive" width="100%">
+              <img src="{% static "img/open_1.jpg" %}" alt="Open, Międzynarodowa Wystawa Rzeźb i Instalacji" class="img-responsive" width="100%">
               <strong style="color: #3f81a1; text-transform:uppercase;">Open, Międzynarodowa Wystawa Rzeźb i Instalacji</strong>
               <br/>
               <strong style="color: #666666; text-decoration: none; text-transform:uppercase;">Wenecja, Włochy</strong>
@@ -743,7 +744,7 @@
         <div class="col-sm-3">
           <div class="col-sm-12">
             <strong style="color:#3f81a1">
-              <img src="img/ico-cuore.png" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
+              <img src="{% static "img/ico-cuore.png" %}" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
               <br>WYBIERZ SWOJE NAJLEPSZE PRACE
             </strong>
           </div>
@@ -751,7 +752,7 @@
         <div class="col-sm-3">
           <div class="col-sm-12">
             <strong style="color:#3f81a1">
-              <img src="img/ico-salva.png" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
+              <img src="{% static "img/ico-salva.png" %}" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
               <br>ZAPISZ ZDJĘCIA W FORNACIE .JPG
             </strong>
           </div>
@@ -759,14 +760,14 @@
         <div class="col-sm-3">
           <div class="col-sm-12">
             <strong style="color:#3f81a1">
-              <img src="img/ico-iscrizione1.png" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
+              <img src="{% static "img/ico-iscrizione1.png" %}" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
               <br>WIPEŁNIJ FORMULARZ</strong>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="col-sm-12">
             <strong style="color:#3f81a1">
-              <img src="img/ico-cerca.png" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
+              <img src="{% static "img/ico-cerca.png" %}" alt="Entries Premio Arte Laguna" width="70" border="0" height="70">
               <br>SPRAWDŹ CZY OTRZYMAŁEŚ MAILA POTWIERDZAJĄCEGO </strong>
           </div>
         </div>
@@ -939,7 +940,7 @@
         <br>
         <br>
         <a href="/partner">
-          <img src="img/patrocini-home.png" alt="Patronage" border="0" class="img-responsive" style="margin: 0 auto 0 auto;">
+          <img src="{% static "img/patrocini-home.png" %}" alt="Patronage" border="0" class="img-responsive" style="margin: 0 auto 0 auto;">
         </a>
       </p>
     </footer>
