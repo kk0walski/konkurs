@@ -20,4 +20,5 @@ from django.views.generic import TemplateView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
+    url(r'^zgloszenia/', TemplateView.as_view(template_name="zgloszenie.html")),
 ]
