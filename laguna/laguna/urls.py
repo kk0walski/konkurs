@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     url(r'^zgloszenia/', TemplateView.as_view(template_name="zgloszenie.html")),
     url(r'^workpost/', TemplateView.as_view(template_name="workpost.html")),
+    url(r'^paint/', TemplateView.as_view(template_name="paint.html")),
 ]
