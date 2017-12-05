@@ -199,6 +199,7 @@ class Uczestnik(models.Model):
     firstname = models.CharField(_('Firstname'), max_length = 50, blank = False)
     lastname = models.CharField(_('Lastname'), max_length = 50, blank = False)
     birthday = models.DateField()
+    place_of_birth = models.CharField(_('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
@@ -210,6 +211,6 @@ class Uczestnik(models.Model):
     biography = models.TextField()
     country = models.CharField(max_length=30, choices=NATIONALITY)
     city = models.CharField(_('City'), max_length = 100, blank = True)
-    street_line1 = models.CharField(_('Address 1'), max_length = 100, blank = True)
+    street_line1 = models.CharField(_('Address'), max_length = 100, blank = True)
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length = 5, blank = True)
