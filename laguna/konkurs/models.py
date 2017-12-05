@@ -5,6 +5,7 @@ from django.core.validators import RegexValidator
 from django.utils.deconstruct import deconstructible
 from django.core.validators import BaseValidator
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
 def calculate_age(born):
     today = date.today()
@@ -230,7 +231,12 @@ class Uczestnik(models.Model):
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
+class Review(models.Model):
+    author = models.ForeignKey(User, related_name='Autor', on_delete=models.DO_NOTHING)
+    work = models.ForeignKey('Work',  on_delete=models.DO_NOTHING)    
+
 class Work(models.Model):
+    reviews = models.ManyToManyField(User, through=Review)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
     
 class Sculpture(Work):
