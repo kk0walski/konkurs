@@ -211,6 +211,6 @@ class Uczestnik(models.Model):
     biography = models.TextField()
     country = models.CharField(max_length=30, choices=NATIONALITY)
     city = models.CharField(_('City'), max_length = 100, blank = True)
-    street_line1 = models.CharField(_('Address'), max_length = 100, blank = True)
+    street_line = models.CharField(_('Address'), max_length = 100, blank = True)
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length = 5, blank = True)
