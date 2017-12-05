@@ -231,26 +231,24 @@ class Uczestnik(models.Model):
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
 class Work(models.Model):
-    CATEGORY = (
-        ('Sculpture', 'Rzeźba'),
-        ('Paint', 'Obraz'),
-        ('Virtual Art', 'Sztuka Wirtualna'),
-        ('Digital Graphics', 'Grafika cyfrowa'),
-        ('Photograph', 'Zdjęcie'),
-        ('Video art', 'Video'),
-        ('Performence', 'Występ'),
-        ('LandArt', 'LandArt'),
-        ('UrbanArt', 'UrbanArt')
-    )
-    category = models.CharField(max_length=20, choices=CATEGORY)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
     
 class Sculpture(Work):
-    wymiary = models.CharField(max_length=10)
+    wymiary = models.CharField(max_length=30)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
     obraz1 = models.ImageField()
     obraz2 = models.ImageField()
     obraz3 = models.ImageField()
     video_url = models.URLField()
+    video_password = models.CharField(max_length=50)
+    year = models.IntegerField()
+
+class Paint(Work):
+    title = models.CharField(max_length=30)
+    wymiary = models.CharField(max_length=10)
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    obraz = models.ImageField()
+    technika = models.CharField(max_length=20)
     year = models.IntegerField()
