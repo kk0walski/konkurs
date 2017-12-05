@@ -1,8 +1,21 @@
 from django.db import models
 from django.core import validators
 from django.core.validators import RegexValidator
+from django.utils.deconstruct import deconstructible
+from django.core.validators import BaseValidator
 from django.utils.translation import ugettext_lazy as _
+from datetime import date
 
+def calculate_age(born):
+    today = date.today()
+    return today.year - born.year - \
+           ((today.month, today.day) < (born.month, born.day))
+
+@deconstructible
+class MinAgeValidator(BaseValidator):
+    compare = lambda self, a, b: calculate_age(a) < b
+    message = _("Age must be at least %(limit_value)d.")
+    code = 'min_age'
 
 class Uczestnik(models.Model):
     NATIONALITY = (
@@ -199,7 +212,7 @@ class Uczestnik(models.Model):
                               validators.EmailValidator()])
     firstname = models.CharField(_('Firstname'), max_length=50, blank=False)
     lastname = models.CharField(_('Lastname'), max_length=50, blank=False)
-    birthday = models.DateField()
+    birthday = models.DateField(validators=[MinAgeValidator(18)])
     place_of_birth = models.CharField(
         _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)
