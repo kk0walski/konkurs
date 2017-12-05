@@ -252,3 +252,65 @@ class Paint(Work):
     obraz = models.ImageField()
     technika = models.CharField(max_length=20)
     year = models.IntegerField()
+
+class VirtualArt(Work):
+    title = models.CharField(max_length=30)
+    wymiary = models.CharField(max_length=10)
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    obraz1 = models.ImageField()
+    obraz2 = models.ImageField()
+    obraz3 = models.ImageField()
+    video_url = models.URLField()
+    video_password = models.CharField(max_length=50)
+    year = models.IntegerField()
+
+class DigitalGraphic(Work):
+    title = models.CharField(max_length=30)
+    obraz = models.ImageField()
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    year = models.IntegerField()
+
+class Picture(Work):
+    title = models.CharField(max_length=30)
+    wymiary = models.CharField(max_length=10)
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    obraz = models.ImageField()
+    technika = models.CharField(max_length=20)
+    year = models.IntegerField()
+
+class Video(Work):
+    title = models.CharField(max_length=30)
+    time = models.CharField(max_length=20)
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    obraz = models.ImageField()
+    year = models.IntegerField()
+    video_url = models.URLField()
+    video_password = models.CharField(max_length=50)
+
+class Performence(Work):
+    title = models.CharField(max_length=30)
+    time = models.CharField(max_length=20)
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    obraz = models.ImageField()
+    year = models.IntegerField()
+    video_url = models.URLField()
+    video_password = models.CharField(max_length=50)
+
+class LandArt(Work):
+    title = models.CharField(max_length=30)
+    obraz1 = models.ImageField()
+    obraz2 = models.ImageField()
+    obraz3 = models.ImageField()
+    opis = models.TextField()
+
+class UrbanArt(Work):
+    title = models.CharField(max_length=30)
+    obraz1 = models.ImageField()
+    obraz2 = models.ImageField()
+    obraz3 = models.ImageField()
+    opis = models.TextField()
