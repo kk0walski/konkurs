@@ -245,3 +245,12 @@ class Work(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
     
+class Sculpture(Work):
+    wymiary = models.CharField(max_length=10)
+    opis = models.TextField()
+    cena = models.CharField(max_length=10)
+    obraz1 = models.ImageField()
+    obraz2 = models.ImageField()
+    obraz3 = models.ImageField()
+    video_url = models.URLField()
+    year = models.IntegerField()
