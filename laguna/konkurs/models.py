@@ -3,6 +3,7 @@ from django.core import validators
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 
+
 class Uczestnik(models.Model):
     NATIONALITY = (
         ("Afghanistan", 'Afganistan'),
@@ -110,7 +111,7 @@ class Uczestnik(models.Model):
         ("Lithuania", 'Litwa'),
         ("Luxembourg", 'Luksemburg'),
         ("Macedonia", 'Macedonia'),
-        ("Madagascar", 'Madagaskar'), 
+        ("Madagascar", 'Madagaskar'),
         ("Malawi", 'Malawi'),
         ("Malaysia", 'Malezja'),
         ("Maldives", 'Malediwy'),
@@ -196,10 +197,11 @@ class Uczestnik(models.Model):
     )
     email = models.EmailField(primary_key=True, validators=[
                               validators.EmailValidator()])
-    firstname = models.CharField(_('Firstname'), max_length = 50, blank = False)
-    lastname = models.CharField(_('Lastname'), max_length = 50, blank = False)
+    firstname = models.CharField(_('Firstname'), max_length=50, blank=False)
+    lastname = models.CharField(_('Lastname'), max_length=50, blank=False)
     birthday = models.DateField()
-    place_of_birth = models.CharField(_('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
+    place_of_birth = models.CharField(
+        _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
@@ -210,7 +212,7 @@ class Uczestnik(models.Model):
     nationality = models.CharField(max_length=30, choices=NATIONALITY)
     biography = models.TextField()
     country = models.CharField(max_length=30, choices=NATIONALITY)
-    city = models.CharField(_('City'), max_length = 100, blank = True)
-    street_line = models.CharField(_('Address'), max_length = 100, blank = True)
+    city = models.CharField(_('City'), max_length=100, blank=True)
+    street_line = models.CharField(_('Address'), max_length=100, blank=True)
     site = models.CharField(max_length=50)
-    zipcode = models.CharField(_('ZIP code'), max_length = 5, blank = True)
+    zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)

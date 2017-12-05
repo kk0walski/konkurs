@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import TemplateView
+from konkurs import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^zgloszenia/', views.uczestnik_new, name='zgloszenie'),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
-    url(r'^zgloszenia/', TemplateView.as_view(template_name="zgloszenie.html")),
     url(r'^workpost/', TemplateView.as_view(template_name="workpost.html")),
     url(r'^paint/', TemplateView.as_view(template_name="paint.html")),
 ]
