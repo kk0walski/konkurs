@@ -1,10 +1,10 @@
+from datetime import date
 from django.db import models
 from django.core import validators
 from django.core.validators import RegexValidator
 from django.utils.deconstruct import deconstructible
 from django.core.validators import BaseValidator
 from django.utils.translation import ugettext_lazy as _
-from datetime import date
 
 def calculate_age(born):
     today = date.today()
@@ -229,3 +229,19 @@ class Uczestnik(models.Model):
     street_line = models.CharField(_('Address'), max_length=100, blank=True)
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
+
+class Work(models.Model):
+    CATEGORY = (
+        ('Sculpture', 'Rzeźba'),
+        ('Paint', 'Obraz'),
+        ('Virtual Art', 'Sztuka Wirtualna'),
+        ('Digital Graphics', 'Grafika cyfrowa'),
+        ('Photograph', 'Zdjęcie'),
+        ('Video art', 'Video'),
+        ('Performence', 'Występ'),
+        ('LandArt', 'LandArt'),
+        ('UrbanArt', 'UrbanArt')
+    )
+    category = models.CharField(max_length=20, choices=CATEGORY)
+    autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
+    
