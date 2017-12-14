@@ -233,7 +233,8 @@ class Uczestnik(models.Model):
 
 class Review(models.Model):
     author = models.ForeignKey(User, related_name='Autor', on_delete=models.DO_NOTHING)
-    work = models.ForeignKey('Work',  on_delete=models.DO_NOTHING)    
+    work = models.ForeignKey('Work',  on_delete=models.DO_NOTHING)
+    body = models.TextField()    
 
 class Work(models.Model):
     reviews = models.ManyToManyField(User, through=Review)
