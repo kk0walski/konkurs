@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'konkurs',
     'bootstrap4',
+    'cuser',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,9 @@ STATIC_ROOT = BASE_DIR + STATIC_URL
 STATICFILES_DIRS = [
     'C:/Users/Karol/Documents/PO/Django/konkurs/laguna/konkurs/static',
 ]
+AUTH_USER_MODEL = 'cuser.CUser'
+
+CUSER = {
+    'app_verbose_name': 'Authentication and Authorization',
+    'register_proxy_auth_group_model': True,
+}
