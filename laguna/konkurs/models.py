@@ -213,7 +213,7 @@ class Uczestnik(models.Model):
                               validators.EmailValidator()])
     firstname = models.CharField(_('Firstname'), max_length=50, blank=False)
     lastname = models.CharField(_('Lastname'), max_length=50, blank=False)
-    birthday = models.DateField(validators=[MinAgeValidator(18)])
+    birthday = models.DateField(validators=[MinAgeValidator(18)], default=date.today)
     place_of_birth = models.CharField(
         _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)
@@ -237,9 +237,10 @@ class Review(models.Model):
     body = models.TextField()    
 
 class Work(models.Model):
-    reviews = models.ManyToManyField(settings.AUTH_USER_MODEL, through=Review)
+    title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
-    
+    reviews = models.ManyToManyField(settings.AUTH_USER_MODEL, through=Review)
+
 class Sculpture(Work):
     wymiary = models.CharField(max_length=30)
     opis = models.TextField()
@@ -252,7 +253,6 @@ class Sculpture(Work):
     year = models.IntegerField()
 
 class Paint(Work):
-    title = models.CharField(max_length=30)
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
@@ -261,7 +261,6 @@ class Paint(Work):
     year = models.IntegerField()
 
 class VirtualArt(Work):
-    title = models.CharField(max_length=30)
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
@@ -273,14 +272,12 @@ class VirtualArt(Work):
     year = models.IntegerField()
 
 class DigitalGraphic(Work):
-    title = models.CharField(max_length=30)
     obraz = models.ImageField()
     opis = models.TextField()
     cena = models.CharField(max_length=10)
     year = models.IntegerField()
 
 class Picture(Work):
-    title = models.CharField(max_length=30)
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
@@ -289,7 +286,6 @@ class Picture(Work):
     year = models.IntegerField()
 
 class Video(Work):
-    title = models.CharField(max_length=30)
     time = models.CharField(max_length=20)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
@@ -299,7 +295,6 @@ class Video(Work):
     video_password = models.CharField(max_length=50)
 
 class Performence(Work):
-    title = models.CharField(max_length=30)
     time = models.CharField(max_length=20)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
@@ -309,14 +304,12 @@ class Performence(Work):
     video_password = models.CharField(max_length=50)
 
 class LandArt(Work):
-    title = models.CharField(max_length=30)
     obraz1 = models.ImageField()
     obraz2 = models.ImageField()
     obraz3 = models.ImageField()
     opis = models.TextField()
 
 class UrbanArt(Work):
-    title = models.CharField(max_length=30)
     obraz1 = models.ImageField()
     obraz2 = models.ImageField()
     obraz3 = models.ImageField()
