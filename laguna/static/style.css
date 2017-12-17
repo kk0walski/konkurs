@@ -1,0 +1,53 @@
+.jumbotron {
+    background-image: url("35158_1.jpg");
+    background-color: #17234E;
+    min-height: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.container-fluid{
+    width: 1200px;
+    max-width: 100%;
+}
+.color-red {
+    background-color: #cd0000;
+    padding: 15px;
+    height: 120px;
+}
+.bottom-menu {
+    color: #fff;
+    text-decoration: none;
+     text-transform:uppercase;
+}
+.col-sm-4{
+    margin-bottom: 15px;
+}
+.gkEventsListProgress{
+    background: #e5e5e5;
+    height: 3px;
+    margin-left: 16px;
+    position: relative;
+    top: -2px;
+    width: 50px;
+}
+form
+{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+input.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+#profile-image1 {
+    cursor: pointer;
+  
+     width: 100px;
+    height: 100px;
+	border:2px solid #03b1ce ;}
+	.tital{ font-size:16px; font-weight:500;}
+	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	

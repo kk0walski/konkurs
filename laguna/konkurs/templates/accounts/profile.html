@@ -1,0 +1,205 @@
+{% extends 'base.html' %} {% block content %}
+<div style="background-color: #D3D3D3; padding: 20px;">
+  <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+    <h1 style="font-size: 25px; color: #F44336 !important;">Enrollment to the 12th International Art Prize Arte Laguna</h1>
+    <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
+  </div>
+  <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+    <h5 style="font-size: 17px; color: #F44336 !important;">PROFIL</h5>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+          <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+        </div>
+        <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+          <div class="container" style="border-bottom:1px solid black">
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                email
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ user.email }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Nationality
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.nationality }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Birthday
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.birthday }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Place of birth
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.place_of_birth }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Phone number
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.phone_number }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Cellphone number
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.cellphone_number }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                city
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.city }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Country
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.country }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Street line
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.street_line }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Zipcode
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.zipcode }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                city
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.city }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Site
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.site }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Alias
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.alias }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                Biography
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert alert-light" role="alert">
+                {{ profile.biography }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
+    <h1 style="font-size: 17px; color: #F44336 !important;">ADD ART WORK</h1>
+    <button type="button" class="btn btn-success">+ Paint</button>
+    <button type="button" class="btn btn-success">+ Sculpture</button>
+    <button type="button" class="btn btn-success">+ Photograph</button>
+    <button type="button" class="btn btn-success">+ Virtual Art</button>
+    <button type="button" class="btn btn-success">+ Video Art</button>
+    <button type="button" class="btn btn-success">+ Performence</button>
+    <button type="button" class="btn btn-success">+ Land Art</button>
+    <button type="button" class="btn btn-success">+ Digital graphics</button>
+    <button type="button" class="btn btn-success">+ Urban Art</button>
+  </div>
+</div>
+{% endblock %}

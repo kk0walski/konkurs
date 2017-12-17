@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w02#$%ay#ftxl)a%8yl_v3p7yc^d^x%(ki&!9a4u*=bo3(&8%6'
+SECRET_KEY = '7+0+#-o7giy&n_$=_kd2ie6%$i-4h5x_=xany0+8c6le(5(^e6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cuser',
     'konkurs',
     'bootstrap4',
-    'cuser',
 ]
 
 MIDDLEWARE = [
@@ -123,10 +123,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + STATIC_URL
 STATICFILES_DIRS = [
-    'C:/Users/Karol/Documents/PO/Django/konkurs/laguna/konkurs/static',
+   'C:/Users/Karol/Documents/PO/testDjango/laguna/konkurs/static',
 ]
-AUTH_USER_MODEL = 'cuser.CUser'
 
+AUTH_USER_MODEL = 'cuser.CUser'
 CUSER = {
     'app_verbose_name': 'Authentication and Authorization',
     'register_proxy_auth_group_model': True,

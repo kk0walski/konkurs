@@ -6,6 +6,8 @@ from django.utils.deconstruct import deconstructible
 from django.core.validators import BaseValidator
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 def calculate_age(born):
     today = date.today()
@@ -209,11 +211,8 @@ class Uczestnik(models.Model):
         ("Zambia", 'Zambia'),
         ("Zimbabwe", 'Zimbabwe')
     )
-    email = models.EmailField(primary_key=True, validators=[
-                              validators.EmailValidator()])
-    firstname = models.CharField(_('Firstname'), max_length=50, blank=False)
-    lastname = models.CharField(_('Lastname'), max_length=50, blank=False)
-    birthday = models.DateField(validators=[MinAgeValidator(18)], default=date.today)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
+    birthday = models.DateField(validators=[MinAgeValidator(18)])
     place_of_birth = models.CharField(
         _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)
