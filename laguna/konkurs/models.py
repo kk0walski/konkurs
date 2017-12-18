@@ -232,7 +232,7 @@ class Uczestnik(models.Model):
 
 class Review(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Autor', on_delete=models.DO_NOTHING)
-    work = models.ForeignKey('Work',  on_delete=models.DO_NOTHING)
+    work = models.ForeignKey('Work',  on_delete=models.CASCADE)
     body = models.TextField()    
 
 class Work(models.Model):
