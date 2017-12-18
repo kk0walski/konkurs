@@ -191,15 +191,15 @@
   </div>
   <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
     <h1 style="font-size: 17px; color: #F44336 !important;">ADD ART WORK</h1>
-    <button type="button" class="btn btn-success">+ Paint</button>
-    <button type="button" class="btn btn-success">+ Sculpture</button>
-    <button type="button" class="btn btn-success">+ Photograph</button>
-    <button type="button" class="btn btn-success">+ Virtual Art</button>
-    <button type="button" class="btn btn-success">+ Video Art</button>
-    <button type="button" class="btn btn-success">+ Performence</button>
-    <button type="button" class="btn btn-success">+ Land Art</button>
-    <button type="button" class="btn btn-success">+ Digital graphics</button>
-    <button type="button" class="btn btn-success">+ Urban Art</button>
+    <a class="btn btn-success" href="{% url "paint" %}">+ Paint</a>
+    <a class="btn btn-success" href="{% url "sculpture" %}">+ Sculpture</a>
+    <a class="btn btn-success" href="{% url "picture" %}">+ Photograph</a>
+    <a class="btn btn-success" href="{% url "virtualArt" %}">+ Virtual Art</a>
+    <a class="btn btn-success" href="{% url "video" %}">+ Video Art</a>
+    <a class="btn btn-success" href="{% url "performence" %}">+ Performence</a>
+    <a class="btn btn-success" href="{% url "landArt" %}">+ Land Art</a>
+    <a class="btn btn-success" href="{% url "urbanArt" %}">+ Urban Art</a>
+    <a class="btn btn-success" href="{% url "digitalGraphics" %}">+ Digital graphics</a>
   </div>
 </div>
 {% endblock %}
