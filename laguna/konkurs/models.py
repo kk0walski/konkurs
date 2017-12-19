@@ -212,7 +212,7 @@ class Uczestnik(models.Model):
         ("Zimbabwe", 'Zimbabwe')
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,)
-    birthday = models.DateField(validators=[MinAgeValidator(18)])
+    birthday = models.DateField(validators=[MinAgeValidator(18)], default = date.today)
     place_of_birth = models.CharField(
         _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)

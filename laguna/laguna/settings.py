@@ -123,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + STATIC_URL
 STATICFILES_DIRS = [
-   'C:/Users/Karol/Documents/PO/testDjango/laguna/konkurs/static',
+   'C:/Users/Karol/Documents/PO/Django/konkurs/laguna/konkurs/static',
 ]
 
 AUTH_USER_MODEL = 'cuser.CUser'

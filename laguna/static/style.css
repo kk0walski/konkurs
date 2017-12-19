@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url("35158_1.jpg");
+    background-image: url("img/bg.jpg");
     background-color: #17234E;
     min-height: 50%;
     background-repeat: no-repeat;
@@ -38,16 +38,10 @@ form
     margin-left: 0px;
     margin-right: 0px;
 }
-input.hidden {
-    position: absolute;
-    left: -9999px;
-}
-
-#profile-image1 {
-    cursor: pointer;
-  
-     width: 100px;
-    height: 100px;
-	border:2px solid #03b1ce ;}
-	.tital{ font-size:16px; font-weight:500;}
-	 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}	
+.details li {
+    list-style: none;
+  }
+  li {
+      margin-bottom:10px;
+      
+  }
