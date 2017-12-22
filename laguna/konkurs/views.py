@@ -5,9 +5,18 @@ from django.db import transaction
 from .models import Uczestnik
 from django.contrib.messages import constants as messages
 from cuser.models import CUser
+from django.views.generic.edit import CreateView
 
-def register(request):
-    if request.method == 'POST':
+class Register(CreateView):
+    form_class = UserForm
+    template_name = 'accounts/register.html'
+
+    def get(self, request, *args, **kwargs):
+        user_form = UserForm()
+        profile_form = ProfileForm()
+        return render(request, self.template_name, {'user_form': user_form, 'profile_form':profile_form})
+
+    def post(self, request, *args, **kwargs):
         user_form = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
@@ -18,10 +27,7 @@ def register(request):
             new_profile.user = new_user
             new_profile.save()
             return render(request, 'accounts/register_done.html', {'new_user': new_user, 'new_profile':new_profile})
-    else:
-        user_form = UserForm()
-        profile_form = ProfileForm()
-    return render(request, 'accounts/register.html', {'user_form': user_form, 'profile_form':profile_form})
+        return render(request, self.template_name, {'user_form': user_form, 'profile_form':profile_form})
 
 
 # Create your views here.

@@ -1,6 +1,7 @@
 from django import forms
 from cuser.models import CUser
 from .models import Uczestnik, Sculpture, Paint, Picture, VirtualArt, Video, Performence, LandArt, UrbanArt, DigitalGraphic
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(label='Hasło', widget=forms.PasswordInput)
@@ -20,6 +21,11 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Uczestnik
         fields = ('birthday', 'place_of_birth', 'alias', 'phone_number', 'cellphone_number', 'nationality', 'biography', 'country', 'city', 'street_line', 'site', 'zipcode')
+        widgets = {
+            'birthday' : forms.DateInput(attrs={'type':'date'}),
+            'phone_number' : PhoneNumberPrefixWidget(),
+            'cellphone_number' : PhoneNumberPrefixWidget(),
+        }
 
 class SculptureForm(forms.ModelForm):
     class Meta:

@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
 
 def calculate_age(born):
     today = date.today()
@@ -216,12 +217,8 @@ class Uczestnik(models.Model):
     place_of_birth = models.CharField(
         _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
     alias = models.CharField(_('Alias'), max_length=50)
-    phone_regex = RegexValidator(
-        regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-    phone_number = models.CharField(
-        validators=[phone_regex], max_length=17, blank=True)  # validators should be a list
-    cellphone_number = models.CharField(
-        validators=[phone_regex], max_length=17, blank=True)  # validators should be a list
+    phone_number = PhoneNumberField()
+    cellphone_number = PhoneNumberField()
     nationality = models.CharField(max_length=30, choices=NATIONALITY)
     biography = models.TextField()
     country = models.CharField(max_length=30, choices=NATIONALITY)
@@ -285,7 +282,7 @@ class Picture(Work):
     year = models.IntegerField()
 
 class Video(Work):
-    time = models.CharField(max_length=20)
+    time = models.DurationField()
     opis = models.TextField()
     cena = models.CharField(max_length=10)
     obraz = models.ImageField()
