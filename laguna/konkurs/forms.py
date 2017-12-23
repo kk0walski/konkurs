@@ -37,6 +37,7 @@ class PaintForm(forms.ModelForm):
         model = Paint
         fields = ('title', 'wymiary', 'opis', 'cena', 'obraz', 'technika', 'year')
 
+
 class PictureForm(forms.ModelForm):
     class Meta:
         model = Picture

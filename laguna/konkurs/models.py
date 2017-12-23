@@ -17,7 +17,7 @@ def calculate_age(born):
            ((today.month, today.day) < (born.month, born.day))
 
 def directory_path(instance, filename):
-    return os.path.join(instance.user.email, instance.__name__, filename)
+    return os.path.join(str(instance.user.email), str(instance.__name__), filename)
 
 @deconstructible
 class MinAgeValidator(BaseValidator):
@@ -281,7 +281,7 @@ class Picture(Work):
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz = models.ImageField(upload_to=directory_path)
+    obraz = models.ImageField()
     technika = models.CharField(max_length=20)
     year = models.IntegerField()
 
