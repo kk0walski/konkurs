@@ -17,7 +17,7 @@ def calculate_age(born):
            ((today.month, today.day) < (born.month, born.day))
 
 def directory_path(instance, filename):
-    return '{0}/{1}/{2}'.format(instance.user.email, instance.__name__, filename)
+    return os.path.join(instance.user.email, instance.__name__, filename)
 
 @deconstructible
 class MinAgeValidator(BaseValidator):
