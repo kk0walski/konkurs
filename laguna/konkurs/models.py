@@ -15,6 +15,9 @@ def calculate_age(born):
     return today.year - born.year - \
            ((today.month, today.day) < (born.month, born.day))
 
+def directory_path(instance, filename):
+    return '{0}/{1}/{2}'.format(instance.user.email, instance.__name__, filename)
+
 @deconstructible
 class MinAgeValidator(BaseValidator):
     compare = lambda self, a, b: calculate_age(a) < b
@@ -241,9 +244,9 @@ class Sculpture(Work):
     wymiary = models.CharField(max_length=30)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz1 = models.ImageField()
-    obraz2 = models.ImageField()
-    obraz3 = models.ImageField()
+    obraz1 = models.ImageField(upload_to=directory_path)
+    obraz2 = models.ImageField(upload_to=directory_path)
+    obraz3 = models.ImageField(upload_to=directory_path)
     video_url = models.URLField()
     video_password = models.CharField(max_length=50)
     year = models.IntegerField()
@@ -252,7 +255,7 @@ class Paint(Work):
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz = models.ImageField()
+    obraz = models.ImageField(upload_to=directory_path)
     technika = models.CharField(max_length=20)
     year = models.IntegerField()
 
@@ -260,15 +263,15 @@ class VirtualArt(Work):
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz1 = models.ImageField()
-    obraz2 = models.ImageField()
-    obraz3 = models.ImageField()
+    obraz1 = models.ImageField(upload_to=directory_path)
+    obraz2 = models.ImageField(upload_to=directory_path)
+    obraz3 = models.ImageField(upload_to=directory_path)
     video_url = models.URLField()
     video_password = models.CharField(max_length=50)
     year = models.IntegerField()
 
 class DigitalGraphic(Work):
-    obraz = models.ImageField()
+    obraz = models.ImageField(upload_to=directory_path)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
     year = models.IntegerField()
@@ -277,7 +280,7 @@ class Picture(Work):
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz = models.ImageField()
+    obraz = models.ImageField(upload_to=directory_path)
     technika = models.CharField(max_length=20)
     year = models.IntegerField()
 
@@ -285,7 +288,7 @@ class Video(Work):
     time = models.DurationField()
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz = models.ImageField()
+    obraz = models.ImageField(upload_to=directory_path)
     year = models.IntegerField()
     video_url = models.URLField()
     video_password = models.CharField(max_length=50)
@@ -294,19 +297,19 @@ class Performence(Work):
     time = models.CharField(max_length=20)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz = models.ImageField()
+    obraz = models.ImageField(upload_to=directory_path)
     year = models.IntegerField()
     video_url = models.URLField()
     video_password = models.CharField(max_length=50)
 
 class LandArt(Work):
-    obraz1 = models.ImageField()
-    obraz2 = models.ImageField()
-    obraz3 = models.ImageField()
+    obraz1 = models.ImageField(upload_to=directory_path)
+    obraz2 = models.ImageField(upload_to=directory_path)
+    obraz3 = models.ImageField(upload_to=directory_path)
     opis = models.TextField()
 
 class UrbanArt(Work):
-    obraz1 = models.ImageField()
-    obraz2 = models.ImageField()
-    obraz3 = models.ImageField()
+    obraz1 = models.ImageField(upload_to=directory_path)
+    obraz2 = models.ImageField(upload_to=directory_path)
+    obraz3 = models.ImageField(upload_to=directory_path)
     opis = models.TextField()

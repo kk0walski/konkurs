@@ -132,3 +132,5 @@ CUSER = {
     'app_verbose_name': 'Authentication and Authorization',
     'register_proxy_auth_group_model': True,
 }
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

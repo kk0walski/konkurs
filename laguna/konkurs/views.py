@@ -3,7 +3,7 @@ from .forms import UserForm, ProfileForm, SculptureForm, PaintForm, PictureForm,
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from .models import Uczestnik
-from django.contrib.messages import constants as messages
+from django.contrib import messages
 from cuser.models import CUser
 from django.views.generic.edit import CreateView
 
@@ -40,10 +40,10 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
+            messages.success(request, 'Your profile was successfully updated!')
             return redirect('settings:profile')
         else:
-            messages.error(request, _('Please correct the error below.'))
+            messages.error(request, 'Please correct the error below.')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
@@ -67,7 +67,7 @@ def add_sculpture(request):
             sculpture.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         sculpture = SculptureForm()
     return render(request, 'works/sculpture.html', {'sculpture': sculpture})
@@ -81,7 +81,7 @@ def add_paint(request):
             paint.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         paint = PaintForm()
     return render(request, 'works/paint.html', {'paint': paint})
@@ -89,13 +89,13 @@ def add_paint(request):
 @login_required
 def add_picture(request):
     if request.method == 'POST':
-        picture = PictureForm(request.POST)
+        picture = PictureForm(request.POST, request.FILES)
         picture.author = request.user
         if picture.is_valid():
             picture.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         picture = PictureForm()
     return render(request, 'works/picture.html', {'picture': picture})
@@ -109,7 +109,7 @@ def add_virtualart(request):
             virtualArt.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         virtualArt = VirtualArtForm()
     return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt})
@@ -123,7 +123,7 @@ def add_video(request):
             video.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         video = VideoForm()
     return render(request, 'works/video.html', {'video': video})
@@ -137,7 +137,7 @@ def add_performence(request):
             performence.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         performence = PerformenceForm()
     return render(request, 'works/performence.html', {'performence': performence})
@@ -151,7 +151,7 @@ def add_landArt(request):
             landArt.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         landArt = LandArtForm()
     return render(request, 'works/landArt.html', {'landArt': landArt})
@@ -165,7 +165,7 @@ def add_urbanArt(request):
             urbanArt.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         urbanArt = UrbanArtForm()
     return render(request, 'works/urbanArt.html', {'urbanArt': urbanArt})
@@ -179,7 +179,7 @@ def add_digitalGraphics(request):
             digitalGraphics.save()
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
-            messages.error(request,  _('Please correct the error below.'))
+            messages.error(request,  'Please correct the error below.')
     else:
         digitalGraphics = DigitalGraphicsForm()
     return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics})
