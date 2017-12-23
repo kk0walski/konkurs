@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from .forms import UserForm, ProfileForm, SculptureForm, PaintForm, PictureForm, VirtualArtForm, VideoForm, PerformenceForm, LandArtForm, UrbanArtForm, DigitalGraphicsForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import transaction
 from .models import Uczestnik
 from django.contrib import messages
 from cuser.models import CUser
 from django.views.generic.edit import CreateView
+
+def user_is_uczestnik(user):
+    return Uczestnik.objects.filter(user_id=user.pk).exists()
 
 class Register(CreateView):
     form_class = UserForm
@@ -53,6 +56,7 @@ def update_profile(request):
     })
 
 @login_required
+@user_passes_test(user_is_uczestnik)
 def user_profile(request):
     current_user = request.user
     profile = Uczestnik.objects.get(user_id=request.user.pk)
@@ -65,6 +69,7 @@ def add_sculpture(request):
         sculpture.author = request.user
         if sculpture.is_valid():
             sculpture.save()
+            messages.success(request, 'You addded sculpture')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -79,6 +84,7 @@ def add_paint(request):
         paint.author = request.user
         if paint.is_valid():
             paint.save()
+            messages.success(request, 'You addded paint')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -86,19 +92,26 @@ def add_paint(request):
         paint = PaintForm()
     return render(request, 'works/paint.html', {'paint': paint})
 
-@login_required
-def add_picture(request):
-    if request.method == 'POST':
-        picture = PictureForm(request.POST, request.FILES)
-        picture.author = request.user
-        if picture.is_valid():
-            picture.save()
+class CreatePicture(CreateView):
+    form_class = PictureForm
+    template_name = 'works/picture.html'
+
+    def get(self, request, *args, **kwargs):
+        picture_form = PictureForm()
+        return render(request, self.template_name, {'picture': picture_form})
+    
+    @login_required
+    @user_passes_test(user_is_uczestnik)
+    def post(self, request, *args, **kwargs):
+        picture_form = PictureForm(request.POST, request.FILES)
+        if picture_form.is_valid():
+            picture = picture_form.save(commit=False)
+            picture.author = Uczestnik.objects.get(pk=request.user.pk)
+            image = request.FILES['obraz']
+            picture.save(image.name, image)
+            messages.success(request, 'You addded picture')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        picture = PictureForm()
-    return render(request, 'works/picture.html', {'picture': picture})
+        return render(request, self.template_name, {'picture': picture})
 
 @login_required
 def add_virtualart(request):
@@ -107,6 +120,7 @@ def add_virtualart(request):
         virtualArt.author = request.user
         if virtualArt.is_valid():
             virtualArt.save()
+            messages.success(request, 'You addded virtual art')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -121,6 +135,7 @@ def add_video(request):
         video.author = request.user
         if video.is_valid():
             video.save()
+            messages.success(request, 'You addded video')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -135,6 +150,7 @@ def add_performence(request):
         performence.author = request.user
         if performence.is_valid():
             performence.save()
+            messages.success(request, 'You addded performence')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -149,6 +165,7 @@ def add_landArt(request):
         landArt.author = request.user
         if landArt.is_valid():
             landArt.save()
+            messages.success(request, 'You addded landArt')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -163,6 +180,7 @@ def add_urbanArt(request):
         urbanArt.author = request.user
         if urbanArt.is_valid():
             urbanArt.save()
+            messages.success(request, 'You addded urban art')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
@@ -177,6 +195,7 @@ def add_digitalGraphics(request):
         digitalGraphics.author = request.user
         if digitalGraphics.is_valid():
             digitalGraphics.save()
+            messages.success(request, 'You addded digital graphics')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
