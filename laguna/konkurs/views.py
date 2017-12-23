@@ -103,9 +103,11 @@ def add_paint(request):
 def add_picture(request):
     if request.method == 'POST':
         picture_form = PictureForm(request.POST, request.FILES)
-        picture_form.author = request.user
         if picture_form.is_valid():
-            picture_form.save()
+            picture = picture_form.save(commit=False)
+            picture.autor = Uczestnik.objects.get(user_id = request.user.pk)
+            picture.obraz = request.FILES['obraz']
+            picture.save()
             messages.success(request, 'You addded picture')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
