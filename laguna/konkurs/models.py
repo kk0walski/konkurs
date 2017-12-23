@@ -281,7 +281,7 @@ class Picture(Work):
     wymiary = models.CharField(max_length=10)
     opis = models.TextField()
     cena = models.CharField(max_length=10)
-    obraz = models.ImageField()
+    obraz = models.ImageField(upload_to=directory_path)
     technika = models.CharField(max_length=20)
     year = models.IntegerField()
 
