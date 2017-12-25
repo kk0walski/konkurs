@@ -5,14 +5,15 @@
         <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
     </div>
     <form method="POST">
-        {% csrf_token %}
         <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
             <h5 style="font-size: 17px; color: #F44336 !important;">INFORMACJE DO LOGOWANIA</h5>
             {% bootstrap_form user_form %}
+            {% csrf_token %}
         </div>
         <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
             <h5 style="font-size: 17px; color: #F44336 !important;">INFORMACJE DODATKOWE</h5>
             {% bootstrap_form profile_form %}
+            {% csrf_token %}
         </div>
         <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
             {% buttons %}

@@ -31,7 +31,7 @@ class Register(CreateView):
             new_profile = profile_form.save(commit=False)
             new_profile.user = new_user
             new_profile.save()
-            return render(request, 'accounts/register_done.html', {'new_user': new_user, 'new_profile': new_profile})
+            return render(request, 'accounts/register_done.html')
         return render(request, self.template_name, {'user_form': user_form, 'profile_form': profile_form})
 
 

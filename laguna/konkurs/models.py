@@ -25,7 +25,7 @@ def directory_path(instance, filename):
 
 @deconstructible
 class MinAgeValidator(BaseValidator):
-    compare = lambda a, b: calculate_age(a) < b
+    compare = lambda self, a, b: calculate_age(a) < b
     message = _("Age must be at least %(limit_value)d.")
     code = 'min_age'
 
