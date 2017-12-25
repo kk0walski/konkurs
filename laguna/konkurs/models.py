@@ -1,6 +1,5 @@
 import os
 from datetime import date, timedelta
-
 from django.conf import settings
 from django.core import validators
 from django.core.validators import BaseValidator, MaxValueValidator
@@ -9,7 +8,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.deconstruct import deconstructible
 from django.utils.translation import ugettext_lazy as _
-
 from phonenumber_field.modelfields import PhoneNumberField
 
 
