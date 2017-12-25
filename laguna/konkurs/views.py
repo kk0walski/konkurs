@@ -69,33 +69,35 @@ def user_profile(request):
 @login_required
 def add_sculpture(request):
     if request.method == 'POST':
-        sculpture = SculptureForm(request.POST)
-        sculpture.author = request.user
-        if sculpture.is_valid():
+        sculpture_form = SculptureForm(request.POST, request.FILES)
+        if sculpture_form.is_valid():
+            sculpture = sculpture_form.save(commit=False)
+            sculpture.autor = Uczestnik.objects.get(user_id = request.user.pk)
             sculpture.save()
             messages.success(request, 'You addded sculpture')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        sculpture = SculptureForm()
-    return render(request, 'works/sculpture.html', {'sculpture': sculpture})
+        sculpture_form = SculptureForm()
+    return render(request, 'works/sculpture.html', {'sculpture': sculpture_form})
 
 
 @login_required
 def add_paint(request):
     if request.method == 'POST':
-        paint = PaintForm(request.POST)
-        paint.author = request.user
-        if paint.is_valid():
+        paint_form = PaintForm(request.POST, request.FILES)
+        if paint_form.is_valid():
+            paint = paint_form.save(commit=False)
+            paint.autor = Uczestnik.objects.get(user_id = request.user.pk)
             paint.save()
             messages.success(request, 'You addded paint')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        paint = PaintForm()
-    return render(request, 'works/paint.html', {'paint': paint})
+        paint_form = PaintForm()
+    return render(request, 'works/paint.html', {'paint': paint_form})
 
 
 @login_required
@@ -106,7 +108,6 @@ def add_picture(request):
         if picture_form.is_valid():
             picture = picture_form.save(commit=False)
             picture.autor = Uczestnik.objects.get(user_id = request.user.pk)
-            picture.obraz = request.FILES['obraz']
             picture.save()
             messages.success(request, 'You addded picture')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
@@ -120,94 +121,100 @@ def add_picture(request):
 @login_required
 def add_virtualart(request):
     if request.method == 'POST':
-        virtualArt = VirtualArtForm(request.POST)
-        virtualArt.author = request.user
-        if virtualArt.is_valid():
+        virtualArt_form = VirtualArtForm(request.POST, request.FILES)
+        if  virtualArt_form.is_valid():
+            virtualArt = virtualArt_form.save(commit=False)
+            virtualArt.autor = Uczestnik.objects.get(user_id = request.user.pk)
             virtualArt.save()
             messages.success(request, 'You addded virtual art')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        virtualArt = VirtualArtForm()
-    return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt})
+        virtualArt_form = VirtualArtForm()
+    return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt_form})
 
 
 @login_required
 def add_video(request):
     if request.method == 'POST':
-        video = VideoForm(request.POST)
-        video.author = request.user
-        if video.is_valid():
+        video_form = VideoForm(request.POST)
+        if video_form.is_valid():
+            video = video_form.save(commit=False)
+            video.autor = Uczestnik.objects.get(user_id = request.user.pk)
             video.save()
             messages.success(request, 'You addded video')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        video = VideoForm()
-    return render(request, 'works/video.html', {'video': video})
+        video_form = VideoForm()
+    return render(request, 'works/video.html', {'video': video_form})
 
 
 @login_required
 def add_performence(request):
     if request.method == 'POST':
-        performence = PerformenceForm(request.POST)
-        performence.author = request.user
-        if performence.is_valid():
+        performence_form = PerformenceForm(request.POST, request.FILES)
+        if performence_form.is_valid():
+            performence = performence_form.save(commit=False)
+            performence.autor = Uczestnik.objects.get(user_id = request.user.pk)
             performence.save()
             messages.success(request, 'You addded performence')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        performence = PerformenceForm()
-    return render(request, 'works/performence.html', {'performence': performence})
+        performence_form = PerformenceForm()
+    return render(request, 'works/performence.html', {'performence': performence_form})
 
 
 @login_required
 def add_landArt(request):
     if request.method == 'POST':
-        landArt = LandArtForm(request.POST)
-        landArt.author = request.user
-        if landArt.is_valid():
+        landArt_form = LandArtForm(request.POST, request.FILES)
+        if landArt_form.is_valid():
+            landArt = landArt_form.save(commit=False)
+            landArt.autor = Uczestnik.objects.get(user_id = request.user.pk)
             landArt.save()
             messages.success(request, 'You addded landArt')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        landArt = LandArtForm()
-    return render(request, 'works/landArt.html', {'landArt': landArt})
+        landArt_form = LandArtForm()
+    return render(request, 'works/landArt.html', {'landArt': landArt_form})
 
 
 @login_required
 def add_urbanArt(request):
     if request.method == 'POST':
-        urbanArt = UrbanArtForm(request.POST)
-        urbanArt.author = request.user
-        if urbanArt.is_valid():
+        urbanArt_form = UrbanArtForm(request.POST, request.FILES)
+        if urbanArt_form.is_valid():
+            urbanArt = urbanArt_form.save(commit=False)
+            urbanArt.autor = Uczestnik.objects.get(user_id = request.user.pk)
             urbanArt.save()
             messages.success(request, 'You addded urban art')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        urbanArt = UrbanArtForm()
-    return render(request, 'works/urbanArt.html', {'urbanArt': urbanArt})
+        urbanArt_form = UrbanArtForm()
+    return render(request, 'works/urbanArt.html', {'urbanArt': urbanArt_form})
 
 
 @login_required
 def add_digitalGraphics(request):
     if request.method == 'POST':
-        digitalGraphics = DigitalGraphicsForm(request.POST)
-        digitalGraphics.author = request.user
-        if digitalGraphics.is_valid():
+        digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
+        if digitalGraphics_form.is_valid():
+            digitalGraphics = digitalGraphics_form.save(commit=False)
+            digitalGraphics.autor = Uczestnik.objects.get(user_id = request.user.pk)
             digitalGraphics.save()
             messages.success(request, 'You addded digital graphics')
             return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request,  'Please correct the error below.')
     else:
-        digitalGraphics = DigitalGraphicsForm()
-    return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics})
+        digitalGraphics_form = DigitalGraphicsForm()
+    return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics_form})
