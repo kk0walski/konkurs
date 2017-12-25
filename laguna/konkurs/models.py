@@ -1,15 +1,17 @@
 import os
-from datetime import date
-from django.db import models
-from django.core import validators
-from django.core.validators import RegexValidator
-from django.utils.deconstruct import deconstructible
-from django.core.validators import BaseValidator
-from django.utils.translation import ugettext_lazy as _
+from datetime import date, timedelta
+
 from django.conf import settings
+from django.core import validators
+from django.core.validators import BaseValidator, MaxValueValidator
+from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils.deconstruct import deconstructible
+from django.utils.translation import ugettext_lazy as _
+
 from phonenumber_field.modelfields import PhoneNumberField
+
 
 def calculate_age(born):
     today = date.today()
@@ -19,9 +21,11 @@ def calculate_age(born):
 def directory_path(instance, filename):
     return os.path.join(instance.autor.user.email, type(instance).__name__, filename)
 
+
+
 @deconstructible
 class MinAgeValidator(BaseValidator):
-    compare = lambda self, a, b: calculate_age(a) < b
+    compare = lambda a, b: calculate_age(a) < b
     message = _("Age must be at least %(limit_value)d.")
     code = 'min_age'
 
@@ -286,7 +290,7 @@ class Picture(Work):
     year = models.IntegerField()
 
 class Video(Work):
-    time = models.DurationField()
+    time = models.DurationField(validators=[MaxValueValidator(timedelta(minutes=20), message="Za długi film")])
     opis = models.TextField()
     cena = models.CharField(max_length=10)
     obraz = models.ImageField(upload_to=directory_path)
@@ -295,7 +299,7 @@ class Video(Work):
     video_password = models.CharField(max_length=50)
 
 class Performence(Work):
-    time = models.CharField(max_length=20)
+    time = models.DurationField(validators=[MaxValueValidator(timedelta(minutes=20), message="Za długi film")])
     opis = models.TextField()
     cena = models.CharField(max_length=10)
     obraz = models.ImageField(upload_to=directory_path)

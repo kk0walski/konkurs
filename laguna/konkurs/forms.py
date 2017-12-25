@@ -65,6 +65,9 @@ class VideoForm(forms.ModelForm):
         model = Video
         fields = ('title', 'time', 'opis', 'cena', 'obraz',
                   'year', 'video_url', 'video_password')
+        widgets = {
+            'time' : forms.DateInput(attrs={'type': 'time'}),
+        }
 
 
 class PerformenceForm(forms.ModelForm):
@@ -72,6 +75,9 @@ class PerformenceForm(forms.ModelForm):
         model = Performence
         fields = ('title', 'time', 'opis', 'cena', 'obraz',
                   'year', 'video_url', 'video_password')
+        widgets = {
+            'time' : forms.DateInput(attrs={'type': 'time'}),
+        }
 
 
 class LandArtForm(forms.ModelForm):

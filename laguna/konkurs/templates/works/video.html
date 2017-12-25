@@ -4,7 +4,7 @@
             <h1 style="font-size: 25px; color: #F44336 !important;">Enrollment to the 12th International Art Prize Arte Laguna</h1>
             <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
         </div>
-        <form method="POST">
+        <form action="{% url "video" %}" method="POST" enctype="multipart/form-data">
             <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
                 <h5 style="font-size: 17px; color: #F44336 !important;">DODAWANIE VIDEO</h5>
                 {% csrf_token %}
