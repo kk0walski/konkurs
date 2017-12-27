@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'konkurs',
     'bootstrap4',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [

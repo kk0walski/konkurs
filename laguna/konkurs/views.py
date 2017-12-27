@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from .forms import UserForm, UserEditForm, ProfileForm, SculptureForm, PaintForm, PictureForm, VirtualArtForm, VideoForm, PerformenceForm, LandArtForm, UrbanArtForm, DigitalGraphicsForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import transaction
-from .models import Uczestnik, Picture
+from .models import Uczestnik, Work
 from django.contrib import messages
 from cuser.models import CUser
 from django.views.generic.edit import CreateView
+from django_tables2 import RequestConfig
+from .tables import WorkTable
 
 
 def user_is_uczestnik(user):
@@ -227,3 +229,8 @@ def add_digitalGraphics(request):
     else:
         digitalGraphics_form = DigitalGraphicsForm()
     return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics_form})
+
+def works(request):
+    table = WorkTable(Work.objects.all())
+    RequestConfig(request).configure(table)
+    return render(request, 'works/list.html', {'table':table})
