@@ -234,6 +234,18 @@ class Uczestnik(models.Model):
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
 class Work(models.Model):
+    CATEGORY = (
+        ('Sculpture', 'Rzeźba'),
+        ('Paint', 'Obraz'),
+        ('VirtualArt', 'SztukaWirtualna'),
+        ('DigitalGraphics', 'GrafikaCyfrowa'),
+        ('Picture', 'Zdjęcie'),
+        ('Video', 'Video'),
+        ('Performence', 'Występ'),
+        ('LandArt', 'LandArt'),
+        ('UrbanArt', 'UrbanArt')
+    )
+    category = models.CharField(max_length=30, choices=CATEGORY)
     title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
 
