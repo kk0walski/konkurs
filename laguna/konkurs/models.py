@@ -233,15 +233,9 @@ class Uczestnik(models.Model):
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
-class Review(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='Autor', on_delete=models.DO_NOTHING)
-    work = models.ForeignKey('Work',  on_delete=models.CASCADE)
-    body = models.TextField()    
-
 class Work(models.Model):
     title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
-    reviews = models.ManyToManyField(settings.AUTH_USER_MODEL, through=Review)
 
 class Sculpture(Work):
     wymiary = models.CharField(max_length=30)

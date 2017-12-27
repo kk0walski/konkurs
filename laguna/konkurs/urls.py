@@ -1,6 +1,6 @@
 from django.urls import path
 from django.conf import settings
-from .views import Register, user_profile, add_sculpture, add_paint, add_picture, add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
+from .views import update_profile, Register, user_profile, add_sculpture, add_paint, add_picture, add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
 from django.contrib.auth.views import login, logout
 from django.conf.urls.static import static
 
@@ -18,4 +18,5 @@ urlpatterns = [
     path('profile/landArt', add_landArt, name='landArt'),
     path('profile/urbanArt', add_urbanArt, name='urbanArt'),
     path('profile/digitalGraphics', add_digitalGraphics, name='digitalGraphics'),
+    path('profile/edit', update_profile, name="updateProfile"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -14,7 +14,9 @@
         </div>
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
-            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+            <h2>{{ user.first_name }} {{ user.last_name }}
+                <a type="button" class="btn btn-info" href="{% url "updateProfile" %}">EDIT</a>
+            </h2>
           </div>
           <hr>
           <div class="row">

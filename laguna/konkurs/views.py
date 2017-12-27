@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm, ProfileForm, SculptureForm, PaintForm, PictureForm, VirtualArtForm, VideoForm, PerformenceForm, LandArtForm, UrbanArtForm, DigitalGraphicsForm
+from .forms import UserForm, UserEditForm, ProfileForm, SculptureForm, PaintForm, PictureForm, VirtualArtForm, VideoForm, PerformenceForm, LandArtForm, UrbanArtForm, DigitalGraphicsForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import transaction
 from .models import Uczestnik, Picture
@@ -40,19 +40,19 @@ class Register(CreateView):
 @transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        user_form = UserEditForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=Uczestnik.objects.get(user_id=request.user.pk))
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile was successfully updated!')
-            return redirect('settings:profile')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        user_form = UserForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
-    return render(request, 'accounts/profile.html', {
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileForm(instance=Uczestnik.objects.get(user_id=request.user.pk))
+    return render(request, 'accounts/edit.html', {
         'user_form': user_form,
         'profile_form': profile_form
     })

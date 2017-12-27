@@ -19,6 +19,10 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError('Hasła nie są identyczne')
         return cd['password2']
 
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = CUser
+        fields = ('email', 'first_name', 'last_name')
 
 class ProfileForm(forms.ModelForm):
     class Meta:
