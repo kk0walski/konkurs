@@ -1,5 +1,5 @@
 import os
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from django.conf import settings
 from django.core import validators
 from django.core.validators import BaseValidator, MaxValueValidator
@@ -248,6 +248,7 @@ class Work(models.Model):
     category = models.CharField(max_length=30, choices=CATEGORY)
     title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
+    addTime = models.DateTimeField(default=datetime.now())
 
 class Sculpture(Work):
     wymiary = models.CharField(max_length=30)
