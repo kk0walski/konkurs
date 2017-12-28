@@ -269,5 +269,5 @@ from django.views.generic.detail import DetailView
 from .models import Picture
 
 class PictureDetail(DetailView):
-    
     model = Picture
+    template_name = 'worksDetail/picture_detail.html'
