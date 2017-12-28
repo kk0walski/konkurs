@@ -13,7 +13,6 @@ from .tables import WorkTable
 def user_is_uczestnik(user):
     return Uczestnik.objects.filter(user_id=user.pk).exists()
 
-
 class Register(CreateView):
     form_class = UserForm
     template_name = 'accounts/register.html'
@@ -36,10 +35,10 @@ class Register(CreateView):
             return render(request, 'accounts/register_done.html')
         return render(request, self.template_name, {'user_form': user_form, 'profile_form': profile_form})
 
-
 # Create your views here.
 @login_required
 @transaction.atomic
+@user_passes_test(user_is_uczestnik)
 def update_profile(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, instance=request.user)
@@ -59,7 +58,6 @@ def update_profile(request):
         'profile_form': profile_form
     })
 
-
 @login_required
 @user_passes_test(user_is_uczestnik)
 def user_profile(request):
@@ -67,8 +65,8 @@ def user_profile(request):
     profile = Uczestnik.objects.get(user_id=request.user.pk)
     return render(request, 'accounts/profile.html', {'user': current_user, 'profile': profile})
 
-
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_sculpture(request):
     if request.method == 'POST':
         sculpture_form = SculptureForm(request.POST, request.FILES)
@@ -85,8 +83,8 @@ def add_sculpture(request):
         sculpture_form = SculptureForm()
     return render(request, 'works/sculpture.html', {'sculpture': sculpture_form})
 
-
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_paint(request):
     if request.method == 'POST':
         paint_form = PaintForm(request.POST, request.FILES)
@@ -102,7 +100,6 @@ def add_paint(request):
     else:
         paint_form = PaintForm()
     return render(request, 'works/paint.html', {'paint': paint_form})
-
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -122,8 +119,8 @@ def add_picture(request):
         picture_form = PictureForm()
     return render(request, 'works/picture.html', {'picture': picture_form})
 
-
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_virtualart(request):
     if request.method == 'POST':
         virtualArt_form = VirtualArtForm(request.POST, request.FILES)
@@ -140,8 +137,8 @@ def add_virtualart(request):
         virtualArt_form = VirtualArtForm()
     return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt_form})
 
-
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_video(request):
     if request.method == 'POST':
         video_form = VideoForm(request.POST)
@@ -160,6 +157,7 @@ def add_video(request):
 
 
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_performence(request):
     if request.method == 'POST':
         performence_form = PerformenceForm(request.POST, request.FILES)
@@ -178,6 +176,7 @@ def add_performence(request):
 
 
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_landArt(request):
     if request.method == 'POST':
         landArt_form = LandArtForm(request.POST, request.FILES)
@@ -196,6 +195,7 @@ def add_landArt(request):
 
 
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_urbanArt(request):
     if request.method == 'POST':
         urbanArt_form = UrbanArtForm(request.POST, request.FILES)
@@ -214,6 +214,7 @@ def add_urbanArt(request):
 
 
 @login_required
+@user_passes_test(user_is_uczestnik)
 def add_digitalGraphics(request):
     if request.method == 'POST':
         digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
@@ -235,6 +236,7 @@ from django_tables2.views import SingleTableMixin
 from .filters import WorkListFilter
 
 @login_required
+@user_passes_test(user_is_uczestnik)
 class FilteredWorkListView(SingleTableMixin, FilterView):
     table_class = WorkTable
     model = Work
