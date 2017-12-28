@@ -238,5 +238,7 @@ class FilteredWorkListView(SingleTableMixin, FilterView):
     table_class = WorkTable
     model = Work
     template_name = 'works/list.html'
-
     filterset_class = WorkListFilter
+    
+    def get_queryset(self):
+        return Work.objects.filter(autor = Uczestnik.objects.get(user_id = self.request.user.pk))
