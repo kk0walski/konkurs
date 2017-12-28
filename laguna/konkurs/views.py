@@ -1,17 +1,14 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm, UserEditForm, ProfileForm, SculptureForm, PaintForm, PictureForm, VirtualArtForm, VideoForm, PerformenceForm, LandArtForm, UrbanArtForm, DigitalGraphicsForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.db import transaction
-from .models import Uczestnik, Work
 from django.contrib import messages
 from cuser.models import CUser
 from django.views.generic.edit import CreateView
-from django_tables2 import RequestConfig
-from .tables import WorkTable
 
 
 def user_is_uczestnik(user):
     return Uczestnik.objects.filter(user_id=user.pk).exists()
+
+from .forms import UserForm, ProfileForm
 
 class Register(CreateView):
     form_class = UserForm
@@ -35,6 +32,8 @@ class Register(CreateView):
             return render(request, 'accounts/register_done.html')
         return render(request, self.template_name, {'user_form': user_form, 'profile_form': profile_form})
 
+from .forms import UserEditForm, ProfileForm
+from django.db import transaction
 # Create your views here.
 @login_required
 @transaction.atomic
@@ -58,12 +57,16 @@ def update_profile(request):
         'profile_form': profile_form
     })
 
+from .models import Uczestnik
+
 @login_required
 @user_passes_test(user_is_uczestnik)
 def user_profile(request):
     current_user = request.user
     profile = Uczestnik.objects.get(user_id=request.user.pk)
     return render(request, 'accounts/profile.html', {'user': current_user, 'profile': profile})
+
+from .forms import SculptureForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -83,6 +86,8 @@ def add_sculpture(request):
         sculpture_form = SculptureForm()
     return render(request, 'works/sculpture.html', {'sculpture': sculpture_form})
 
+from .forms import PaintForm
+
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_paint(request):
@@ -100,6 +105,8 @@ def add_paint(request):
     else:
         paint_form = PaintForm()
     return render(request, 'works/paint.html', {'paint': paint_form})
+
+from .forms import PictureForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -119,6 +126,8 @@ def add_picture(request):
         picture_form = PictureForm()
     return render(request, 'works/picture.html', {'picture': picture_form})
 
+from .forms import VirtualArtForm
+
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_virtualart(request):
@@ -136,6 +145,8 @@ def add_virtualart(request):
     else:
         virtualArt_form = VirtualArtForm()
     return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt_form})
+
+from .forms import VideoForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -155,6 +166,7 @@ def add_video(request):
         video_form = VideoForm()
     return render(request, 'works/video.html', {'video': video_form})
 
+from .forms import PerformenceForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -174,6 +186,7 @@ def add_performence(request):
         performence_form = PerformenceForm()
     return render(request, 'works/performence.html', {'performence': performence_form})
 
+from .forms import LandArtForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -193,6 +206,7 @@ def add_landArt(request):
         landArt_form = LandArtForm()
     return render(request, 'works/landArt.html', {'landArt': landArt_form})
 
+from .forms import UrbanArtForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -212,6 +226,7 @@ def add_urbanArt(request):
         urbanArt_form = UrbanArtForm()
     return render(request, 'works/urbanArt.html', {'urbanArt': urbanArt_form})
 
+from .forms import DigitalGraphicsForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
@@ -234,14 +249,25 @@ def add_digitalGraphics(request):
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
 from .filters import WorkListFilter
+from .models import Work
+from .tables import WorkTable
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-@login_required
-@user_passes_test(user_is_uczestnik)
-class FilteredWorkListView(SingleTableMixin, FilterView):
+class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, UserPassesTestMixin):
     table_class = WorkTable
     model = Work
     template_name = 'works/list.html'
     filterset_class = WorkListFilter
     
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
+
     def get_queryset(self):
         return Work.objects.filter(autor = Uczestnik.objects.get(user_id = self.request.user.pk))
+
+from django.views.generic.detail import DetailView
+from .models import Picture
+
+class PictureDetail(DetailView):
+    
+    model = Picture

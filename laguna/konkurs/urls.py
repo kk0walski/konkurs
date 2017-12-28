@@ -1,6 +1,8 @@
 from django.urls import path
 from django.conf import settings
-from .views import FilteredWorkListView, update_profile, Register, user_profile, add_sculpture, add_paint, add_picture,add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
+from .views import FilteredWorkListView, update_profile, Register
+from .views import user_profile, add_sculpture, add_paint, add_picture
+from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
 from django.contrib.auth.views import login, logout
 from django.conf.urls.static import static
 
