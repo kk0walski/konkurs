@@ -3,8 +3,9 @@ from .models import Work
 
 
 class WorkTable(tables.Table):
+    details = tables.TemplateColumn('<a href="accounts/profile/work/{{record.id}}">Show details</a>')
     class Meta:
         model = Work
         template = 'django_tables2/bootstrap.html'
-        fields = ('category', 'title', 'addTime')
+        fields = ('pk', 'category', 'title', 'addTime')
         empty_text = "There are no customers matching the search criteria..."
