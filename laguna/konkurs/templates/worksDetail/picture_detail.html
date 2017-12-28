@@ -1,16 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 <div style="background-color: #D3D3D3; padding: 20px;">
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
-        <h1 style="font-size: 25px; color: #F44336 !important;">Enrollment to the 12th International Art Prize Arte Laguna</h1>
-        <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
+        <h1 style="font-size: 25px; color: #F44336 !important;">{{ object.title }}</h1>
+        <h3 style="font-size: 25px;">Technika: {{ object.technika }}</h3>
     </div>
 
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
-        <h5 style="font-size: 17px; color: #F44336 !important;">{{ object.title }}</h5>
         <figure class="figure">
             <img src="{{ object.obraz.url }}" class="img-fluid" alt="{{ object.title }}">
             <figcaption class="figure-caption"> 
-                <h3>Technika: {{ object.technika }}</h3>
                 <h4>Wymiary: {{ object.wymiary }}</h4>
                 <h5>Cena: {{ object.cena }}</h5>
                 <h6>Rok: {{ object.year }}</h6>
@@ -19,5 +17,4 @@
         </figure>
     </div>
 </div>
-
 {% endblock %}

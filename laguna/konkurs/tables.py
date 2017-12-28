@@ -3,7 +3,7 @@ from .models import Work
 
 
 class WorkTable(tables.Table):
-    details = tables.TemplateColumn('<a href="{{record.category}}/{{record.id}}">Show details</a>')
+    details = tables.TemplateColumn('<a href="works/{{record.category}}/{{record.id}}">Show details</a>')
     class Meta:
         model = Work
         template = 'django_tables2/bootstrap.html'

@@ -20,5 +20,5 @@ urlpatterns = [
     path('profile/digitalGraphics', add_digitalGraphics, name='digitalGraphics'),
     path('profile/edit', update_profile, name="updateProfile"),
     path('profile/works', FilteredWorkListView.as_view(), name="ListOfWorks"),
-    path('profile/Picture/<int:pk>', PictureDetail.as_view(), name="Picture")
+    path('profile/works/Picture/<int:pk>', PictureDetail.as_view(), name="Picture")
 ]
