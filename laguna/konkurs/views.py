@@ -234,6 +234,7 @@ from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
 from .filters import WorkListFilter
 
+@login_required
 class FilteredWorkListView(SingleTableMixin, FilterView):
     table_class = WorkTable
     model = Work
