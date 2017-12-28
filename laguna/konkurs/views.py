@@ -230,7 +230,13 @@ def add_digitalGraphics(request):
         digitalGraphics_form = DigitalGraphicsForm()
     return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics_form})
 
-def works(request):
-    table = WorkTable(Work.objects.all())
-    RequestConfig(request).configure(table)
-    return render(request, 'works/list.html', {'table':table})
+from django_filters.views import FilterView
+from django_tables2.views import SingleTableMixin
+from .filters import WorkListFilter
+
+class FilteredWorkListView(SingleTableMixin, FilterView):
+    table_class = WorkTable
+    model = Work
+    template_name = 'works/list.html'
+
+    filterset_class = WorkListFilter

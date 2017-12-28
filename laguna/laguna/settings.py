@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'konkurs',
     'bootstrap4',
     'django_tables2',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

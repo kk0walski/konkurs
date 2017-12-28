@@ -3,8 +3,8 @@ from .models import Work
 
 
 class WorkTable(tables.Table):
-    
     class Meta:
         model = Work
         template = 'django_tables2/bootstrap.html'
-        fields = ('pk', 'category', 'title', 'addTime')
+        fields = ('category', 'title', 'addTime')
+        empty_text = "There are no customers matching the search criteria..."
