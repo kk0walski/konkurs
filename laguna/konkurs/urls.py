@@ -3,7 +3,6 @@ from .views import FilteredWorkListView, update_profile, Register, PictureDetail
 from .views import user_profile, add_sculpture, add_paint, add_picture
 from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
 from django.contrib.auth.views import login, logout
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('register/', Register.as_view(), name='register'),
