@@ -289,3 +289,33 @@ from .models import Paint
 class PaintDetail(DetailView):
     model = Paint
     template_name = 'worksDetail/Paint_detail.html'
+
+from .models import VirtualArt
+
+class VirtualArtDetail(DetailView):
+    model = VirtualArt
+    template_name = 'worksDetail/VirtualArt_detail.html'
+
+from .models import Video
+
+class VideoDetail(DetailView):
+    model = Video
+    template_name = 'worksDetail/Video_detail.html'
+
+from .models import Performence
+
+class PerformenceDetail(DetailView):
+    model = Performence
+    template_name = 'worksDetail/Performence_detail.html'
+
+from .models import LandArt
+
+class LandArtDetail(DetailView):
+    model = LandArt
+    template_name = 'worksDetail/LandArt_detail.html'
+
+from .models import UrbanArt
+
+class UrbanArtDetail(DetailView):
+    model = UrbanArt
+    template_name = 'worksDetail/UrbanArt_detail.html'

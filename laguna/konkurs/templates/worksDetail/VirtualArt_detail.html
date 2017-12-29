@@ -6,22 +6,27 @@
     </div>
 
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+
         <figure class="figure">
-            <img src="{{ object.obraz.url }}" class="img-responsive" alt="{{ object.title }}">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="col-sm-12">
+                        <img src="{{ object.obraz1.url }}" alt="{{ object.title }}" class="img-responsive" width="100%">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="col-sm-12">
+                        <img src="{{ object.obraz2.url }}" alt="{{ object.title }}" class="img-responsive" width="100%">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="col-sm-12">
+                        <img src="{{ object.obraz3.url }}" alt="{{ object.title }}" class="img-responsive" width="100%">
+                    </div>
+                </div>
+            </div>
             <figcaption class="figure-caption">
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="alert alert-light" role="alert">
-                                Technika
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="alert alert-light" role="alert">
-                                {{ object.technika }}
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="alert alert-light" role="alert">
@@ -67,6 +72,30 @@
                         <div class="col-md-6">
                             <div class="alert alert-light" role="alert">
                                 {{ object.opis }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Video:
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                <a href="{{ object.video_url }}">{{ object.video_url }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Video_password:
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.video_password }}
                             </div>
                         </div>
                     </div>
