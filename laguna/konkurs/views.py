@@ -277,3 +277,9 @@ from .models import DigitalGraphic
 class DigitalGraphicsDetail(DetailView):
     model = DigitalGraphic
     template_name = 'worksDetail/digitalGraphics_detail.html'
+
+from .models import Sculpture
+
+class SculptureDetail(DetailView):
+    model = Sculpture
+    template_name = 'worksDetail/Sculpture_detail.html'

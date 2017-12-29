@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FilteredWorkListView, update_profile, Register, PictureDetail
+from .views import FilteredWorkListView, update_profile, Register, PictureDetail, SculptureDetail
 from .views import user_profile, add_sculpture, add_paint, add_picture
 from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
 from django.contrib.auth.views import login, logout
@@ -22,5 +22,6 @@ urlpatterns = [
     path('profile/digitalGraphics', add_digitalGraphics, name='digitalGraphics'),
     path('profile/edit', update_profile, name="updateProfile"),
     path('profile/works', FilteredWorkListView.as_view(), name="ListOfWorks"),
-    path('profile/works/Picture/<int:pk>', PictureDetail.as_view(), name="Picture")
+    path('profile/works/Picture/<int:pk>', PictureDetail.as_view(), name="Picture"),
+    path('profile/works/Sculpture/<int:pk>', SculptureDetail.as_view(), name="Sculpture"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

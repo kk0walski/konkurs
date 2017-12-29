@@ -8,10 +8,45 @@
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
         <figure class="figure">
             <img src="{{ object.obraz.url }}" class="img-fluid" alt="{{ object.title }}">
-            <figcaption class="figure-caption"> 
-                <h4>Cena: {{ object.cena }}</h4>
-                <h5>Rok: {{ object.year }}</h5>
-                Opis: {{ object.opis }}
+            <figcaption class="figure-caption">
+                <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Cena
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.cena }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Rok
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.year }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Opis:
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.opis }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </figcaption>
         </figure>
     </div>
