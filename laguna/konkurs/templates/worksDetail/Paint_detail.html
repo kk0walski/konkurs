@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+<div style="background-color: #D3D3D3; padding: 20px;">
+    <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+        <h1 style="font-size: 25px; color: #F44336 !important;">{{ object.title }}</h1>
+        <h2>Autor: {{ object.autor.user }}</h2>
+    </div>
+
+    <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+        <figure class="figure">
+            <img src="{{ object.obraz.url }}" class="img-fluid" alt="{{ object.title }}">
+            <figcaption class="figure-caption">
+                <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Technika
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.technika }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Wymiary
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.wymiary }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Cena
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.cena }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Rok
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.year }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Opis:
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.opis }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+{% endblock %}

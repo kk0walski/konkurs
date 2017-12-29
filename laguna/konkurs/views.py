@@ -283,3 +283,9 @@ from .models import Sculpture
 class SculptureDetail(DetailView):
     model = Sculpture
     template_name = 'worksDetail/Sculpture_detail.html'
+
+from .models import Paint
+
+class PaintDetail(DetailView):
+    model = Paint
+    template_name = 'worksDetail/Paint_detail.html'
