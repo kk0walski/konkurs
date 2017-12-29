@@ -258,7 +258,7 @@ class Sculpture(Work):
     obraz2 = models.ImageField(upload_to=directory_path)
     obraz3 = models.ImageField(upload_to=directory_path)
     video_url = models.URLField()
-    video_password = models.CharField(max_length=50)
+    video_password = models.CharField(max_length=50, null=True, blank=True)
     year = models.IntegerField()
 
 class Paint(Work):
@@ -277,7 +277,7 @@ class VirtualArt(Work):
     obraz2 = models.ImageField(upload_to=directory_path)
     obraz3 = models.ImageField(upload_to=directory_path)
     video_url = models.URLField()
-    video_password = models.CharField(max_length=50)
+    video_password = models.CharField(max_length=50, null=True, blank=True)
     year = models.IntegerField()
 
 class DigitalGraphic(Work):
@@ -301,7 +301,7 @@ class Video(Work):
     obraz = models.ImageField(upload_to=directory_path)
     year = models.IntegerField()
     video_url = models.URLField()
-    video_password = models.CharField(max_length=50)
+    video_password = models.CharField(max_length=50, null=True, blank=True)
 
 class Performence(Work):
     time = models.DurationField(validators=[MaxValueValidator(timedelta(minutes=20), message="Za długi film")])

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<div style="background-color: #D3D3D3; padding: 20px;">
+    <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+        <h1 style="font-size: 25px; color: #F44336 !important;">{{ object.title }}</h1>
+        <h4>Autor: {{ object.autor.user }}</h4>
+    </div>
+
+    <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
+        <figure class="figure">
+            <img src="{{ object.obraz.url }}" class="img-fluid" alt="{{ object.title }}">
+            <figcaption class="figure-caption"> 
+                <h4>Cena: {{ object.cena }}</h4>
+                <h5>Rok: {{ object.year }}</h5>
+                Opis: {{ object.opis }}
+            </figcaption>
+        </figure>
+    </div>
+</div>
+{% endblock %}

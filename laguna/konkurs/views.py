@@ -152,7 +152,7 @@ from .forms import VideoForm
 @user_passes_test(user_is_uczestnik)
 def add_video(request):
     if request.method == 'POST':
-        video_form = VideoForm(request.POST)
+        video_form = VideoForm(request.POST, request.FILES)
         if video_form.is_valid():
             video = video_form.save(commit=False)
             video.autor = Uczestnik.objects.get(user_id = request.user.pk)
@@ -271,3 +271,9 @@ from .models import Picture
 class PictureDetail(DetailView):
     model = Picture
     template_name = 'worksDetail/picture_detail.html'
+
+from .models import DigitalGraphic
+
+class DigitalGraphicsDetail(DetailView):
+    model = DigitalGraphic
+    template_name = 'worksDetail/digitalGraphics_detail.html'

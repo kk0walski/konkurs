@@ -41,6 +41,9 @@ class SculptureForm(forms.ModelForm):
         model = Sculpture
         fields = ('title', 'wymiary', 'opis', 'cena', 'obraz1',
                   'obraz2', 'obraz3', 'video_url', 'video_password', 'year')
+        widgets = {
+                    'video_password' : forms.PasswordInput(),
+        }
 
 
 class PaintForm(forms.ModelForm):
@@ -62,6 +65,9 @@ class VirtualArtForm(forms.ModelForm):
         model = VirtualArt
         fields = ('title', 'wymiary', 'opis', 'cena', 'obraz1',
                   'obraz2', 'obraz3', 'video_url', 'video_password', 'year')
+        widgets = {
+                    'video_password' : forms.PasswordInput(),
+        }
 
 
 class VideoForm(forms.ModelForm):
@@ -71,6 +77,7 @@ class VideoForm(forms.ModelForm):
                   'year', 'video_url', 'video_password')
         widgets = {
             'time' : forms.DateInput(attrs={'type': 'time'}),
+            'video_password' : forms.PasswordInput(),
         }
 
 
@@ -81,6 +88,7 @@ class PerformenceForm(forms.ModelForm):
                   'year', 'video_url', 'video_password')
         widgets = {
             'time' : forms.DateInput(attrs={'type': 'time'}),
+            'video_password' : forms.PasswordInput(),
         }
 
 
