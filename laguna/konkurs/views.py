@@ -266,11 +266,18 @@ class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, Use
         return Work.objects.filter(autor = Uczestnik.objects.get(user_id = self.request.user.pk))
 
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
 from .models import Picture
+from django.urls import reverse
 
 class PictureDetail(DetailView):
     model = Picture
     template_name = 'worksDetail/picture_detail.html'
+
+class PictureUpdate(UpdateView):
+    model = Picture
+    fields = fields = ['title', 'wymiary', 'opis', 'cena', 'obraz', 'technika', 'year']
+    template_name = 'worksUpdate/picture_update.html'
 
 from .models import DigitalGraphic
 

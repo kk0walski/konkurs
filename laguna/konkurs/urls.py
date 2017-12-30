@@ -4,6 +4,7 @@ from .views import PaintDetail, VirtualArtDetail, DigitalGraphicsDetail, VideoDe
 from .views import FilteredWorkListView, update_profile, Register, PictureDetail, SculptureDetail
 from .views import user_profile, add_sculpture, add_paint, add_picture
 from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
+from .views import PictureUpdate
 from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,13 +25,14 @@ urlpatterns = [
     path('profile/digitalGraphics', add_digitalGraphics, name='digitalGraphics'),
     path('profile/edit', update_profile, name="updateProfile"),
     path('profile/works', FilteredWorkListView.as_view(), name="ListOfWorks"),
-    path('profile/works/Picture/<int:pk>', PictureDetail.as_view(), name="Picture"),
-    path('profile/works/Sculpture/<int:pk>', SculptureDetail.as_view(), name="Sculpture"),
-    path('profile/works/Paint/<int:pk>', PaintDetail.as_view(), name="Paint"),
-    path('profile/works/VirtualArt/<int:pk>', VirtualArtDetail.as_view(), name="VirtualArt"),
-    path('profile/works/DigitalGraphic/<int:pk>', DigitalGraphicsDetail.as_view(), name="DigitalGraphic"),
-    path('profile/works/Video/<int:pk>', VideoDetail.as_view(), name="Video"),
-    path('profile/works/Performence/<int:pk>', PerformenceDetail.as_view(), name="Performence"),
-    path('profile/works/LandArt/<int:pk>', LandArtDetail.as_view(), name="LandArt"),
-    path('profile/works/UrbanArt/<int:pk>', UrbanArtDetail.as_view(), name="UrbanArt"),
+    path('profile/works/Picture/<int:pk>/', PictureDetail.as_view(), name="Picture"),
+    path('profile/works/Sculpture/<int:pk>/', SculptureDetail.as_view(), name="Sculpture"),
+    path('profile/works/Paint/<int:pk>/', PaintDetail.as_view(), name="Paint"),
+    path('profile/works/VirtualArt/<int:pk>/', VirtualArtDetail.as_view(), name="VirtualArt"),
+    path('profile/works/DigitalGraphic/<int:pk>/', DigitalGraphicsDetail.as_view(), name="DigitalGraphic"),
+    path('profile/works/Video/<int:pk>/', VideoDetail.as_view(), name="Video"),
+    path('profile/works/Performence/<int:pk>/', PerformenceDetail.as_view(), name="Performence"),
+    path('profile/works/LandArt/<int:pk>/', LandArtDetail.as_view(), name="LandArt"),
+    path('profile/works/UrbanArt/<int:pk>/', UrbanArtDetail.as_view(), name="UrbanArt"),
+    path('profile/works/Picture/<int:pk>/edit', PictureUpdate.as_view(success_url='profile/works'), name="PictureUpdate"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
