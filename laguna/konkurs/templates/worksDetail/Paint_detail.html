@@ -7,7 +7,7 @@
 
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
         <figure class="figure">
-            <img src="{{ object.obraz.url }}" class="img-responsive" alt="{{ object.title }}">
+            <img src="{{ object.obraz.url }}" class="img-responsive col-sm-12" alt="{{ object.title }}">
             <figcaption class="figure-caption">
                 <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                     <div class="row">
@@ -73,6 +73,10 @@
                 </div>
             </figcaption>
         </figure>
+    </div>
+    <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
+        <h1 style="font-size: 17px; color: #F44336 !important;">EDIT WORK</h1>
+        <a type="button" class="btn btn-info" href="{% url " ListOfWorks " %}">EDIT</a>
     </div>
 </div>
 {% endblock %}
