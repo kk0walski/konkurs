@@ -268,7 +268,7 @@ class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, Use
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
 from .models import Picture
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 class PictureDetail(DetailView):
     model = Picture
@@ -278,6 +278,7 @@ class PictureUpdate(UpdateView):
     model = Picture
     fields = fields = ['title', 'wymiary', 'opis', 'cena', 'obraz', 'technika', 'year']
     template_name = 'worksUpdate/picture_update.html'
+    success_url = reverse_lazy('ListOfWorks')
 
 from .models import DigitalGraphic
 

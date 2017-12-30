@@ -34,5 +34,5 @@ urlpatterns = [
     path('profile/works/Performence/<int:pk>/', PerformenceDetail.as_view(), name="Performence"),
     path('profile/works/LandArt/<int:pk>/', LandArtDetail.as_view(), name="LandArt"),
     path('profile/works/UrbanArt/<int:pk>/', UrbanArtDetail.as_view(), name="UrbanArt"),
-    path('profile/works/Picture/<int:pk>/edit', PictureUpdate.as_view(success_url='profile/works'), name="PictureUpdate"),
+    path('profile/works/Picture/<int:pk>/edit', PictureUpdate.as_view(), name="PictureUpdate"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
