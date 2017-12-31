@@ -35,17 +35,17 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-md-6">
-                                <div class="alert alert-light" role="alert">
-                                    Hasło
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="alert alert-light" role="alert">
-                                    {{ object.video_password }}
-                                </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                Hasło
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="alert alert-light" role="alert">
+                                {{ object.video_password }}
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="alert alert-light" role="alert">
@@ -85,6 +85,10 @@
                 </div>
             </figcaption>
         </figure>
+    </div>
+    <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
+        <h1 style="font-size: 17px; color: #F44336 !important;">EDIT WORK</h1>
+        <a type="button" class="btn btn-info" href="{% url "VideoUpdate" object.pk %}">EDIT</a>
     </div>
 </div>
 {% endblock %}

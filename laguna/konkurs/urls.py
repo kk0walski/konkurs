@@ -4,7 +4,9 @@ from .views import PaintDetail, VirtualArtDetail, DigitalGraphicsDetail, VideoDe
 from .views import FilteredWorkListView, update_profile, Register, PictureDetail, SculptureDetail
 from .views import user_profile, add_sculpture, add_paint, add_picture
 from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
-from .views import PictureUpdate
+from .views import PictureUpdate, DigitalGraphicsUpdate, SculptureUpdate, PaintUpdate
+from .views import VirtualArtUpdate, VideoUpdate, PerformenceUpdate, LandArtUpdate
+from .views import UrbanArtUpdate
 from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
@@ -35,4 +37,12 @@ urlpatterns = [
     path('profile/works/LandArt/<int:pk>/', LandArtDetail.as_view(), name="LandArt"),
     path('profile/works/UrbanArt/<int:pk>/', UrbanArtDetail.as_view(), name="UrbanArt"),
     path('profile/works/Picture/<int:pk>/edit', PictureUpdate.as_view(), name="PictureUpdate"),
+    path('profile/works/Sculpture/<int:pk>/edit', SculptureUpdate.as_view(), name="SculptureUpdate"),
+    path('profile/works/Paint/<int:pk>/edit', PaintUpdate.as_view(), name="PaintUpdate"),
+    path('profile/works/VirtualArt/<int:pk>/edit', VirtualArtUpdate.as_view(), name="VirtualArtUpdate"),
+    path('profile/works/DigitalGraphic/<int:pk>/edit', DigitalGraphicsUpdate.as_view(), name="DigitalGraphicsUpdate"),
+    path('profile/works/Video/<int:pk>/edit', VideoUpdate.as_view(), name="VideoUpdate"),
+    path('profile/works/Performence/<int:pk>/edit', PerformenceUpdate.as_view(), name="PerformenceUpdate"),
+    path('profile/works/LandArt/<int:pk>/edit', LandArtUpdate.as_view(), name="LandArtUpdate"),
+    path('profile/works/UrbanArt/<int:pk>/edit', UrbanArtUpdate.as_view(), name="UrbanArtUpdate"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
