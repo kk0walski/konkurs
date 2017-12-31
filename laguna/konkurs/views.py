@@ -8,9 +8,9 @@ from django.views.generic.edit import CreateView
 def user_is_uczestnik(user):
     return Uczestnik.objects.filter(user_id=user.pk).exists()
 
+#User Section
 
 from .forms import UserForm, ProfileForm
-
 
 class Register(CreateView):
     form_class = UserForm
@@ -38,7 +38,6 @@ class Register(CreateView):
 from .forms import UserEditForm, ProfileForm
 from django.db import transaction
 # Create your views here.
-
 
 @login_required
 @transaction.atomic
@@ -75,206 +74,6 @@ def user_profile(request):
     profile = Uczestnik.objects.get(user_id=request.user.pk)
     return render(request, 'accounts/profile.html', {'user': current_user, 'profile': profile})
 
-
-from .forms import SculptureForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_sculpture(request):
-    if request.method == 'POST':
-        sculpture_form = SculptureForm(request.POST, request.FILES)
-        if sculpture_form.is_valid():
-            sculpture = sculpture_form.save(commit=False)
-            sculpture.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            sculpture.category = 'Sculpture'
-            sculpture.save()
-            messages.success(request, 'You addded sculpture')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        sculpture_form = SculptureForm()
-    return render(request, 'works/sculpture.html', {'sculpture': sculpture_form})
-
-
-from .forms import PaintForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_paint(request):
-    if request.method == 'POST':
-        paint_form = PaintForm(request.POST, request.FILES)
-        if paint_form.is_valid():
-            paint = paint_form.save(commit=False)
-            paint.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            paint.category = 'Paint'
-            paint.save()
-            messages.success(request, 'You addded paint')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        paint_form = PaintForm()
-    return render(request, 'works/paint.html', {'paint': paint_form})
-
-
-from .forms import PictureForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_picture(request):
-    if request.method == 'POST':
-        picture_form = PictureForm(request.POST, request.FILES)
-        if picture_form.is_valid():
-            picture = picture_form.save(commit=False)
-            picture.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            picture.category = 'Picture'
-            picture.save()
-            messages.success(request, 'You addded picture')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        picture_form = PictureForm()
-    return render(request, 'works/picture.html', {'picture': picture_form})
-
-
-from .forms import VirtualArtForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_virtualart(request):
-    if request.method == 'POST':
-        virtualArt_form = VirtualArtForm(request.POST, request.FILES)
-        if virtualArt_form.is_valid():
-            virtualArt = virtualArt_form.save(commit=False)
-            virtualArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            virtualArt.category = 'VirtualArt'
-            virtualArt.save()
-            messages.success(request, 'You addded virtual art')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        virtualArt_form = VirtualArtForm()
-    return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt_form})
-
-
-from .forms import VideoForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_video(request):
-    if request.method == 'POST':
-        video_form = VideoForm(request.POST, request.FILES)
-        if video_form.is_valid():
-            video = video_form.save(commit=False)
-            video.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            video.category = 'Video'
-            video.save()
-            messages.success(request, 'You addded video')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        video_form = VideoForm()
-    return render(request, 'works/video.html', {'video': video_form})
-
-
-from .forms import PerformenceForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_performence(request):
-    if request.method == 'POST':
-        performence_form = PerformenceForm(request.POST, request.FILES)
-        if performence_form.is_valid():
-            performence = performence_form.save(commit=False)
-            performence.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            performence.category = 'Performence'
-            performence.save()
-            messages.success(request, 'You addded performence')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        performence_form = PerformenceForm()
-    return render(request, 'works/performence.html', {'performence': performence_form})
-
-
-from .forms import LandArtForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_landArt(request):
-    if request.method == 'POST':
-        landArt_form = LandArtForm(request.POST, request.FILES)
-        if landArt_form.is_valid():
-            landArt = landArt_form.save(commit=False)
-            landArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            landArt.category = 'LandArt'
-            landArt.save()
-            messages.success(request, 'You addded landArt')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        landArt_form = LandArtForm()
-    return render(request, 'works/landArt.html', {'landArt': landArt_form})
-
-
-from .forms import UrbanArtForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_urbanArt(request):
-    if request.method == 'POST':
-        urbanArt_form = UrbanArtForm(request.POST, request.FILES)
-        if urbanArt_form.is_valid():
-            urbanArt = urbanArt_form.save(commit=False)
-            urbanArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
-            urbanArt.category = 'UrbanArt'
-            urbanArt.save()
-            messages.success(request, 'You addded urban art')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        urbanArt_form = UrbanArtForm()
-    return render(request, 'works/urbanArt.html', {'urbanArt': urbanArt_form})
-
-
-from .forms import DigitalGraphicsForm
-
-
-@login_required
-@user_passes_test(user_is_uczestnik)
-def add_digitalGraphics(request):
-    if request.method == 'POST':
-        digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
-        if digitalGraphics_form.is_valid():
-            digitalGraphics = digitalGraphics_form.save(commit=False)
-            digitalGraphics.autor = Uczestnik.objects.get(
-                user_id=request.user.pk)
-            digitalGraphics.category = 'DigitalGraphics'
-            digitalGraphics.save()
-            messages.success(request, 'You addded digital graphics')
-            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
-        else:
-            messages.error(request,  'Please correct the error below.')
-    else:
-        digitalGraphics_form = DigitalGraphicsForm()
-    return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics_form})
-
-
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
 from .filters import WorkListFilter
@@ -301,6 +100,27 @@ from django.views.generic.edit import UpdateView
 from .models import Picture
 from django.urls import reverse_lazy
 
+#Picture Section
+
+from .forms import PictureForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_picture(request):
+    if request.method == 'POST':
+        picture_form = PictureForm(request.POST, request.FILES)
+        if picture_form.is_valid():
+            picture = picture_form.save(commit=False)
+            picture.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            picture.category = 'Picture'
+            picture.save()
+            messages.success(request, 'You addded picture')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        picture_form = PictureForm()
+    return render(request, 'works/picture.html', {'picture': picture_form})
 
 class PictureDetail(DetailView):
     model = Picture
@@ -314,9 +134,30 @@ class PictureUpdate(UpdateView):
     template_name = 'worksUpdate/picture_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#DigitalGraphics Section
+
+from .forms import DigitalGraphicsForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_digitalGraphics(request):
+    if request.method == 'POST':
+        digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
+        if digitalGraphics_form.is_valid():
+            digitalGraphics = digitalGraphics_form.save(commit=False)
+            digitalGraphics.autor = Uczestnik.objects.get(
+                user_id=request.user.pk)
+            digitalGraphics.category = 'DigitalGraphics'
+            digitalGraphics.save()
+            messages.success(request, 'You addded digital graphics')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        digitalGraphics_form = DigitalGraphicsForm()
+    return render(request, 'works/digitalGraphics.html', {'digitalGraphics': digitalGraphics_form})
 
 from .models import DigitalGraphic
-
 
 class DigitalGraphicsDetail(DetailView):
     model = DigitalGraphic
@@ -329,9 +170,29 @@ class DigitalGraphicsUpdate(UpdateView):
     template_name = 'worksUpdate/digitalGraphics_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#Sculpture Section
+
+from .forms import SculptureForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_sculpture(request):
+    if request.method == 'POST':
+        sculpture_form = SculptureForm(request.POST, request.FILES)
+        if sculpture_form.is_valid():
+            sculpture = sculpture_form.save(commit=False)
+            sculpture.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            sculpture.category = 'Sculpture'
+            sculpture.save()
+            messages.success(request, 'You addded sculpture')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        sculpture_form = SculptureForm()
+    return render(request, 'works/sculpture.html', {'sculpture': sculpture_form})
 
 from .models import Sculpture
-
 
 class SculptureDetail(DetailView):
     model = Sculpture
@@ -345,9 +206,29 @@ class SculptureUpdate(UpdateView):
     template_name = 'worksUpdate/Sculpture_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#Paint Section
+
+from .forms import PaintForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_paint(request):
+    if request.method == 'POST':
+        paint_form = PaintForm(request.POST, request.FILES)
+        if paint_form.is_valid():
+            paint = paint_form.save(commit=False)
+            paint.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            paint.category = 'Paint'
+            paint.save()
+            messages.success(request, 'You addded paint')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        paint_form = PaintForm()
+    return render(request, 'works/paint.html', {'paint': paint_form})
 
 from .models import Paint
-
 
 class PaintDetail(DetailView):
     model = Paint
@@ -361,9 +242,29 @@ class PaintUpdate(UpdateView):
     template_name = 'worksUpdate/Paint_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#VirtualArt section
+
+from .forms import VirtualArtForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_virtualart(request):
+    if request.method == 'POST':
+        virtualArt_form = VirtualArtForm(request.POST, request.FILES)
+        if virtualArt_form.is_valid():
+            virtualArt = virtualArt_form.save(commit=False)
+            virtualArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            virtualArt.category = 'VirtualArt'
+            virtualArt.save()
+            messages.success(request, 'You addded virtual art')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        virtualArt_form = VirtualArtForm()
+    return render(request, 'works/virtualArt.html', {'virtualArt': virtualArt_form})
 
 from .models import VirtualArt
-
 
 class VirtualArtDetail(DetailView):
     model = VirtualArt
@@ -377,9 +278,31 @@ class VirtualArtUpdate(UpdateView):
     template_name = 'worksUpdate/VirtualArt_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#Video Section
+
+from .forms import VideoForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_video(request):
+    if request.method == 'POST':
+        video_form = VideoForm(request.POST, request.FILES)
+        if video_form.is_valid():
+            video = video_form.save(commit=False)
+            video.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            video.category = 'Video'
+            video.save()
+            messages.success(request, 'You addded video')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        video_form = VideoForm()
+    return render(request, 'works/video.html', {'video': video_form})
+
+
 
 from .models import Video
-
 
 class VideoDetail(DetailView):
     model = Video
@@ -393,9 +316,30 @@ class VideoUpdate(UpdateView):
     template_name = 'worksUpdate/Video_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#Performence Section
+
+from .forms import PerformenceForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_performence(request):
+    if request.method == 'POST':
+        performence_form = PerformenceForm(request.POST, request.FILES)
+        if performence_form.is_valid():
+            performence = performence_form.save(commit=False)
+            performence.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            performence.category = 'Performence'
+            performence.save()
+            messages.success(request, 'You addded performence')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        performence_form = PerformenceForm()
+    return render(request, 'works/performence.html', {'performence': performence_form})
+
 
 from .models import Performence
-
 
 class PerformenceDetail(DetailView):
     model = Performence
@@ -409,9 +353,29 @@ class PerformenceUpdate(UpdateView):
     template_name = 'worksUpdate/Performence_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#LandArt Section
+
+from .forms import LandArtForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_landArt(request):
+    if request.method == 'POST':
+        landArt_form = LandArtForm(request.POST, request.FILES)
+        if landArt_form.is_valid():
+            landArt = landArt_form.save(commit=False)
+            landArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            landArt.category = 'LandArt'
+            landArt.save()
+            messages.success(request, 'You addded landArt')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        landArt_form = LandArtForm()
+    return render(request, 'works/landArt.html', {'landArt': landArt_form})
 
 from .models import LandArt
-
 
 class LandArtDetail(DetailView):
     model = LandArt
@@ -423,6 +387,27 @@ class LandArtUpdate(UpdateView):
     template_name = 'worksUpdate/LandArt_update.html'
     success_url = reverse_lazy('ListOfWorks')
 
+#UrbanArt Section
+
+from .forms import UrbanArtForm
+
+@login_required
+@user_passes_test(user_is_uczestnik)
+def add_urbanArt(request):
+    if request.method == 'POST':
+        urbanArt_form = UrbanArtForm(request.POST, request.FILES)
+        if urbanArt_form.is_valid():
+            urbanArt = urbanArt_form.save(commit=False)
+            urbanArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            urbanArt.category = 'UrbanArt'
+            urbanArt.save()
+            messages.success(request, 'You addded urban art')
+            return render(request, 'accounts/profile.html', {'user': request.user, 'profile': Uczestnik.objects.get(user_id=request.user.pk)})
+        else:
+            messages.error(request,  'Please correct the error below.')
+    else:
+        urbanArt_form = UrbanArtForm()
+    return render(request, 'works/urbanArt.html', {'urbanArt': urbanArt_form})
 
 from .models import UrbanArt
 
