@@ -122,17 +122,23 @@ def add_picture(request):
         picture_form = PictureForm()
     return render(request, 'works/picture.html', {'picture': picture_form})
 
-class PictureDetail(DetailView):
+class PictureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     template_name = 'worksDetail/picture_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class PictureUpdate(UpdateView):
+
+class PictureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     fields = fields = ['title', 'wymiary', 'opis',
                        'cena', 'obraz', 'technika', 'year']
     template_name = 'worksUpdate/picture_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #DigitalGraphics Section
 
@@ -159,16 +165,22 @@ def add_digitalGraphics(request):
 
 from .models import DigitalGraphic
 
-class DigitalGraphicsDetail(DetailView):
+class DigitalGraphicsDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = DigitalGraphic
     template_name = 'worksDetail/digitalGraphics_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class DigitalGraphicsUpdate(UpdateView):
+
+class DigitalGraphicsUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = DigitalGraphic
     fields = fields = ['title', 'obraz', 'opis', 'cena', 'year']
     template_name = 'worksUpdate/digitalGraphics_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #Sculpture Section
 
@@ -194,17 +206,23 @@ def add_sculpture(request):
 
 from .models import Sculpture
 
-class SculptureDetail(DetailView):
+class SculptureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Sculpture
     template_name = 'worksDetail/Sculpture_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class SculptureUpdate(UpdateView):
+
+class SculptureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Sculpture
     fields = fields = ['title', 'wymiary', 'opis', 'cena', 'obraz1',
                        'obraz2', 'obraz3', 'video_url', 'video_password', 'year']
     template_name = 'worksUpdate/Sculpture_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #Paint Section
 
@@ -230,17 +248,23 @@ def add_paint(request):
 
 from .models import Paint
 
-class PaintDetail(DetailView):
+class PaintDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
     template_name = 'worksDetail/Paint_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class PaintUpdate(UpdateView):
+
+class PaintUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
     fields = fields = ['title', 'wymiary', 'opis', 'cena',
                        'obraz', 'technika', 'year']
     template_name = 'worksUpdate/Paint_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #VirtualArt section
 
@@ -266,17 +290,22 @@ def add_virtualart(request):
 
 from .models import VirtualArt
 
-class VirtualArtDetail(DetailView):
+class VirtualArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
     template_name = 'worksDetail/VirtualArt_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class VirtualArtUpdate(UpdateView):
+class VirtualArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
     fields = fields = ['title', 'wymiary', 'opis', 'cena', 'obraz1',
                        'obraz2', 'obraz3', 'video_url', 'video_password', 'year']
     template_name = 'worksUpdate/VirtualArt_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #Video Section
 
@@ -304,17 +333,23 @@ def add_video(request):
 
 from .models import Video
 
-class VideoDetail(DetailView):
+class VideoDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
     template_name = 'worksDetail/Video_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class VideoUpdate(UpdateView):
+
+class VideoUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
     fields = fields = ['title', 'time', 'opis', 'cena', 'obraz',
                        'year', 'video_url', 'video_password']
     template_name = 'worksUpdate/Video_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #Performence Section
 
@@ -341,17 +376,23 @@ def add_performence(request):
 
 from .models import Performence
 
-class PerformenceDetail(DetailView):
+class PerformenceDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
     template_name = 'worksDetail/Performence_detail.html'
 
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
-class PerformenceUpdate(UpdateView):
+
+class PerformenceUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
     fields = fields = ['title', 'time', 'opis', 'cena', 'obraz',
                        'year', 'video_url', 'video_password']
     template_name = 'worksUpdate/Performence_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #LandArt Section
 
@@ -377,15 +418,21 @@ def add_landArt(request):
 
 from .models import LandArt
 
-class LandArtDetail(DetailView):
+class LandArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     template_name = 'worksDetail/LandArt_detail.html'
 
-class LandArtUpdate(UpdateView):
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
+
+class LandArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']
     template_name = 'worksUpdate/LandArt_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
 
 #UrbanArt Section
 
@@ -412,12 +459,18 @@ def add_urbanArt(request):
 from .models import UrbanArt
 
 
-class UrbanArtDetail(DetailView):
+class UrbanArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
     template_name = 'worksDetail/UrbanArt_detail.html'
 
-class UrbanArtUpdate(UpdateView):
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
+
+class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']
     template_name = 'worksUpdate/UrbanArt_update.html'
     success_url = reverse_lazy('ListOfWorks')
+
+    def test_func(self):
+        return user_is_uczestnik(self.request.user)
