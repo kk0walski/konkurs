@@ -69,11 +69,13 @@ from .models import Uczestnik
 
 
 @login_required
-@user_passes_test(user_is_uczestnik)
 def user_profile(request):
     current_user = request.user
-    profile = Uczestnik.objects.get(user_id=request.user.pk)
-    return render(request, 'accounts/profile.html', {'user': current_user, 'profile': profile})
+    if user_is_uczestnik(current_user):
+        profile = Uczestnik.objects.get(user_id=request.user.pk)
+        return render(request, 'accounts/profile.html', {'user': current_user, 'profile': profile})
+    else:
+        return render(request, 'accounts/reviewProfile.html', {'user': current_user})
 
 from django_filters.views import FilterView
 from django_tables2.views import SingleTableMixin
