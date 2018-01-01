@@ -1,5 +1,4 @@
 {% load static from staticfiles %}
-{% load konkurs_extras %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,10 +54,8 @@
             </ul>
             {% if request.user.is_authenticated %}
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    {% if request.user|user_is_uczestnik %}
-                        <a class="nav-link" href="{% url "profile" %}">Panel główny</a>
-                    {% endif %}
+                <li class="nav-item">}
+                    a class="nav-link" href="{% url "profile" %}">Panel główny</a>
                 </li>
                 <li class="nav-item">
                     <span class="navbar-text">
