@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
+{% load konkurs_extras %}
 {% block title %}Logowanie {% endblock %}
 {% block content %}
 <div style="background-color: #D3D3D3; padding: 20px;">
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
         <h5 style="font-size: 17px; color: #F44336 !important;">LOGOWANIE</h5>
+        {% if user.is_authenticated %}
+            {% if request.user|user_is_uczestnik %}
+                <div class="alert alert-danger" role="alert">
+                    Musisz być uczestnikiem konkursu aby modyfikować prace
+                </div>
+            {% endif %}
+        {% endif %}
             {% if form.errors %}
             <p>
                 Nazwa użytkownika lub hasło są nieprawidłowe.

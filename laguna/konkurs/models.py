@@ -19,8 +19,6 @@ def calculate_age(born):
 def directory_path(instance, filename):
     return os.path.join(instance.autor.user.email, type(instance).__name__, filename)
 
-
-
 @deconstructible
 class MinAgeValidator(BaseValidator):
     compare = lambda self, a, b: calculate_age(a) < b

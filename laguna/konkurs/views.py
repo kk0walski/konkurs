@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from cuser.models import CUser
 from django.views.generic.edit import CreateView
+from .models import Uczestnik
 
 
 def user_is_uczestnik(user):
