@@ -90,6 +90,12 @@ class WorkListView(SingleTableMixin, LoginRequiredMixin, FilterView):
     template_name = 'works/list.html'
     filterset_class = WorkListFilter
 
+    def get_queryset(self):
+        if self.request.user.groups.exists() and self.request.user.groups.filter(name__in=Work.CATEGORY).exists():
+            return Work.objects.filter(category__in self.request.user.groups.values_list('name', flat=True))
+        else:
+            return Work.objects.all()
+
 class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, UserPassesTestMixin):
     table_class = WorkTable
     model = Work
