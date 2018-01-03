@@ -84,6 +84,11 @@ from .models import Work
 from .tables import WorkTable
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+class WorkListView(SingleTableMixin, LoginRequiredMixin, FilterView):
+    table_class = WorkTable
+    model = Work
+    template_name = 'works/list.html'
+    filterset_class = WorkListFilter
 
 class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, UserPassesTestMixin):
     table_class = WorkTable
@@ -154,8 +159,7 @@ def add_digitalGraphics(request):
         digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
         if digitalGraphics_form.is_valid():
             digitalGraphics = digitalGraphics_form.save(commit=False)
-            digitalGraphics.autor = Uczestnik.objects.get(
-                user_id=request.user.pk)
+            digitalGraphics.autor = Uczestnik.objects.get(user_id=request.user.pk)
             digitalGraphics.category = 'DigitalGraphics'
             digitalGraphics.save()
             messages.success(request, 'You addded digital graphics')

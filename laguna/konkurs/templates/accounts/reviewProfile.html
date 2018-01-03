@@ -15,8 +15,8 @@
         <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
           <div class="container" style="border-bottom:1px solid black">
             <h2>
-                {{ user.first_name }} {{ user.last_name }}
-                <a type="button" class="btn btn-info" href="{% url "updateProfile" %}">EDIT</a>
+              {{ user.first_name }} {{ user.last_name }}
+              <a type="button" class="btn btn-info" href="{% url "updateProfile" %}">EDIT</a>
             </h2>
           </div>
           <hr>
@@ -35,6 +35,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
+    <h1 style="font-size: 17px; color: #F44336 !important;">SHOW ALL WORKS</h1>
+    <a type="button" class="btn btn-info" href="{% url "ListOfWorks" %}">SHOW LIST</a>
   </div>
 </div>
 {% endblock %}
