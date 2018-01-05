@@ -140,9 +140,6 @@ class PictureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     template_name = 'worksDetail/picture_detail.html'
 
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
-
 
 class PictureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
@@ -182,9 +179,6 @@ class DigitalGraphicsDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin)
     model = DigitalGraphic
     template_name = 'worksDetail/digitalGraphics_detail.html'
 
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
-
 
 class DigitalGraphicsUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = DigitalGraphic
@@ -222,9 +216,6 @@ from .models import Sculpture
 class SculptureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Sculpture
     template_name = 'worksDetail/Sculpture_detail.html'
-
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
 
 
 class SculptureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
@@ -265,10 +256,6 @@ class PaintDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
     template_name = 'worksDetail/Paint_detail.html'
 
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
-
-
 class PaintUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
     fields = fields = ['title', 'wymiary', 'opis', 'cena',
@@ -306,9 +293,6 @@ from .models import VirtualArt
 class VirtualArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
     template_name = 'worksDetail/VirtualArt_detail.html'
-
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
 
 class VirtualArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
@@ -350,9 +334,6 @@ class VideoDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
     template_name = 'worksDetail/Video_detail.html'
 
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
-
 
 class VideoUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
@@ -393,9 +374,6 @@ class PerformenceDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
     template_name = 'worksDetail/Performence_detail.html'
 
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
-
 
 class PerformenceUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
@@ -435,9 +413,6 @@ class LandArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     template_name = 'worksDetail/LandArt_detail.html'
 
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
-
 class LandArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']
@@ -475,9 +450,6 @@ from .models import UrbanArt
 class UrbanArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
     template_name = 'worksDetail/UrbanArt_detail.html'
-
-    def test_func(self):
-        return user_is_uczestnik(self.request.user)
 
 class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
