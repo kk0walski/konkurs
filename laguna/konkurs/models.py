@@ -248,11 +248,8 @@ class Work(models.Model):
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
     addTime = models.DateTimeField(default=datetime.now())
 
-from star_ratings.models import AbstractBaseRating
-
-class MyRating(AbstractBaseRating):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-    work = models.ForeignKey(Work, on_delete=models.CASCADE)
+    def __str__(self):
+        return '{}: {}'.format(self.id, self.title)
 
 class Sculpture(Work):
     wymiary = models.CharField(max_length=30)

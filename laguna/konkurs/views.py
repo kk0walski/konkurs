@@ -140,7 +140,6 @@ class PictureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     template_name = 'worksDetail/picture_detail.html'
 
-
 class PictureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     fields = fields = ['title', 'wymiary', 'opis',
