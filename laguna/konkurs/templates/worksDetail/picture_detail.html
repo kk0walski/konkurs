@@ -85,7 +85,11 @@
     <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
         {% if request.user|user_is_uczestnik %}
             <h1 style="font-size: 17px; color: #F44336 !important;">EDIT WORK</h1>
+<<<<<<< HEAD
             <a type="button" class="btn btn-info" href="{% url 'DigitalGraphicsUpdate' object.pk %}">EDIT</a>
+=======
+            <a type="button" class="btn btn-info" href="{% url " DigitalGraphicsUpdate " object.pk %}">EDIT</a>
+>>>>>>> ae3bc57e5ba313b2afc13ec91b92bf2b145ed9df
         {% else %} 
             {% ratings object %}
         {% endif %}
