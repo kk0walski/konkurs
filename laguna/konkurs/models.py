@@ -231,6 +231,9 @@ class Uczestnik(models.Model):
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
+from django.contrib.contenttypes.fields import GenericRelation
+from star_ratings.models import Rating
+
 class Work(models.Model):
     CATEGORY = (
         ('Sculpture', 'Rzeźba'),
@@ -247,6 +250,7 @@ class Work(models.Model):
     title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
     addTime = models.DateTimeField(default=datetime.now())
+    ratings = GenericRelation(Rating, related_query_name='rates')
 
     def __str__(self):
         return '{}: {}'.format(self.id, self.title)
