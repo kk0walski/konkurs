@@ -257,7 +257,7 @@ class Work(models.Model):
     category = models.CharField(max_length=30, choices=CATEGORY)
     title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
-    addTime = models.DateTimeField(default=datetime.now())
+    addTime = models.DateTimeField(default=datetime(2018, 1, 12, 20, 41, 30, 482160))
     ratings = GenericRelation(Rating, related_query_name='rates')
     average = models.DecimalField(max_digits=6, decimal_places=3, default=Decimal(0.0))
     awards = models.ManyToManyField(Award)
