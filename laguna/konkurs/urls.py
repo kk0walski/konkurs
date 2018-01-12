@@ -6,7 +6,7 @@ from .views import user_profile, add_sculpture, add_paint, add_picture
 from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_digitalGraphics
 from .views import PictureUpdate, DigitalGraphicsUpdate, SculptureUpdate, PaintUpdate
 from .views import VirtualArtUpdate, VideoUpdate, PerformenceUpdate, LandArtUpdate
-from .views import UrbanArtUpdate, WorkListView
+from .views import UrbanArtUpdate, WorkListView, update_average
 from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
@@ -46,4 +46,5 @@ urlpatterns = [
     path('profile/works/Performence/<int:pk>/edit', PerformenceUpdate.as_view(), name="PerformenceUpdate"),
     path('profile/works/LandArt/<int:pk>/edit', LandArtUpdate.as_view(), name="LandArtUpdate"),
     path('profile/works/UrbanArt/<int:pk>/edit', UrbanArtUpdate.as_view(), name="UrbanArtUpdate"),
+    path('profile/works/update/<int:id>', update_average, name="update")
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

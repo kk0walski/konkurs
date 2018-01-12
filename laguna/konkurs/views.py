@@ -499,3 +499,10 @@ class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
 
     def test_func(self):
         return user_is_uczestnik(self.request.user)
+
+def update_average(request, id):
+    work = Work.objects.get(pk=id);
+    rate = work.ratings.get_queryset()[0]
+    work.average = rate.average
+    work.save()
+    return redirect('ListOfWorks')

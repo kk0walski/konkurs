@@ -236,6 +236,7 @@ class Uczestnik(models.Model):
 
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
+from decimal import Decimal
 
 class Work(models.Model):
     CATEGORY = (
@@ -254,6 +255,7 @@ class Work(models.Model):
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
     addTime = models.DateTimeField(default=datetime.now())
     ratings = GenericRelation(Rating, related_query_name='rates')
+    average = models.DecimalField(max_digits=6, decimal_places=3, default=Decimal(0.0))
 
     def __str__(self):
         return '{}: {}'.format(self.id, self.title)

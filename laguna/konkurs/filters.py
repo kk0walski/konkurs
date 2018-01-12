@@ -7,5 +7,6 @@ class WorkListFilter(django_filters.FilterSet):
         fields = {
             'category' : ['exact'],
             'title' : ['contains'],
-            'addTime' : ['month', 'day', 'year']
+            'addTime' : ['month', 'day', 'year'],
+            'average' : ['exact']
         }

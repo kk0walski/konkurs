@@ -63,7 +63,8 @@
             <h1 style="font-size: 17px; color: #F44336 !important;">EDIT WORK</h1>
             <a type="button" class="btn btn-info" href="{% url 'DigitalGraphicsUpdate' object.pk %}">EDIT</a>
         {% else %} 
-            {% ratings work %}
+            {% ratings work %}<br/>
+            <a type="button" class="btn btn-info" href="{% url 'update' object.pk %}">UPDATE</a>
         {% endif %}
     </div>
 </div>
