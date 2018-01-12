@@ -3,6 +3,7 @@ from .models import Work
 
 class WorkTable(tables.Table):
     details = tables.TemplateColumn('<a href="works/{{record.category}}/{{record.id}}">Show details</a>')
+    average = tables.TemplateColumn('{{ record.ratings.all.first.average }}')
     class Meta:
         model = Work
         template = 'django_tables2/bootstrap.html'

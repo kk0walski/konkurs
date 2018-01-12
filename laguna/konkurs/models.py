@@ -231,6 +231,9 @@ class Uczestnik(models.Model):
     site = models.CharField(max_length=50)
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
+    def __str__(self):
+        return '{}'.format(self.id)
+
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 

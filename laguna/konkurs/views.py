@@ -140,6 +140,11 @@ class PictureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     template_name = 'worksDetail/picture_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
+
 class PictureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
     fields = fields = ['title', 'wymiary', 'opis',
@@ -177,6 +182,11 @@ from .models import DigitalGraphic
 class DigitalGraphicsDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = DigitalGraphic
     template_name = 'worksDetail/digitalGraphics_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 
 
 class DigitalGraphicsUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
@@ -215,6 +225,11 @@ from .models import Sculpture
 class SculptureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Sculpture
     template_name = 'worksDetail/Sculpture_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 
 
 class SculptureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
@@ -254,6 +269,11 @@ from .models import Paint
 class PaintDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
     template_name = 'worksDetail/Paint_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 
 class PaintUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
@@ -292,6 +312,11 @@ from .models import VirtualArt
 class VirtualArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
     template_name = 'worksDetail/VirtualArt_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 
 class VirtualArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
@@ -332,7 +357,11 @@ from .models import Video
 class VideoDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
     template_name = 'worksDetail/Video_detail.html'
-
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 
 class VideoUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
@@ -372,7 +401,11 @@ from .models import Performence
 class PerformenceDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
     template_name = 'worksDetail/Performence_detail.html'
-
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 
 class PerformenceUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
@@ -411,7 +444,11 @@ from .models import LandArt
 class LandArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     template_name = 'worksDetail/LandArt_detail.html'
-
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 class LandArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']
@@ -449,7 +486,11 @@ from .models import UrbanArt
 class UrbanArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
     template_name = 'worksDetail/UrbanArt_detail.html'
-
+    
+    def get_context_data(self, **kwargs):
+        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context['work'] = Work.objects.get(pk=self.kwargs['pk'])
+        return context
 class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']

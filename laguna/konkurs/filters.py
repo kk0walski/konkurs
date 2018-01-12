@@ -4,4 +4,8 @@ from .models import Work
 class WorkListFilter(django_filters.FilterSet):
     class Meta:
         model = Work
-        fields = ['category', 'title', 'addTime']
+        fields = {
+            'category' : ['exact'],
+            'title' : ['contains'],
+            'addTime' : ['month', 'day', 'year']
+        }
