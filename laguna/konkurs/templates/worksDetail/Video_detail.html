@@ -1,4 +1,12 @@
-{% extends 'base.html' %} {% load konkurs_extras %} {% block content %}
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load konkurs_extras %}
+{% load ratings %}
+{% block link %}
+    <link rel="stylesheet" href="{% static "star-ratings/css/star-ratings.css" %}">
+    <script type="text/javascript" src="{% static "star-ratings/js/dist/star-ratings.min.js" %}"></script>
+{% endblock %}
+{% block content %}
 <div style="background-color: #D3D3D3; padding: 20px;">
     <div class="container-fluid" style="padding: 20px; margin-bottom: 20px; background-color: #fff">
         <h1 style="font-size: 25px; color: #F44336 !important;">{{ object.title }}</h1>
@@ -86,11 +94,13 @@
             </figcaption>
         </figure>
     </div>
-    {% if request.user|user_is_uczestnik %}
-        <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
+    <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
+        {% if request.user|user_is_uczestnik %}
             <h1 style="font-size: 17px; color: #F44336 !important;">EDIT WORK</h1>
-            <a type="button" class="btn btn-info" href="{% url "PaintUpdate" object.pk %}">EDIT</a>
-        </div>
-    {% endif %}
+            <a type="button" class="btn btn-info" href="{% url 'DigitalGraphicsUpdate' object.pk %}">EDIT</a>
+        {% else %} 
+            {% ratings work %}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
