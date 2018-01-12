@@ -234,9 +234,13 @@ class Uczestnik(models.Model):
     def __str__(self):
         return '{}'.format(self.id)
 
+from decimal import Decimal
+class Award(models.Model):
+    nazwa = models.CharField(max_length=30)
+    kwota = models.DecimalField(max_digits=6, decimal_places=2, default=Decimal(0.0))
+
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
-from decimal import Decimal
 
 class Work(models.Model):
     CATEGORY = (
@@ -256,6 +260,7 @@ class Work(models.Model):
     addTime = models.DateTimeField(default=datetime.now())
     ratings = GenericRelation(Rating, related_query_name='rates')
     average = models.DecimalField(max_digits=6, decimal_places=3, default=Decimal(0.0))
+    awards = models.ManyToManyField(Award)
 
     def __str__(self):
         return '{}: {}'.format(self.id, self.title)
