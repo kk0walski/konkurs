@@ -61,11 +61,11 @@ class CurserTestModel(TestCase):
 
     def test_validation(self):
         form_data = {
-                "birthday": "1995-01-26",
+                "birthday": "2005-01-26",
                 "place_of_birth": "Kalisz",
                 "alias": "dupa",
-                "phone_number": str(PhoneNumber.from_string("+48123456789")),
-                "cellphone_number": str(PhoneNumber.from_string("+48123456789")),
+                "phone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
+                "cellphone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
                 "nationality": "Poland",
                 "biography": "dadadsdsdsdsad",
                 "country": "Poland",
@@ -81,8 +81,8 @@ class CurserTestModel(TestCase):
                 "birthday": "1995-01-26",
                 "place_of_birth": "Kalisz",
                 "alias": "dupa",
-                "phone_number": str(PhoneNumber.from_string("+48123456789")),
-                "cellphone_number": str(PhoneNumber.from_string("+48123456789")),
+                "phone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
+                "cellphone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
                 "nationality": "Poland",
                 "biography": "dadadsdsdsdsad",
                 "country": "Poland",
