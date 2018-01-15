@@ -12,6 +12,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 def calculate_age(born):
+    """
+        Funkcja wyliczająca wiek po dacie urodzenia
+    """
     today = date.today()
     return today.year - born.year - \
            ((today.month, today.day) < (born.month, born.day))

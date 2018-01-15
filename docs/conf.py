@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # laguna documentation build configuration file, created by
-# sphinx-quickstart on Mon Jan 15 19:35:35 2018.
+# sphinx-quickstart on Mon Jan 15 20:31:15 2018.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -20,8 +20,6 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-from django.conf import settings
-settings.configure()
 
 
 # -- General configuration ------------------------------------------------
@@ -35,6 +33,7 @@ settings.configure()
 # ones.
 extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.coverage',
+    'sphinx.ext.viewcode',
     'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
