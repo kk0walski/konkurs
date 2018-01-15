@@ -5,6 +5,7 @@ from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
 class UserForm(forms.ModelForm):
+    """Formularz rejestracji użytkownika"""
     password = forms.CharField(label='Hasło', widget=forms.PasswordInput)
     password2 = forms.CharField(
         label='Powtórz hasło', widget=forms.PasswordInput)
@@ -12,13 +13,14 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = CUser
         fields = ('email', 'first_name', 'last_name')
-
+    """Sprawdzenie czy hasła się zgadzają"""
     def clean_password2(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Hasła nie są identyczne')
         return cd['password2']
 
+"""Formularz edycji użytkownika"""
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = CUser
