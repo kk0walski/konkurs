@@ -24,3 +24,5 @@ This are fields of model Uczestnik::
 
     def __str__(self):
         return '{}'.format(self.id)
+
+Wszystkie pola modelu są obowiązkowe z wyjątkiem aliasu oraz strony internetowej.

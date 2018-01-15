@@ -1,7 +1,7 @@
 NATIONALITY
 -----------
 
-This is reference document with list of models
+To jest lista narodowości możliwych do wyboru
 
 * ("Afghanistan", 'Afganistan'),
 * ("Albania", 'Albania'),
