@@ -226,10 +226,10 @@ class Uczestnik(models.Model):
     nationality = models.CharField(max_length=30, choices=NATIONALITY)
     biography = models.TextField()
     country = models.CharField(max_length=30, choices=NATIONALITY)
-    city = models.CharField(_('City'), max_length=100, blank=True)
-    street_line = models.CharField(_('Address'), max_length=100, blank=True)
+    city = models.CharField(_('City'), max_length=100)
+    street_line = models.CharField(_('Address'), max_length=100)
     site = models.CharField(max_length=50, null=True)
-    zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
+    zipcode = models.CharField(_('ZIP code'), max_length=5)
 
     def __str__(self):
         return '{}'.format(self.id)

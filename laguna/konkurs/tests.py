@@ -2,6 +2,7 @@ from django.test import TestCase
 import datetime
 from model_mommy import mommy
 from model_mommy.recipe import Recipe, foreign_key
+from .forms import ProfileForm
 
 # Create your tests here.
 from cuser.models import CUser
@@ -47,7 +48,27 @@ class CurserTestModel(TestCase):
             CUser,
             email='karol.kowalski95@gmail.com'
         )
+        self.sekretarz = mommy.make(
+            CUser,
+            email='sekretarz@gmail.com'
+        )
         self.uczestnik = self.create_uczestnik(uzytkownik=self.cuser)
     
     def test_createUczestnik(self):
         self.assertEqual(self.uczestnik.user, self.cuser)
+        self.assertEqual(Uczestnik.objects.count(), 1)
+
+    def test_validation(self):
+        form_data = {'birthday':'2005-01-20',
+                'place_of_birth':'Wrocław',
+                'phone_number':'+41 52 424 2424',
+                'cellphone_number':'+41 52 424 2424',
+                'nationality':'Poland',
+                'biography':'costam',
+                'country':'Poland',
+                'city':'Kalisz',
+                'street_line':'Hanki Sawickiej',
+                'site':'www.karolkowalski.pl',
+                'zipcode':'62500'}
+        form = ProfileForm(data=form_data)
+        self.assertFalse(form.is_valid())
