@@ -8,7 +8,9 @@ Welcome to Laguna's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   
+   models
+   nationality
 
 
 
