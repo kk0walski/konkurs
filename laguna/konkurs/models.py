@@ -220,7 +220,7 @@ class Uczestnik(models.Model):
     birthday = models.DateField(validators=[MinAgeValidator(18)], default = date.today)
     place_of_birth = models.CharField(
         _('Place Of Birth'), default='Kalisz', max_length=30, blank=False)
-    alias = models.CharField(_('Alias'), max_length=50)
+    alias = models.CharField(_('Alias'), max_length=50, null=True)
     phone_number = PhoneNumberField()
     cellphone_number = PhoneNumberField()
     nationality = models.CharField(max_length=30, choices=NATIONALITY)
@@ -228,7 +228,7 @@ class Uczestnik(models.Model):
     country = models.CharField(max_length=30, choices=NATIONALITY)
     city = models.CharField(_('City'), max_length=100, blank=True)
     street_line = models.CharField(_('Address'), max_length=100, blank=True)
-    site = models.CharField(max_length=50)
+    site = models.CharField(max_length=50, null=True)
     zipcode = models.CharField(_('ZIP code'), max_length=5, blank=True)
 
     def __str__(self):
