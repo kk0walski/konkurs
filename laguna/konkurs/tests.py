@@ -3,6 +3,7 @@ import datetime
 from model_mommy import mommy
 from model_mommy.recipe import Recipe, foreign_key
 from .forms import ProfileForm
+from phonenumber_field.phonenumber  import PhoneNumber
 
 # Create your tests here.
 from cuser.models import CUser
@@ -59,16 +60,36 @@ class CurserTestModel(TestCase):
         self.assertEqual(Uczestnik.objects.count(), 1)
 
     def test_validation(self):
-        form_data = {'birthday':'2005-01-20',
-                'place_of_birth':'Wrocław',
-                'phone_number':'+41 52 424 2424',
-                'cellphone_number':'+41 52 424 2424',
-                'nationality':'Poland',
-                'biography':'costam',
-                'country':'Poland',
-                'city':'Kalisz',
-                'street_line':'Hanki Sawickiej',
-                'site':'www.karolkowalski.pl',
-                'zipcode':'62500'}
+        form_data = {
+                "birthday": "1995-01-26",
+                "place_of_birth": "Kalisz",
+                "alias": "dupa",
+                "phone_number": str(PhoneNumber.from_string("+48123456789")),
+                "cellphone_number": str(PhoneNumber.from_string("+48123456789")),
+                "nationality": "Poland",
+                "biography": "dadadsdsdsdsad",
+                "country": "Poland",
+                "city": "Pakistan",
+                "street_line": "Ulica powsta\u0144c\u00f3w",
+                "site": "http://www.google.pl",
+                "zipcode": "52800"
+                }
         form = ProfileForm(data=form_data)
         self.assertFalse(form.is_valid())
+        form2 = ProfileForm(
+            {
+                "birthday": "1995-01-26",
+                "place_of_birth": "Kalisz",
+                "alias": "dupa",
+                "phone_number": str(PhoneNumber.from_string("+48123456789")),
+                "cellphone_number": str(PhoneNumber.from_string("+48123456789")),
+                "nationality": "Poland",
+                "biography": "dadadsdsdsdsad",
+                "country": "Poland",
+                "city": "Pakistan",
+                "street_line": "Ulica powsta\u0144c\u00f3w",
+                "site": "http://www.google.pl",
+                "zipcode": "52800"
+                }
+        )
+        self.assertTrue(form2.is_valid())
