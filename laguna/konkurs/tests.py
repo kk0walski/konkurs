@@ -121,14 +121,14 @@ class CurserTestModel(TestCase):
 
 
     def test_time(self):
-        path = os.path.join(settings.MEDIA_ROOT, 'jan.nowak@gmail.com\Picture\IMG_20171209_195254_processed.jpg')
+        path = os.path.join(settings.MEDIA_ROOT, r'jan.nowak@gmail.com\Picture\fotoshop.png')
         image = Image.open(path)
         TEST_IMAGE = image.tobytes()
         upload = InMemoryUploadedFile(
             io.BytesIO(TEST_IMAGE),
-            field_name='IMG_20171209_195254_processed',
-            name='IMG_20171209_195254_processed.jpg',
-            content_type='image/jpg',
+            field_name='fotoshop',
+            name='fotoshop.png',
+            content_type='image/png',
             size=len(TEST_IMAGE),
             charset='utf-8'
         )
