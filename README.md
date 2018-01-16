@@ -16,10 +16,3 @@ A następnie zainstalować wszystkie potrzebne pakiety
 ```
 pip install requirements.txt
 ```
-
-
-Najpierw trzeba wykonać poniższe polecenie
-
-```
-pip install requirements.txt
-```
