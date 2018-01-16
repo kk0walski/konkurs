@@ -32,9 +32,7 @@ class ProfileForm(forms.ModelForm):
         fields = ('birthday', 'place_of_birth', 'alias', 'phone_number', 'cellphone_number',
                   'nationality', 'biography', 'country', 'city', 'street_line', 'site', 'zipcode')
         widgets = {
-            'birthday': forms.DateInput(attrs={'type': 'date'}),
-            'phone_number': PhoneNumberPrefixWidget(),
-            'cellphone_number': PhoneNumberPrefixWidget(),
+            'birthday': forms.DateInput(attrs={'type': 'date'})
         }
 
 
