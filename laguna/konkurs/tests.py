@@ -1,13 +1,16 @@
+import os, io
+import laguna.settings as settings
 from django.test import TestCase
 import datetime
 from model_mommy import mommy
 from model_mommy.recipe import Recipe, foreign_key
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm, UserForm, VideoForm
 from phonenumber_field.phonenumber  import PhoneNumber
 
 # Create your tests here.
 from cuser.models import CUser
 from konkurs.models import Uczestnik, Picture
+from django.db.models.fields.files import ImageFieldFile
 
 class CurserTestModel(TestCase):
     """
@@ -113,3 +116,26 @@ class CurserTestModel(TestCase):
             }
         )
         self.assertTrue(form2.is_valid())
+
+
+    def test_time(self):
+        path = os.path.join(settings.MEDIA_ROOT, 'jan.nowak@gmail.com\Picture\IMG_20171209_195254_processed.jpg')
+                file = open(path, "rb")
+        obraz = ImageFieldFile(file = )
+        obraz.file
+        file_dict = {'file':SimpleUploadedFile(file.name, file.read()).}
+        data = {
+                "title":"title",
+                "time":"15:00",
+                "opis":"opis",
+                "cena":"0 zł",
+                "obraz": "jan.nowak@gmail.com/Picture/IMG_20171209_195254_processed.jpg",
+                'year':2010,
+                'video_url':"http://www.youtube.com",
+                'video_password': "password"
+            }
+        form = VideoForm(data=data, files=file_dict)
+        print(file_dict)
+        form.is_valid()
+        file.close()
+        print(form.errors)
