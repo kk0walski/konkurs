@@ -1,9 +1,14 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from cuser.models import CUser
-from cuser.models import DoesNotExist
 from .models import Uczestnik, Sculpture, Paint, Picture, VirtualArt, Video, Performence, LandArt, UrbanArt, DigitalGraphic
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
+
+class CustomAuthenticationForm(AuthenticationForm):
+    def clean(self):
+        self.cleaned_data['username'] = self.cleaned_data['username'].lower()
+        return super().clean()
 
 class UserForm(forms.ModelForm):
     """Formularz rejestracji użytkownika"""
@@ -28,7 +33,7 @@ class UserForm(forms.ModelForm):
         # Check to see if any users already exist with this email as a username.
         try:
             match = CUser.objects.get(email=email.lower())
-        except DoesNotExist:
+        except CUser.DoesNotExist:
             # Unable to find a user, this is fine
             return email
 

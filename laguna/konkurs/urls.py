@@ -1,4 +1,6 @@
+from functools import partial
 from django.urls import path
+from .forms import CustomAuthenticationForm
 from .views import PerformenceDetail, LandArtDetail, UrbanArtDetail
 from .views import PaintDetail, VirtualArtDetail, DigitalGraphicsDetail, VideoDetail
 from .views import FilteredWorkListView, update_profile, Register, PictureDetail, SculptureDetail
@@ -11,9 +13,11 @@ from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
 
+custom_login = partial(login, authentication_form=CustomAuthenticationForm)
+
 urlpatterns = [
     path('register/', Register.as_view(), name='register'),
-    path('login/', login, name='login'),
+    path('login/', custom_login, name='login'),
     path('profile/', user_profile, name='profile'),
     path('logout/', logout, name='logout', kwargs={'next_page' : '/'}),
     path('profile/sculpture', add_sculpture, name='sculpture'),
