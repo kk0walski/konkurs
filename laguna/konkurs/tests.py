@@ -76,7 +76,7 @@ class CurserTestModel(TestCase):
                 }
         form = ProfileForm(data=form_data)
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors, "{'birthday': ['Age must be at least 18.']}")
+        self.assertEqual(form.errors, {'birthday': ['Age must be at least 18.']})
         form2 = ProfileForm(
             {
                 "birthday": "1995-01-26",
@@ -104,6 +104,7 @@ class CurserTestModel(TestCase):
             }
         )
         self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors, {'password2':['Hasła nie są identyczne']})
         form2 = UserForm(
             {
                 "email":"example@gmail.com",
