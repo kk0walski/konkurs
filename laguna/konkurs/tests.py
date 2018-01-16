@@ -4,10 +4,12 @@ from django.core.files import File
 import laguna.settings as settings
 from django.test import TestCase
 import datetime
+from django.urls import reverse
 from model_mommy import mommy
 from model_mommy.recipe import Recipe, foreign_key
 from .forms import ProfileForm, UserForm, VideoForm
 from phonenumber_field.phonenumber  import PhoneNumber
+from django.test import Client
 
 # Create your tests here.
 from cuser.models import CUser
@@ -56,7 +58,8 @@ class CurserTestModel(TestCase):
         )
         self.sekretarz = mommy.make(
             CUser,
-            email='sekretarz@gmail.com'
+            email='sekretarz@gmail.com',
+            password="password"
         )
         self.uczestnik = self.create_uczestnik(uzytkownik=self.cuser)
     
@@ -145,3 +148,8 @@ class CurserTestModel(TestCase):
         form = VideoForm(data=data, files={'obraz':upload})
         form.is_valid()
         self.assertEqual(form.errors, {"obraz" : ['Upload a valid image. The file you uploaded was either not an image or a corrupted image.'], "time" : ["Za długi film"]})
+
+    def you_must_login(self):
+        c = Client()
+        response = c.get(reverse('ListOfWorks'))
+        self.assertEqual(response, '<HttpResponseRedirect status_code=302, "text/html; charset=utf-8", url="/accounts/login/?next=/accounts/profile/worksToReview">')
