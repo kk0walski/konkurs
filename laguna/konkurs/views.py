@@ -28,6 +28,7 @@ class Register(CreateView):
         if user_form.is_valid() and profile_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
+            new_user.email = new_user.email.lower()
             new_user.save()
             new_profile = profile_form.save(commit=False)
             new_profile.user = new_user

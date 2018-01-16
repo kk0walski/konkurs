@@ -150,6 +150,74 @@ class CurserTestModel(TestCase):
         self.assertEqual(form.errors, {"obraz" : ['Upload a valid image. The file you uploaded was either not an image or a corrupted image.'], "time" : ["Za długi film"]})
 
     def you_must_login(self):
-        c = Client()
-        response = c.get(reverse('ListOfWorks'))
+        response = self.client.get(reverse('ListOfWorks'))
         self.assertEqual(response, '<HttpResponseRedirect status_code=302, "text/html; charset=utf-8", url="/accounts/login/?next=/accounts/profile/worksToReview">')
+
+from django.contrib.auth import authenticate
+from cuser.models import CUser
+from django.db import IntegrityError
+from django.test import TestCase
+from .utils import create_user
+
+
+class CreateUserTests(TestCase):
+    """
+    Tests which create users.
+    """
+    def setUp(self):
+        self.email = 'user@example.com'
+        self.password = 'password'
+
+    def test_can_create_user(self):
+        user = create_user(self.email, self.password)
+        self.assertEquals(list(CUser.objects.all()), [user])
+
+    def test_can_create_user_with_long_email(self):
+        padding = 'a' * 30
+        create_user(padding + self.email, self.password)
+
+    def test_created_user_has_correct_details(self):
+        user = create_user(self.email, self.password)
+        self.assertEquals(user.email, self.email)
+
+    def test_can_create_user_with_explicit_id(self):
+        """Regression test for
+        https://github.com/dabapps/django-email-as-username/issues/52
+        """
+        CUser.objects.create(email=self.email, id=1)
+
+
+
+class ExistingUserTests(TestCase):
+    """
+    Tests which require an existing user.
+    """
+
+    def setUp(self):
+        self.email = 'user@example.com'
+        self.password = 'password'
+        self.user = create_user(self.email, self.password)
+
+    def test_user_can_authenticate(self):
+        auth = self.client.login(email=self.email, password=self.password)
+        self.assertTrue(auth)
+
+    def test_user_can_authenticate_with_case_insensitive_match(self):
+        auth = self.client.login(email=self.email.lower(), password=self.password)
+        self.assertTrue(auth)
+
+    def test_user_can_authenticate_with_username_parameter(self):
+        auth = self.client.login(username=self.email, password=self.password)
+        self.assertTrue(auth)
+        # Invalid username should be ignored
+        auth = self.client.login(email=self.email, password=self.password,
+                            username='invalid')
+        self.assertFalse(auth)
+
+    def test_user_emails_are_unique(self):
+        with self.assertRaises(IntegrityError) as ctx:
+            create_user(self.email, self.password)
+        self.assertEquals(str(ctx.exception), 'UNIQUE constraint failed: cuser_cuser.email')
+
+    def test_user_unicode(self):
+        self.assertEquals(self.user.email, self.email)
