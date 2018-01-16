@@ -110,4 +110,4 @@ class CurserTestModel(TestCase):
                 "password2":"password"
             }
         )
-        self.assertTrue(form.is_valid())
+        self.assertTrue(form2.is_valid())
