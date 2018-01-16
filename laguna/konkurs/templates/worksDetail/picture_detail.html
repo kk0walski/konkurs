@@ -85,7 +85,7 @@
     <div class="container-fluid text-center" style="padding: 20px 30px 20px; margin-bottom: 20px; background-color: #fff">
         {% if request.user|user_is_uczestnik %}
             <h1 style="font-size: 17px; color: #F44336 !important;">EDIT WORK</h1>
-            <a type="button" class="btn btn-info" href="{% url 'DigitalGraphicsUpdate' object.pk %}">EDIT</a>
+            <a type="button" class="btn btn-info" href="{% url 'PictureUpdate' object.pk %}">EDIT</a>
         {% else %} 
             {% ratings work %}<br/>
             <a type="button" class="btn btn-info" href="{% url 'update' object.pk %}">UPDATE</a>

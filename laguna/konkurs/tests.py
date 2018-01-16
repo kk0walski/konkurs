@@ -1,4 +1,6 @@
-import os, io
+import os, base64, io
+from PIL import Image
+from django.core.files import File
 import laguna.settings as settings
 from django.test import TestCase
 import datetime
@@ -10,7 +12,7 @@ from phonenumber_field.phonenumber  import PhoneNumber
 # Create your tests here.
 from cuser.models import CUser
 from konkurs.models import Uczestnik, Picture
-from django.db.models.fields.files import ImageFieldFile
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 class CurserTestModel(TestCase):
     """
@@ -120,22 +122,26 @@ class CurserTestModel(TestCase):
 
     def test_time(self):
         path = os.path.join(settings.MEDIA_ROOT, 'jan.nowak@gmail.com\Picture\IMG_20171209_195254_processed.jpg')
-                file = open(path, "rb")
-        obraz = ImageFieldFile(file = )
-        obraz.file
-        file_dict = {'file':SimpleUploadedFile(file.name, file.read()).}
+        image = Image.open(path)
+        TEST_IMAGE = image.tobytes()
+        upload = InMemoryUploadedFile(
+            io.BytesIO(TEST_IMAGE),
+            field_name='IMG_20171209_195254_processed',
+            name='IMG_20171209_195254_processed.jpg',
+            content_type='image/jpg',
+            size=len(TEST_IMAGE),
+            charset='utf-8'
+        )
         data = {
                 "title":"title",
-                "time":"15:00",
+                "time":"22:00",
                 "opis":"opis",
                 "cena":"0 zł",
-                "obraz": "jan.nowak@gmail.com/Picture/IMG_20171209_195254_processed.jpg",
+                "obraz": upload,
                 'year':2010,
                 'video_url':"http://www.youtube.com",
                 'video_password': "password"
             }
-        form = VideoForm(data=data, files=file_dict)
-        print(file_dict)
+        form = VideoForm(data=data, files={'obraz':upload})
         form.is_valid()
-        file.close()
-        print(form.errors)
+        self.assertEqual(form.errors, {"obraz" : ['Upload a valid image. The file you uploaded was either not an image or a corrupted image.'], "time" : ["Za długi film"]})
