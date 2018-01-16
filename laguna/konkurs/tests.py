@@ -20,7 +20,7 @@ class CurserTestModel(TestCase):
                         cellphone='+41 52 424 2424',
                         phone='+41 52 424 2424',
                         nation='Poland',
-                        bio='dupa',
+                        bio='Jakaś biografia',
                         coun='Poland',
                         cit='Wrocław',
                         street='Kościuszki 175A',
@@ -63,7 +63,7 @@ class CurserTestModel(TestCase):
         form_data = {
                 "birthday": "2005-01-26",
                 "place_of_birth": "Kalisz",
-                "alias": "dupa",
+                "alias": "ryzer",
                 "phone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
                 "cellphone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
                 "nationality": "Poland",
@@ -80,7 +80,7 @@ class CurserTestModel(TestCase):
             {
                 "birthday": "1995-01-26",
                 "place_of_birth": "Kalisz",
-                "alias": "dupa",
+                "alias": "ryzer",
                 "phone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
                 "cellphone_number": str(PhoneNumber.from_string("+48 12 345 6789")),
                 "nationality": "Poland",
