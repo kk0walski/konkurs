@@ -2,7 +2,7 @@ from django.test import TestCase
 import datetime
 from model_mommy import mommy
 from model_mommy.recipe import Recipe, foreign_key
-from .forms import ProfileForm
+from .forms import ProfileForm, UserForm
 from phonenumber_field.phonenumber  import PhoneNumber
 
 # Create your tests here.
@@ -93,3 +93,21 @@ class CurserTestModel(TestCase):
                 }
         )
         self.assertTrue(form2.is_valid())
+
+    def test_userForm(self):
+        form = UserForm(
+            {
+                "email":"example@gmail.com",
+                "password":"password",
+                "password2":"password2"
+            }
+        )
+        self.assertFalse(form.is_valid())
+        form2 = UserForm(
+            {
+                "email":"example@gmail.com",
+                "password":"password",
+                "password2":"password"
+            }
+        )
+        self.assertTrue(form.is_valid())
