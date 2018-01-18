@@ -91,10 +91,13 @@ class WorkListView(SingleTableMixin, LoginRequiredMixin, FilterView):
     filterset_class = WorkListFilter
 
     def get_queryset(self):
-        if self.request.user.groups.exists() and self.request.user.groups.filter(name__in=Work.CATEGORY).exists():
-            return Work.objects.filter(category__in=self.request.user.groups.values_list('name', flat=True))
+        queryset = Work.objects.all()
+        lista = [i[0] for i in Work.CATEGORY]
+        if self.request.user.groups.exists() and self.request.user.groups.filter(name__in=lista).exists():
+            queryset = queryset.filter(category__in=self.request.user.groups.values_list('name', flat=True))
         else:
-            return Work.objects.all()
+            queryset = Work.objects.none()
+        return queryset
 
 class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, UserPassesTestMixin):
     table_class = WorkTable
