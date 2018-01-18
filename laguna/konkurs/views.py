@@ -201,6 +201,8 @@ class DigitalGraphicsDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
+    def test_func(self):
+        return watching_test(self.request.user, 'DigitalGraphics', Work.objects.get(pk=self.pk))
 
 class DigitalGraphicsUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = DigitalGraphic
@@ -243,7 +245,9 @@ class SculptureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context = super(PictureDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
-
+    
+    def test_func(self):
+        return watching_test(self.request.user, 'Sculpture', Work.objects.get(pk=self.pk))
 
 class SculptureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Sculpture
@@ -288,6 +292,9 @@ class PaintDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
+    def test_func(self):
+        return watching_test(self.request.user, 'Paint', Work.objects.get(pk=self.pk))
+
 class PaintUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Paint
     fields = fields = ['title', 'wymiary', 'opis', 'cena',
@@ -330,6 +337,9 @@ class VirtualArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context = super(PictureDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
+
+    def test_func(self):
+        return watching_test(self.request.user, 'VirtualArt', Work.objects.get(pk=self.pk))
 
 class VirtualArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = VirtualArt
@@ -376,6 +386,9 @@ class VideoDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
+    def test_func(self):
+        return watching_test(self.request.user, 'Video', Work.objects.get(pk=self.pk))
+
 class VideoUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Video
     fields = fields = ['title', 'time', 'opis', 'cena', 'obraz',
@@ -420,6 +433,9 @@ class PerformenceDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
+    def test_func(self):
+        return watching_test(self.request.user, 'Performence', Work.objects.get(pk=self.pk))
+
 class PerformenceUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Performence
     fields = fields = ['title', 'time', 'opis', 'cena', 'obraz',
@@ -462,6 +478,9 @@ class LandArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context = super(PictureDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
+
+    def test_func(self):
+        return watching_test(self.request.user, 'LandArt', Work.objects.get(pk=self.pk))
 class LandArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = LandArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']
@@ -504,6 +523,9 @@ class UrbanArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context = super(PictureDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
+
+    def test_func(self):
+        return watching_test(self.request.user, 'UrbanArt', Work.objects.get(pk=self.pk))
 class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = UrbanArt
     fields = fields = ['title', 'obraz1', 'obraz2', 'obraz3', 'opis']
