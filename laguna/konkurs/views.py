@@ -7,9 +7,13 @@ from .models import Uczestnik
 
 
 def user_is_uczestnik(user):
+    """user_is_uczestnik.
+    :return: True if user is uczestnik"""
     return Uczestnik.objects.filter(user_id=user.pk).exists()
 
 def watching_test(user, category, work):
+    """user_is_uczestnik.
+    :return: True if user is uczestnik or user belong to proper group"""
     if user_is_uczestnik(user):
         return work.author == user
     else:
@@ -50,6 +54,18 @@ from django.db import transaction
 @transaction.atomic
 @user_passes_test(user_is_uczestnik)
 def update_profile(request):
+    """
+    Display an individual :model:`konkurs.Uczestnik`.
+    Profile can be updated
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Uczestnik`.
+
+    **Template:**
+
+    :template:`konkurs/profile.html`
+    """
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, instance=request.user)
         profile_form = ProfileForm(
@@ -76,6 +92,18 @@ from .models import Uczestnik
 
 @login_required
 def user_profile(request):
+    """
+    Display an individual :model:`konkurs.Uczestnik`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Uczestnik`.
+
+    **Template:**
+
+    :template:`konkurs/profile.html`
+    """
     current_user = request.user
     if user_is_uczestnik(current_user):
         profile = Uczestnik.objects.get(user_id=request.user.pk)
@@ -130,6 +158,18 @@ from .forms import PictureForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_picture(request):
+    """
+    Display an individual :model:`konkurs.Picture`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Picture`.
+
+    **Template:**
+
+    :template:`konkurs/picture.html`
+    """
     if request.method == 'POST':
         picture_form = PictureForm(request.POST, request.FILES)
         if picture_form.is_valid():
@@ -175,6 +215,18 @@ from .forms import DigitalGraphicsForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_digitalGraphics(request):
+     """
+    Display an individual :model:`konkurs.DigitalGraphics`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.DigitalGraphics`.
+
+    **Template:**
+
+    :template:`konkurs/digitalGraphics.html`
+    """
     if request.method == 'POST':
         digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
         if digitalGraphics_form.is_valid():
@@ -220,6 +272,18 @@ from .forms import SculptureForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_sculpture(request):
+     """
+    Display an individual :model:`konkurs.Sculpture`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Sculpture`.
+
+    **Template:**
+
+    :template:`konkurs/Sculpture.html`
+    """
     if request.method == 'POST':
         sculpture_form = SculptureForm(request.POST, request.FILES)
         if sculpture_form.is_valid():
@@ -266,6 +330,18 @@ from .forms import PaintForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_paint(request):
+     """
+    Display an individual :model:`konkurs.Paint`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Paint`.
+
+    **Template:**
+
+    :template:`konkurs/paint.html`
+    """
     if request.method == 'POST':
         paint_form = PaintForm(request.POST, request.FILES)
         if paint_form.is_valid():
@@ -312,6 +388,18 @@ from .forms import VirtualArtForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_virtualart(request):
+     """
+    Display an individual :model:`konkurs.VirtualArt`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.VirtualArt`.
+
+    **Template:**
+
+    :template:`works/virtualArt.html`
+    """
     if request.method == 'POST':
         virtualArt_form = VirtualArtForm(request.POST, request.FILES)
         if virtualArt_form.is_valid():
@@ -357,6 +445,18 @@ from .forms import VideoForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
+"""
+    Display an individual :model:`konkurs.Video`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Video`.
+
+    **Template:**
+
+    :template:`works/video.html`
+    """
 def add_video(request):
     if request.method == 'POST':
         video_form = VideoForm(request.POST, request.FILES)
@@ -406,6 +506,18 @@ from .forms import PerformenceForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_performence(request):
+    """
+    Display an individual :model:`konkurs.Performence`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.Performence`.
+
+    **Template:**
+
+    :template:`works/performence.html`
+    """
     if request.method == 'POST':
         performence_form = PerformenceForm(request.POST, request.FILES)
         if performence_form.is_valid():
@@ -453,6 +565,18 @@ from .forms import LandArtForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_landArt(request):
+     """
+    Display an individual :model:`konkurs.LandArt`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.LandArt`.
+
+    **Template:**
+
+    :template:`works/landArt.html`
+    """
     if request.method == 'POST':
         landArt_form = LandArtForm(request.POST, request.FILES)
         if landArt_form.is_valid():
@@ -497,6 +621,18 @@ from .forms import UrbanArtForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_urbanArt(request):
+     """
+    Display an individual :model:`konkurs.UrbanArt`.
+
+    **Context**
+
+    ``profilie``
+        An instance of :model:`konkurs.UrbanArt`.
+
+    **Template:**
+
+    :template:`works/urbanArt.html`
+    """
     if request.method == 'POST':
         urbanArt_form = UrbanArtForm(request.POST, request.FILES)
         if urbanArt_form.is_valid():
@@ -536,6 +672,9 @@ class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
         return user_is_uczestnik(self.request.user)
 
 def update_average(request, id):
+    """
+        Funkcja służy do zaktualizowania średniej oceny w modelu Work
+    """
     work = Work.objects.get(pk=id);
     rate = work.ratings.get_queryset()[0]
     work.average = rate.average

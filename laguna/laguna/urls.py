@@ -24,4 +24,5 @@ urlpatterns = [
     path('accounts/', include('konkurs.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
