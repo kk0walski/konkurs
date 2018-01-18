@@ -197,7 +197,7 @@ class DigitalGraphicsDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin)
     template_name = 'worksDetail/digitalGraphics_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(DigitalGraphicsDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
@@ -242,7 +242,7 @@ class SculptureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/Sculpture_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(SculptureDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
     
@@ -288,7 +288,7 @@ class PaintDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/Paint_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(PaintDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
@@ -334,7 +334,7 @@ class VirtualArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/VirtualArt_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(VirtualArtDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
@@ -382,7 +382,7 @@ class VideoDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/Video_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(VideoDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
@@ -429,7 +429,7 @@ class PerformenceDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/Performence_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(PerformenceDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
@@ -475,7 +475,7 @@ class LandArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/LandArt_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(LandArtDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
@@ -520,7 +520,7 @@ class UrbanArtDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
     template_name = 'worksDetail/UrbanArt_detail.html'
     
     def get_context_data(self, **kwargs):
-        context = super(PictureDetail, self).get_context_data(**kwargs)
+        context = super(UrbanArtDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
 
