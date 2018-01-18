@@ -215,18 +215,6 @@ from .forms import DigitalGraphicsForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_digitalGraphics(request):
-     """
-    Display an individual :model:`konkurs.DigitalGraphics`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.DigitalGraphics`.
-
-    **Template:**
-
-    :template:`konkurs/digitalGraphics.html`
-    """
     if request.method == 'POST':
         digitalGraphics_form = DigitalGraphicsForm(request.POST, request.FILES)
         if digitalGraphics_form.is_valid():
@@ -272,18 +260,6 @@ from .forms import SculptureForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_sculpture(request):
-     """
-    Display an individual :model:`konkurs.Sculpture`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.Sculpture`.
-
-    **Template:**
-
-    :template:`konkurs/Sculpture.html`
-    """
     if request.method == 'POST':
         sculpture_form = SculptureForm(request.POST, request.FILES)
         if sculpture_form.is_valid():
@@ -330,18 +306,6 @@ from .forms import PaintForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_paint(request):
-     """
-    Display an individual :model:`konkurs.Paint`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.Paint`.
-
-    **Template:**
-
-    :template:`konkurs/paint.html`
-    """
     if request.method == 'POST':
         paint_form = PaintForm(request.POST, request.FILES)
         if paint_form.is_valid():
@@ -388,18 +352,6 @@ from .forms import VirtualArtForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_virtualart(request):
-     """
-    Display an individual :model:`konkurs.VirtualArt`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.VirtualArt`.
-
-    **Template:**
-
-    :template:`works/virtualArt.html`
-    """
     if request.method == 'POST':
         virtualArt_form = VirtualArtForm(request.POST, request.FILES)
         if virtualArt_form.is_valid():
@@ -445,18 +397,6 @@ from .forms import VideoForm
 
 @login_required
 @user_passes_test(user_is_uczestnik)
-"""
-    Display an individual :model:`konkurs.Video`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.Video`.
-
-    **Template:**
-
-    :template:`works/video.html`
-    """
 def add_video(request):
     if request.method == 'POST':
         video_form = VideoForm(request.POST, request.FILES)
@@ -506,18 +446,6 @@ from .forms import PerformenceForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_performence(request):
-    """
-    Display an individual :model:`konkurs.Performence`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.Performence`.
-
-    **Template:**
-
-    :template:`works/performence.html`
-    """
     if request.method == 'POST':
         performence_form = PerformenceForm(request.POST, request.FILES)
         if performence_form.is_valid():
@@ -565,18 +493,6 @@ from .forms import LandArtForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_landArt(request):
-     """
-    Display an individual :model:`konkurs.LandArt`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.LandArt`.
-
-    **Template:**
-
-    :template:`works/landArt.html`
-    """
     if request.method == 'POST':
         landArt_form = LandArtForm(request.POST, request.FILES)
         if landArt_form.is_valid():
@@ -621,18 +537,6 @@ from .forms import UrbanArtForm
 @login_required
 @user_passes_test(user_is_uczestnik)
 def add_urbanArt(request):
-     """
-    Display an individual :model:`konkurs.UrbanArt`.
-
-    **Context**
-
-    ``profilie``
-        An instance of :model:`konkurs.UrbanArt`.
-
-    **Template:**
-
-    :template:`works/urbanArt.html`
-    """
     if request.method == 'POST':
         urbanArt_form = UrbanArtForm(request.POST, request.FILES)
         if urbanArt_form.is_valid():
