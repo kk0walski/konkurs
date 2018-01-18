@@ -9,6 +9,12 @@ from .models import Uczestnik
 def user_is_uczestnik(user):
     return Uczestnik.objects.filter(user_id=user.pk).exists()
 
+def watching_test(user, category, work):
+    if user_is_uczestnik(user):
+        return work.author == user
+    else:
+        return user.groups.filter(name=category).exists()
+
 #User Section
 
 from .forms import UserForm, ProfileForm
@@ -148,6 +154,9 @@ class PictureDetail(DetailView, LoginRequiredMixin, UserPassesTestMixin):
         context = super(PictureDetail, self).get_context_data(**kwargs)
         context['work'] = Work.objects.get(pk=self.kwargs['pk'])
         return context
+
+    def test_func(self):
+        return watching_test(self.request.user, 'Picture', Work.objects.get(pk=self.pk))
 
 class PictureUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
     model = Picture
