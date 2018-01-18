@@ -578,6 +578,7 @@ class UrbanArtUpdate(UpdateView, LoginRequiredMixin, UserPassesTestMixin):
 def update_average(request, id):
     """
         Funkcja służy do zaktualizowania średniej oceny w modelu Work
+        :return: None
     """
     work = Work.objects.get(pk=id);
     rate = work.ratings.get_queryset()[0]
