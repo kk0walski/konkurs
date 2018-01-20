@@ -242,6 +242,8 @@ class Award(models.Model):
     nazwa = models.CharField(max_length=30)
     kwota = models.DecimalField(max_digits=6, decimal_places=2, default=Decimal(0.0))
 
+from django.core.exceptions import ValidationError
+
 class Edition(models.Model):
     startDate = models.DateField()
     end = models.DateField()
