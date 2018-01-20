@@ -149,6 +149,7 @@ class FilteredWorkListView(SingleTableMixin, FilterView, LoginRequiredMixin, Use
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView
 from .models import Picture
+from .models import Edition
 from django.urls import reverse_lazy
 
 #Picture Section
@@ -175,6 +176,7 @@ def add_picture(request):
         if picture_form.is_valid():
             picture = picture_form.save(commit=False)
             picture.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            picture.edytion = Edition.objects.latest('pk')
             picture.category = 'Picture'
             picture.save()
             print(request)
@@ -220,6 +222,7 @@ def add_digitalGraphics(request):
         if digitalGraphics_form.is_valid():
             digitalGraphics = digitalGraphics_form.save(commit=False)
             digitalGraphics.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            digitalGraphics.edytion = Edition.objects.latest('pk')
             digitalGraphics.category = 'DigitalGraphics'
             digitalGraphics.save()
             messages.success(request, 'You addded digital graphics')
@@ -265,6 +268,7 @@ def add_sculpture(request):
         if sculpture_form.is_valid():
             sculpture = sculpture_form.save(commit=False)
             sculpture.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            sculpture.edytion = Edition.objects.latest('pk')
             sculpture.category = 'Sculpture'
             sculpture.save()
             messages.success(request, 'You addded sculpture')
@@ -311,6 +315,7 @@ def add_paint(request):
         if paint_form.is_valid():
             paint = paint_form.save(commit=False)
             paint.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            paint.edytion = Edition.objects.latest('pk')
             paint.category = 'Paint'
             paint.save()
             messages.success(request, 'You addded paint')
@@ -357,6 +362,7 @@ def add_virtualart(request):
         if virtualArt_form.is_valid():
             virtualArt = virtualArt_form.save(commit=False)
             virtualArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            virtualArt.edytion = Edition.objects.latest('pk')
             virtualArt.category = 'VirtualArt'
             virtualArt.save()
             messages.success(request, 'You addded virtual art')
@@ -403,6 +409,7 @@ def add_video(request):
         if video_form.is_valid():
             video = video_form.save(commit=False)
             video.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            video.edytion = Edition.objects.latest('pk')
             video.category = 'Video'
             video.save()
             messages.success(request, 'You addded video')
@@ -451,6 +458,7 @@ def add_performence(request):
         if performence_form.is_valid():
             performence = performence_form.save(commit=False)
             performence.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            performence.edytion = Edition.objects.latest('pk')
             performence.category = 'Performence'
             performence.save()
             messages.success(request, 'You addded performence')
@@ -498,6 +506,7 @@ def add_landArt(request):
         if landArt_form.is_valid():
             landArt = landArt_form.save(commit=False)
             landArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            landArt.edytion = Edition.objects.latest('pk')
             landArt.category = 'LandArt'
             landArt.save()
             messages.success(request, 'You addded landArt')
@@ -542,6 +551,7 @@ def add_urbanArt(request):
         if urbanArt_form.is_valid():
             urbanArt = urbanArt_form.save(commit=False)
             urbanArt.autor = Uczestnik.objects.get(user_id=request.user.pk)
+            urbanArt.edytion = Edition.objects.latest('pk')
             urbanArt.category = 'UrbanArt'
             urbanArt.save()
             messages.success(request, 'You addded urban art')

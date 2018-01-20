@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Uczestnik
-from .models import Uczestnik, Sculpture, Paint, VirtualArt, DigitalGraphic, Picture, Video, Performence, LandArt, UrbanArt, Award
+from .models import Uczestnik, Sculpture, Paint, VirtualArt, DigitalGraphic, Picture, Video, Performence, LandArt, UrbanArt, Award, Edition
 
 # Register your models here.
 admin.site.register(Uczestnik)
@@ -14,3 +14,4 @@ admin.site.register(Performence)
 admin.site.register(LandArt)
 admin.site.register(UrbanArt)
 admin.site.register(Award)
+admin.site.register(Edition)

@@ -242,6 +242,18 @@ class Award(models.Model):
     nazwa = models.CharField(max_length=30)
     kwota = models.DecimalField(max_digits=6, decimal_places=2, default=Decimal(0.0))
 
+class Edition(models.Model):
+    startDate = models.DateField()
+    end = models.DateField()
+
+    def clean(self):
+        start_date = self.startDate
+        end_date = self.end
+
+        if start_date and end_date:
+            if end_date < start_date:
+                raise ValidationError(_('Data zakonczenia musi byc wieksza od daty rozpoczecia'))
+
 from django.contrib.contenttypes.fields import GenericRelation
 from star_ratings.models import Rating
 
@@ -257,6 +269,7 @@ class Work(models.Model):
         ('LandArt', 'LandArt'),
         ('UrbanArt', 'UrbanArt')
     )
+    edytion = models.ForeignKey('Edition', on_delete=models.DO_NOTHING)
     category = models.CharField(max_length=30, choices=CATEGORY)
     title = models.CharField(max_length=30)
     autor = models.ForeignKey('Uczestnik', on_delete=models.CASCADE)
