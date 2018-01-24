@@ -279,6 +279,7 @@ class Work(models.Model):
     ratings = GenericRelation(Rating, related_query_name='rates')
     average = models.DecimalField(max_digits=6, decimal_places=3, default=Decimal(0.0))
     awards = models.ManyToManyField(Award)
+    oplacona = models.BooleanField(default=False)
 
     def __str__(self):
         return '{}: {}'.format(self.id, self.title)
