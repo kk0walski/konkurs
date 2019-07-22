@@ -9,7 +9,7 @@ from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_dig
 from .views import PictureUpdate, DigitalGraphicsUpdate, SculptureUpdate, PaintUpdate
 from .views import VirtualArtUpdate, VideoUpdate, PerformenceUpdate, LandArtUpdate
 from .views import UrbanArtUpdate, WorkListView, update_average
-from django.contrib.auth.views import login, logout
+from django.contrib.auth import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
 
