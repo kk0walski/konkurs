@@ -124,7 +124,7 @@ class CurserTestModel(TestCase):
 
 
     def test_time(self):
-        path = os.path.join(settings.MEDIA_ROOT, r'jan.nowak@gmail.com\Picture\fotoshop.png')
+        path = os.path.join(settings.MEDIA_ROOT, r'jan.nowak@gmail.com/Picture/fotoshop.png')
         image = Image.open(path)
         TEST_IMAGE = image.tobytes()
         upload = InMemoryUploadedFile(
