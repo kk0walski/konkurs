@@ -9,17 +9,15 @@ from .views import add_virtualart, add_video, add_landArt, add_urbanArt, add_dig
 from .views import PictureUpdate, DigitalGraphicsUpdate, SculptureUpdate, PaintUpdate
 from .views import VirtualArtUpdate, VideoUpdate, PerformenceUpdate, LandArtUpdate
 from .views import UrbanArtUpdate, WorkListView, update_average
-from django.contrib.auth import login, logout
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-custom_login = partial(login, authentication_form=CustomAuthenticationForm)
-
 urlpatterns = [
     path('register/', Register.as_view(), name='register'),
-    path('login/', custom_login, name='login'),
+    path('login/', auth_views.LoginView.as_view(), {'authentication_form': CustomAuthenticationForm} , name='login'),
     path('profile/', user_profile, name='profile'),
-    path('logout/', logout, name='logout', kwargs={'next_page' : '/'}),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('profile/sculpture', add_sculpture, name='sculpture'),
     path('profile/paint', add_paint, name='paint'),
     path('profile/picture', add_picture, name='picture'),
