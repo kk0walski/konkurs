@@ -17,7 +17,7 @@ Invalid Login
 Invalid Registration
     Open Browser To Register Page
     Set Basic Data     konrad.staszewski@gmail.com   Konrad  Staszewski  password
-    [Teardown]    Close Browser
+    Set Additional Data  26.01.1995  Kalisz  rolnik   +48 12 345 6789
 
 *** Keywords ***
 Open Browser To Login Page
@@ -41,6 +41,13 @@ Set Basic Data
     Input Text  last_name   ${last_name}   
     Input Text  password  ${password}
     Input Text  password2  ${password}
+
+Set Additional Data
+    [Arguments]   ${birthday}   ${placeOfBirth}   ${Alias}  ${phone}
+    Input Text  birthday    ${birthday}
+    Input Text  place_of_birth  ${placeOfBirth}
+    Input Text  alias   ${Alias}
+    Input Text  phone_number    ${phone}  
 
 Login Page Should Remain
     Title Should Be    Logowanie
