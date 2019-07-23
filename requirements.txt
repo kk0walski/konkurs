@@ -17,7 +17,6 @@ Django==2.2.3
 django-bootstrap4==0.0.8
 django-braces==1.13.0
 django-crispy-forms==1.7.2
-django-cuser==2017.3.16
 django-filter==2.2.0
 django-foundation-filefield-widget==0.0.4
 django-model-utils==3.2.0
