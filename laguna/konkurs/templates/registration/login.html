@@ -18,7 +18,7 @@
                 {% csrf_token %}
                 <input type="hidden" name="next" value="{{ next }}" />
                 {% buttons %}
-                    <button type="submit" class="btn btn-primary">LOGIN</button>
+                    <button name="login" type="submit" class="btn btn-primary">LOGIN</button>
                 {% endbuttons %}
             </form>
     </div>
