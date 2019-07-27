@@ -14,7 +14,7 @@ from django.test import Client
 # Create your tests here.
 from cuser.models import CUser
 from konkurs.models import Uczestnik, Picture
-from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 class CurserTestModel(TestCase):
     """
@@ -125,29 +125,24 @@ class CurserTestModel(TestCase):
 
     def test_time(self):
         path = os.path.join(settings.MEDIA_ROOT, r'jan.nowak@gmail.com/Picture/fotoshop.png')
-        image = Image.open(path)
-        TEST_IMAGE = image.tobytes()
-        upload = InMemoryUploadedFile(
-            io.BytesIO(TEST_IMAGE),
-            field_name='fotoshop',
+        photo = SimpleUploadedFile(
             name='fotoshop.png',
-            content_type='image/png',
-            size=len(TEST_IMAGE),
-            charset='utf-8'
+            content=open(path, 'rb').read(),
+            content_type='image/png'
         )
         data = {
                 "title":"title",
                 "time":"22:00",
                 "opis":"opis",
                 "cena":"0 zł",
-                "obraz": upload,
+                "obraz": photo,
                 'year':2010,
                 'video_url':"http://www.youtube.com",
                 'video_password': "password"
             }
-        form = VideoForm(data=data, files={'obraz':upload})
+        form = VideoForm(data=data, files={'obraz':photo})
         form.is_valid()
-        self.assertEqual(form.errors, {"obraz" : ['Upload a valid image. The file you uploaded was either not an image or a corrupted image.'], "time" : ["Za długi film"]})
+        self.assertEqual(form.errors, {"time" : ["Za długi film"]})
 
     def you_must_login(self):
         response = self.client.get(reverse('ListOfWorks'))
