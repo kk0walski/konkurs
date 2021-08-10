@@ -1,7 +1,5 @@
 from django import forms
-from django.forms.widgets import DateInput
 from .models import CustomUser, Address
-from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
@@ -30,10 +28,10 @@ class UserForm(forms.ModelForm):
         fields = (
             "email",
             "username",
-            "phone_number",
-            "cellphone_number",
             "first_name",
             "last_name",
+            "phone_number",
+            "cellphone_number",
             "site",
             "birthday",
             "nationality",
