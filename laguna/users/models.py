@@ -37,6 +37,7 @@ class CustomUserManager(BaseUserManager):
 
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
@@ -316,12 +317,22 @@ class CountryField(models.CharField):
         return name, path, args, kwargs
 
 
+from django.utils import timezone
+
 class CustomUser(AbstractUser):
+    username_validator = UnicodeUsernameValidator()
+
+    username = models.CharField(
+        _('username'),
+        max_length=150,
+        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+        validators=[username_validator],
+    )
     email = models.EmailField(_("email address"), unique=True)
     site = models.URLField(blank=True)
-    birthday = models.DateField()
+    birthday = models.DateField(default=timezone.now)
     place_of_birth = models.CharField(
-        _("Place Of Birth"), default="Kalisz", max_length=100, blank=False
+        _("Place Of Birth"), default="Kalisz", max_length=100
     )
     phone_number = PhoneNumberField(
         blank=True, help_text=_("Phone number ex: '+41524204242'")
