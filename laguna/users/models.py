@@ -36,6 +36,7 @@ class CustomUserManager(BaseUserManager):
 
 
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
@@ -317,9 +318,13 @@ class CountryField(models.CharField):
 
 class CustomUser(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
-    phone_number = PhoneNumberField(blank=True)
-    cellphone_number = PhoneNumberField(blank=True)
-    nationality = CountryField(_("Country"))
+    phone_number = PhoneNumberField(
+        blank=True, help_text=_("Phone number ex: '+41524204242'")
+    )
+    cellphone_number = PhoneNumberField(
+        blank=True, help_text=_("Phone number ex: '+41524204242'")
+    )
+    nationality = CountryField(_("Nationality"))
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -331,6 +336,10 @@ class CustomUser(AbstractUser):
 
 
 class Address(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
     fullAddress = models.CharField(
         _("Full name"),
         max_length=1024,
@@ -361,3 +370,6 @@ class Address(models.Model):
     )
 
     country = CountryField(_("Country"))
+
+    class Meta:
+        verbose_name_plural = _("Addresses")
