@@ -1,5 +1,6 @@
 from django import forms
 from .models import CustomUser, Address
+from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
@@ -8,8 +9,8 @@ class UserForm(forms.ModelForm):
 
     password = forms.CharField(label="Hasło", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Powtórz hasło", widget=forms.PasswordInput)
-    phone_number = PhoneNumberPrefixWidget()
-    cellphone_number = PhoneNumberPrefixWidget()
+    phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial="PL"))
+    cellphone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial="PL"))
 
     class Meta:
         model = CustomUser
@@ -18,8 +19,6 @@ class UserForm(forms.ModelForm):
             "username",
             "first_name",
             "last_name",
-            'phone_number',
-            'cellphone_number',
             "site",
             "birthday",
             "nationality",
