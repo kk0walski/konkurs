@@ -32,6 +32,6 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(CustomUser, CustomUserAdmin)
 
 class AddressAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('fullAddress', 'zip_code', 'city',)
 
 admin.site.register(Address, AddressAdmin)
