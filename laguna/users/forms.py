@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.widgets import DateInput
 from .models import CustomUser, Address
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
@@ -9,14 +10,28 @@ class UserForm(forms.ModelForm):
 
     password = forms.CharField(label="Hasło", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Powtórz hasło", widget=forms.PasswordInput)
-    phone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial="PL"))
-    cellphone_number = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial="PL"))
 
     class Meta:
         model = CustomUser
+        widgets = {
+            "birthday": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "firstDay": 1,
+                    "pattern=": "\d{4}-\d{2}-\d{2}",
+                    "lang": "pl",
+                    "format": "yyyy-mm-dd",
+                    "type": "date",
+                },
+            ),
+            "phone_number": PhoneNumberPrefixWidget(initial="PL"),
+            "cellphone_number": PhoneNumberPrefixWidget(initial="PL"),
+        }
         fields = (
             "email",
             "username",
+            "phone_number",
+            "cellphone_number",
             "first_name",
             "last_name",
             "site",
