@@ -35,6 +35,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
+from datetime import date
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
@@ -318,6 +319,11 @@ class CountryField(models.CharField):
 
 class CustomUser(AbstractUser):
     email = models.EmailField(_("email address"), unique=True)
+    site = models.URLField(blank=True)
+    birthday = models.DateField(default=date.today)
+    place_of_birth = models.CharField(
+        _("Place Of Birth"), default="Kalisz", max_length=100, blank=False
+    )
     phone_number = PhoneNumberField(
         blank=True, help_text=_("Phone number ex: '+41524204242'")
     )
@@ -341,7 +347,7 @@ class Address(models.Model):
         on_delete=models.CASCADE,
     )
     fullAddress = models.CharField(
-        _("Full name"),
+        _("Full address"),
         max_length=1024,
     )
 
