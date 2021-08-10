@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<div class="container" style="padding: 20px;">
+    <h1 style="font-size: 25px; color: #F44336 !important;">Enrollment to the 12th International Art Prize Arte
+        Laguna</h1>
+    <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
+    <form method="post">
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <h5 style="font-size: 17px; color: #F44336 !important;">LOGGING INFO</h5>
+            {% csrf_token %}
+            {% bootstrap_form user_form %}
+            {% bootstrap_form_errors user_form %}
+        </div>
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <h5 style="font-size: 17px; color: #F44336 !important;">ADDRESS INFO</h5>
+            {% csrf_token %}
+            {% bootstrap_form address_form %}
+            {% bootstrap_form_errors address_form %}
+        </div>
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            {% bootstrap_button button_type="submit" content="OK" %}
+            {% bootstrap_button button_type="reset" content="Cancel" %}
+        </div>
+    </form>
+</div>
+{% endblock %}

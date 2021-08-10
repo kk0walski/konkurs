@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container" style="padding: 20px;">
+    <h1 style="font-size: 25px; color: #F44336 !important;">Enrollment to the 12th International Art Prize Arte
+        Laguna</h1>
+    <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
+    <div style="padding: 10px; background-color: #fff">
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% bootstrap_form_errors form %}
+            {% bootstrap_button button_type="submit" content="LOGIN" %}
+            {% bootstrap_button button_type="reset" content="Cancel" %}
+        </form>
+    </div>
+</div>
+{% endblock %}
