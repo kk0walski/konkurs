@@ -49,48 +49,27 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
+
 class ParticipantAdmin(admin.ModelAdmin):
     model = Participant
-    list_display = ("user_email", "nationality", "user_first_name", "user_last_name")
+    list_display = ("user", "nationality")
     list_filter = ("user", "nationality")
     fieldsets = (
-        (None, {"fields": ("user", "phone_number", "cellphone_number")}),
+        (_("Contact info"), {"fields": ("user", "phone_number", "cellphone_number")}),
         (
             _("Personal info"),
             {
                 "fields": (
-                    "user_username",
-                    "user_first_name",
-                    "user_last_name",
                     "birthday",
                     "site",
                     "nationality",
                 )
             },
         ),
-        (_("Important dates"), {"fields": ("user_last_login", "user_date_joined")}),
     )
-    search_fields = ("user", "user_first_name", "user_last_name")
+    search_fields = ("user",)
     ordering = ("user", "nationality")
 
-
-    def user_username(self, obj):
-        return obj.user.username
-
-    def user_email(self, obj):
-        return str(obj.user.email)
-
-    def user_first_name(self, obj):
-        return obj.user.first_name
-
-    def user_last_name(self, obj):
-        return obj.user.last_name
-
-    def user_last_login(self, obj):
-        return obj.user.last_login
-
-    def user_date_joined(self, obj):
-        return obj.user.date_joined
 
 admin.site.register(Participant, ParticipantAdmin)
 
