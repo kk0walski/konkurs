@@ -43,6 +43,7 @@ class UserForm(forms.ModelForm):
 
 class ParticipantForm(forms.ModelForm):
     class Meta:
+        model = Participant
         widgets = {
             "birthday": forms.DateInput(
                 format=("%d-%m-%Y"),

@@ -13,6 +13,7 @@ class Register(CreateView):
 
     def get(self, request):
         user_form = UserForm()
+        participant_form = ParticipantForm()
         address_form = AddressCreateForm()
         context = {"user_form": user_form, "address_form": address_form, "participant_form": participant_form}
         return render(request, self.template_name, context)
