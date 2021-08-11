@@ -22,7 +22,7 @@ class AddUserForm(TestCase):
             str(form),
         )
         self.assertInHTML(
-            '<input type="text" name="username" maxlength="150" required id="id_username">',
+            '<input type="text" name="username" maxlength="150" id="id_username">',
             str(form),
         )
         self.assertInHTML(
@@ -46,6 +46,5 @@ class AddUserForm(TestCase):
         form = UserForm(data={})
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors["email"], ["This field is required."])
-        self.assertEqual(form.errors["username"], ["This field is required."])
         self.assertEqual(form.errors["password"], ["This field is required."])
         self.assertEqual(form.errors["password2"], ["This field is required."])
