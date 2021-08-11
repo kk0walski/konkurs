@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 
 from .forms import UserForm, AddressCreateForm, ParticipantForm
-from .models import CustomUser, Address
+from .models import CustomUser, Address, Participant
 
 # Create your views here.
 class Register(CreateView):
@@ -41,6 +41,13 @@ class Register(CreateView):
 from django.views.generic.detail import DetailView
 
 
-class GeeksDetailView(DetailView):
+class ParticipantDetailView(DetailView):
     # specify the model to use
+    context_object_name = "participant"
     model = CustomUser
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["address"] = Address.objects.get(user=CustomUser.email)
+        context['extra'] = Participant.objects.get(user=CustomUser.email)
+        return context
