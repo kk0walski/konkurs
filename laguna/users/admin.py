@@ -75,7 +75,7 @@ admin.site.register(Participant, ParticipantAdmin)
 
 
 class AddressAdmin(admin.ModelAdmin):
-    list_filter = ("user", "country", "city")
+    list_filter = ("user", "country", "city", "zip_code")
     list_display = ("fullAddress", "zip_code", "city", "country")
     fieldsets = (
         (_("Basic info"), {"fields": ("user", "fullAddress", "country", "city")}),
