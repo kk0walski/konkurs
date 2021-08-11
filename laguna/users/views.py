@@ -9,7 +9,7 @@ from .models import CustomUser, Address
 class Register(CreateView):
     model = CustomUser
     form_class = UserForm
-    template_name = "accounts/register.html"
+    template_name = "registration/register.html"
 
     def get(self, request):
         user_form = UserForm()
