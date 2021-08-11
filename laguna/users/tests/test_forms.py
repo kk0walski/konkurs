@@ -13,14 +13,6 @@ class AddUserForm(TestCase):
                 "username",
                 "first_name",
                 "last_name",
-                "phone_number",
-                "cellphone_number",
-                "site",
-                "birthday",
-                "nationality",
-                "place_of_birth",
-                "password",
-                "password2",
             ],
         )
         self.assertInHTML(

@@ -1,5 +1,5 @@
 from django import forms
-from .models import CustomUser, Address
+from .models import CustomUser, Participant, Address
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
@@ -11,31 +11,11 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        widgets = {
-            "birthday": forms.DateInput(
-                format=("%d-%m-%Y"),
-                attrs={
-                    "firstDay": 1,
-                    "pattern=": "\d{4}-\d{2}-\d{2}",
-                    "lang": "pl",
-                    "format": "yyyy-mm-dd",
-                    "type": "date",
-                },
-            ),
-            "phone_number": PhoneNumberPrefixWidget(initial="PL"),
-            "cellphone_number": PhoneNumberPrefixWidget(initial="PL"),
-        }
         fields = (
             "email",
             "username",
             "first_name",
             "last_name",
-            "phone_number",
-            "cellphone_number",
-            "site",
-            "birthday",
-            "nationality",
-            "place_of_birth",
         )
 
     """Sprawdzenie czy hasła się zgadzają"""
@@ -59,6 +39,32 @@ class UserForm(forms.ModelForm):
 
         # A user was found with this as a username, raise an error.
         raise forms.ValidationError("This email address is already in use.")
+
+
+class ParticipantForm(forms.ModelForm):
+    class Meta:
+        widgets = {
+            "birthday": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "firstDay": 1,
+                    "pattern=": "\d{4}-\d{2}-\d{2}",
+                    "lang": "pl",
+                    "format": "yyyy-mm-dd",
+                    "type": "date",
+                },
+            ),
+            "phone_number": PhoneNumberPrefixWidget(initial="PL"),
+            "cellphone_number": PhoneNumberPrefixWidget(initial="PL"),
+        }
+        fields = (
+            "phone_number",
+            "cellphone_number",
+            "site",
+            "birthday",
+            "nationality",
+            "place_of_birth",
+        )
 
 
 class AddressCreateForm(forms.ModelForm):

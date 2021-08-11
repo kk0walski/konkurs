@@ -15,6 +15,11 @@
             {% bootstrap_form_errors user_form %}
         </div>
         <div class="shadow-sm p-3 mb-5 bg-body rounded">
+            <h5 style="font-size: 17px; color: #F44336 !important;">PARTICIPANT INFO</h5>
+            {% bootstrap_form participant_form %}
+            {% bootstrap_form_errors participant_form %}
+        </div>
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
             <h5 style="font-size: 17px; color: #F44336 !important;">ADDRESS INFO</h5>
             {% bootstrap_form address_form %}
             {% bootstrap_form_errors address_form %}

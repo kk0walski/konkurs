@@ -319,16 +319,36 @@ class CountryField(models.CharField):
 
 from django.utils import timezone
 
+
 class CustomUser(AbstractUser):
     username_validator = UnicodeUsernameValidator()
 
     username = models.CharField(
-        _('username'),
+        _("username"),
         max_length=150,
-        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+        help_text=_(
+            "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+        ),
         validators=[username_validator],
     )
-    email = models.EmailField(_("email address"), unique=True)
+    email = models.EmailField(_("email address"), primary_key=True)
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.email
+
+
+class Participant(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        verbose_name=_("Email"),
+        on_delete=models.CASCADE,
+        primary_key=True
+    )
     site = models.URLField(blank=True)
     birthday = models.DateField(default=timezone.now)
     place_of_birth = models.CharField(
@@ -342,19 +362,16 @@ class CustomUser(AbstractUser):
     )
     nationality = CountryField(_("Nationality"))
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
-
-    objects = CustomUserManager()
-
     def __str__(self):
-        return self.email
+        return self.user.email
 
 
 class Address(models.Model):
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
+        verbose_name=_("Email"),
         on_delete=models.CASCADE,
+        primary_key=True
     )
     fullAddress = models.CharField(
         _("Full address"),
