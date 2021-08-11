@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<div class="container" style="padding: 20px;">
+    <h1 style="font-size: 25px; color: #F44336 !important;">Enrollment to the 12th International Art Prize Arte
+        Laguna</h1>
+    <h3 style="font-size: 25px;">Deadline Extended to December 18th</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png"
+                    alt="stack photo" class="img">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h2>
+                        {{ participant.first_name }} {{ participant.last_name }}
+                        <a type="button" class="btn btn-info" href="#">EDIT</a>
+                    </h2>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            email
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.email }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Nationality
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.extra.nationality }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Birthday
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.extra.birthday }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Place of birth
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.extra.place_of_birth }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Phone number
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.extra.phone_number }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Cellphone number
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.extra.cellphone_number }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            city
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.address.city }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Country
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.address.country }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Street line
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.address.street_line }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Zipcode
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.address.zip_code }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Site
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.extra.site }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            Alias
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-light" role="alert">
+                            {{ participant.username }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
