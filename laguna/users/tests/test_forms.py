@@ -6,10 +6,22 @@ from users.forms import UserForm
 class AddUserForm(TestCase):
     def test_html(self):
         form = UserForm()
-        self.assertFalse(form.is_valid())
-        self.assertInHTML(
-            '<input type="email" name="email" maxlength="254" required id="id_email">',
-            str(form),
+        self.assertEqual(
+            list(form.fields.keys()),
+            [
+                "email",
+                "username",
+                "first_name",
+                "last_name",
+                "phone_number",
+                "cellphone_number",
+                "site",
+                "birthday",
+                "nationality",
+                "place_of_birth",
+                "password",
+                "password2",
+            ],
         )
         self.assertInHTML(
             '<input type="email" name="email" maxlength="254" required id="id_email">',
