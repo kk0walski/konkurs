@@ -48,6 +48,6 @@ class ParticipantDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["address"] = Address.objects.get(user=CustomUser.email)
-        context['extra'] = Participant.objects.get(user=CustomUser.email)
+        context["address"] = Address.objects.get(user=context.email)
+        context['extra'] = Participant.objects.get(user=context.email)
         return context
