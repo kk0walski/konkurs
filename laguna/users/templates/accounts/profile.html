@@ -14,7 +14,7 @@
             <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                 <div class="container" style="border-bottom:1px solid black">
                     <h2>
-                        {{ participant.first_name }} {{ participant.last_name }}
+                        {{ user.first_name }} {{ user.last_name }}
                         <a type="button" class="btn btn-info" href="#">EDIT</a>
                     </h2>
                 </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.email }}
+                            {{ user.email }}
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.nationality }}
+                            {{ profile.nationality }}
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.birthday }}
+                            {{ profile.birthday }}
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.place_of_birth }}
+                            {{ profile.place_of_birth }}
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.phone_number }}
+                            {{ profile.phone_number }}
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.cellphone_number }}
+                            {{ profile.cellphone_number }}
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.site }}
+                            {{ profile.site }}
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="alert alert-light" role="alert">
-                            {{ participant.participantname }}
+                            {{ user.username }}
                         </div>
                     </div>
                 </div>

@@ -38,23 +38,19 @@ class Register(CreateView):
         return render(request, self.template_name, context)
 
 
-from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
 
+def user_is_uczestnik(user):
+    """user_is_uczestnik.
+    :return: True if user is uczestnik"""
+    return Participant.objects.filter(user=user.email).exists()
 
-class ParticipantDetailView(DetailView):
-    # specify the model to use
-    context_object_name = "participant"
-    model = CustomUser
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user = CustomUser.objects.get(email=context['object'])
-        user = user.__dict__
-        participant = Participant.objects.get(user=context['object'])
-        participant = participant.__dict__
-        participant['email'] = user['email']
-        participant['first_name'] = user['first_name']
-        participant['last_name'] = user['last_name']
-        context['participant'] = participant
-        context["address"] = Address.objects.get(user=context['object'])
-        return context
+@login_required
+def user_profile(request):
+    current_user = request.user
+    if user_is_uczestnik(current_user):
+        profile = Participant.objects.get(user=current_user.email)
+        address = Address.objects.get(user=current_user.email)
+        return render(request, 'accounts/profile.html', {'user': current_user, 'profile': profile, 'address': address})
+    else:
+        render(request, 'accounts/reviewProfile.html', {'user': current_user})
