@@ -49,15 +49,12 @@ class ParticipantDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = CustomUser.objects.get(email=context['object'])
-        user = user.values()
-        print(user)
-        participant = dict(Participant.objects.get(user=context['object']))
-        participant = participant.values()
-        print(participant)
+        user = user.__dict__
+        participant = Participant.objects.get(user=context['object'])
+        participant = participant.__dict__
         participant['email'] = user['email']
         participant['first_name'] = user['first_name']
         participant['last_name'] = user['last_name']
         context['participant'] = participant
         context["address"] = Address.objects.get(user=context['object'])
-        print(context)
         return context
