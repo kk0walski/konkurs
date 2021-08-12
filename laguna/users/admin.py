@@ -52,7 +52,7 @@ admin.site.register(CustomUser, CustomUserAdmin)
 
 class ParticipantAdmin(admin.ModelAdmin):
     model = Participant
-    list_display = ("user", "nationality" "birthday")
+    list_display = ("user", "nationality", "birthday")
     list_filter = ("user", "nationality", "birthday")
     fieldsets = (
         (_("Contact info"), {"fields": ("user", "phone_number", "cellphone_number")}),

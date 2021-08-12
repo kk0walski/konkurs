@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 from .forms import UserForm, AddressCreateForm, ParticipantForm
@@ -32,7 +32,7 @@ class Register(CreateView):
             new_participant = participant_form.save(commit=False)
             new_participant.user = new_user
             new_participant.save()
-            return render(request, "accounts/register_done.html")
+            return redirect('index')
 
         context = {"user_form": user_form, "address_form": address_form, "participant_form": participant_form}
         return render(request, self.template_name, context)
@@ -48,6 +48,16 @@ class ParticipantDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["address"] = Address.objects.get(user=context.email)
-        context['extra'] = Participant.objects.get(user=context.email)
+        user = CustomUser.objects.get(email=context['object'])
+        user = user.values()
+        print(user)
+        participant = dict(Participant.objects.get(user=context['object']))
+        participant = participant.values()
+        print(participant)
+        participant['email'] = user['email']
+        participant['first_name'] = user['first_name']
+        participant['last_name'] = user['last_name']
+        context['participant'] = participant
+        context["address"] = Address.objects.get(user=context['object'])
+        print(context)
         return context
