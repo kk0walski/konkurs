@@ -5,7 +5,7 @@ beautifulsoup4==4.9.3
 certifi==2021.5.30
 chardet==4.0.0
 cuser==0.0.4
-Django==3.2.5
+Django==3.2.12
 django-bootstrap4==3.0.1
 django-braces==1.14.0
 django-filter==2.4.0
