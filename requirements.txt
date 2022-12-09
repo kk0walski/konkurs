@@ -2,7 +2,7 @@ alabaster==0.7.12
 asgiref==3.4.1
 Babel==2.9.1
 beautifulsoup4==4.9.3
-certifi==2021.5.30
+certifi==2022.12.7
 chardet==4.0.0
 cuser==0.0.4
 Django==3.2.5
